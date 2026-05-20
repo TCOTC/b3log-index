@@ -1,3 +1,5 @@
 .idea/
 index.iml
 src/siyuan/node_modules/
+
+.DS_Store
