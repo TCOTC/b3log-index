@@ -3,11 +3,11 @@ import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { defineConfig } from 'vite'
 import { posthtmlHtmlPlugin } from './vite-plugin-posthtml'
-import { zhRootPlugin } from './vite-plugin-zh-root'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 const DEV_PORT = 5173
+const PAGES_DIR = 'pages'
 
 interface SiteInfo {
   version: string
@@ -20,14 +20,11 @@ function readSite(root: string): SiteInfo {
   return JSON.parse(readFileSync(path.join(root, 'site.json'), 'utf8'))
 }
 
-/** zh/ 页面入口键不含 zh 前缀（与 zhRootPlugin 输出路径一致） */
-function discoverPages(root: string): Record<string, string> {
+function discoverPages(pagesRoot: string): Record<string, string> {
   const input: Record<string, string> = {}
-  for (const rel of globSync('{zh,en,distributors}/**/*.html', { cwd: root })) {
-    const key = rel.startsWith('zh/')
-      ? rel.slice(3).replace(/\.html$/, '')
-      : rel.replace(/\.html$/, '')
-    input[key] = path.resolve(root, rel)
+  for (const rel of globSync('**/*.html', { cwd: pagesRoot })) {
+    const key = rel.replace(/\.html$/, '')
+    input[key] = path.resolve(pagesRoot, rel)
   }
   return input
 }
@@ -52,27 +49,31 @@ export default defineConfig(({ mode }) => {
   const site = readSite(__dirname)
   const isProd = mode === 'production'
   const pathname = new URL(site.siteUrl).pathname
+  const pagesRoot = path.join(__dirname, PAGES_DIR)
 
   return {
+    root: pagesRoot,
     base: isProd ? (pathname.endsWith('/') ? pathname : `${pathname}/`) : '/',
-    publicDir: 'public',
+    publicDir: path.join(__dirname, 'public'),
     plugins: [
       posthtmlHtmlPlugin({
         root: __dirname,
         placeholders: createPlaceholders(mode, site),
       }),
-      zhRootPlugin(__dirname),
     ],
     build: {
-      outDir: 'dist',
+      outDir: path.join(__dirname, 'dist'),
       emptyOutDir: true,
       rollupOptions: {
-        input: discoverPages(__dirname),
+        input: discoverPages(pagesRoot),
       },
     },
     server: {
       port: DEV_PORT,
-      open: '/index.html',
+      open: '/',
+      fs: {
+        allow: [__dirname],
+      },
     },
   }
 })

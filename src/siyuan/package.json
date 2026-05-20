@@ -8,7 +8,7 @@
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",
-    "format": "prettier --write \"**/*.html\" \"partials/**/*.html\"",
+    "format": "prettier --write \"pages/**/*.html\" \"partials/**/*.html\"",
     "typecheck": "tsc --noEmit"
   },
   "author": "Vanessa",
