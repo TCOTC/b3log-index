@@ -59,6 +59,7 @@ export default defineConfig(({ mode }) => {
       posthtmlHtmlPlugin({
         root: __dirname,
         placeholders: createPlaceholders(mode, site),
+        enableMinify: true, // 开发环境也压缩，避免与生产环境不一致
       }),
     ],
     build: {

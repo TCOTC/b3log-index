@@ -13,7 +13,9 @@
   },
   "author": "Vanessa",
   "devDependencies": {
+    "@types/html-minifier-terser": "^7.0.2",
     "@types/node": "^25.9.0",
+    "html-minifier-terser": "^7.2.0",
     "posthtml": "^0.16.7",
     "posthtml-include": "^2.0.1",
     "prettier": "^3.8.3",
