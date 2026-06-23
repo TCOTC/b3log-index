@@ -37,13 +37,14 @@ body.cur-body {
   overflow-x: hidden;
 }
 
-.cur-body--cursor-active {
+html.cur-cursor-active,
+html.cur-cursor-active body {
   cursor: none;
 }
 
-.cur-body--cursor-active a,
-.cur-body--cursor-active button,
-.cur-body--cursor-active .cur-magnetic {
+html.cur-cursor-active a,
+html.cur-cursor-active button,
+html.cur-cursor-active .cur-magnetic {
   cursor: none;
 }
 
@@ -69,12 +70,11 @@ body.cur-body {
   left: 0;
   z-index: 10000;
   pointer-events: none;
-  opacity: 0;
   transition: opacity 0.3s ease;
 }
 
-.cur-body--cursor-active .cur-cursor {
-  opacity: 1;
+.cur-cursor--hidden {
+  opacity: 0 !important;
 }
 
 .cur-cursor__ring {
@@ -149,26 +149,16 @@ body.cur-body {
 }
 
 .cur-trail__dot {
-  position: absolute;
-  width: 8px;
-  height: 8px;
-  margin: -4px 0 0 -4px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  margin: -3px 0 0 -3px;
   background: var(--cur-accent);
   border-radius: 50%;
-  opacity: 0;
-  transform: scale(0);
-  animation: cur-trail-fade 0.8s ease forwards;
-}
-
-@keyframes cur-trail-fade {
-  0% {
-    opacity: 0.6;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(0.2);
-  }
+  pointer-events: none;
+  will-change: transform, opacity;
 }
 
 /* —— 顶栏 —— */
@@ -228,7 +218,8 @@ body.cur-body {
   transition: color var(--cur-transition);
 }
 
-.cur-header__link:hover {
+.cur-header__link:hover,
+.cur-header__link--active {
   color: var(--cur-accent);
 }
 
@@ -278,15 +269,14 @@ body.cur-body {
   transition: transform 0.15s ease-out;
 }
 
-.cur-hover-zoom {
+.cur-hover-scale {
   transition:
     transform var(--cur-transition),
     box-shadow var(--cur-transition),
     border-color var(--cur-transition);
 }
 
-.cur-body--cursor-active .cur-hover-zoom:hover {
-  transform: scale(1.04);
+html.cur-cursor-active .cur-hover-scale:hover {
   box-shadow: 0 16px 48px rgba(110, 231, 255, 0.12);
 }
 
@@ -302,9 +292,42 @@ body.cur-body {
   position: relative;
   z-index: 1;
   max-width: 720px;
+  --cur-spot-x: 50%;
+  --cur-spot-y: 40%;
 }
 
-.cur-hero__badge {
+.cur-hero__stage::before {
+  content: '';
+  position: absolute;
+  inset: -40% -20% -20% -20%;
+  background: radial-gradient(
+    circle at var(--cur-spot-x) var(--cur-spot-y),
+    rgba(110, 231, 255, 0.14) 0%,
+    transparent 55%
+  );
+  pointer-events: none;
+  z-index: -1;
+}
+
+.cur-hero__orbit {
+  position: absolute;
+  top: -60px;
+  right: -40px;
+  width: 200px;
+  height: 200px;
+  border: 1px dashed rgba(110, 231, 255, 0.2);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: cur-orbit-spin 24s linear infinite;
+}
+
+@keyframes cur-orbit-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.cur-hero__label {
   display: inline-block;
   margin: 0 0 20px;
   padding: 6px 14px;
@@ -342,29 +365,24 @@ body.cur-body {
   max-width: 56ch;
 }
 
-.cur-hero__actions {
+.cur-hero__meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px;
-  margin-bottom: 24px;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
 }
 
-.cur-hero__meta {
+.cur-hero__version {
   margin: 0;
   font-size: 0.85rem;
   color: var(--cur-text-muted);
 }
 
-.cur-hero__spotlight {
-  position: absolute;
-  top: 50%;
-  right: -10%;
-  width: 480px;
-  height: 480px;
-  transform: translateY(-50%);
-  background: radial-gradient(circle, rgba(110, 231, 255, 0.15) 0%, transparent 70%);
-  pointer-events: none;
-  transition: transform 0.1s ease-out;
+.cur-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
 }
 
 /* —— 区块 —— */
@@ -382,7 +400,7 @@ body.cur-body {
   margin-bottom: 40px;
 }
 
-.cur-section__eyebrow {
+.cur-section__label {
   margin: 0 0 8px;
   font-size: 0.75rem;
   letter-spacing: 0.1em;
@@ -405,20 +423,20 @@ body.cur-body {
 
 /* —— 功能卡片 —— */
 
-.cur-features {
+.cur-showcase {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 20px;
 }
 
-.cur-feature {
+.cur-card {
   padding: 28px;
   background: var(--cur-surface);
   border: 1px solid var(--cur-border);
   border-radius: var(--cur-radius);
 }
 
-.cur-feature__index {
+.cur-card__index {
   display: block;
   margin-bottom: 12px;
   font-family: var(--cur-display);
@@ -427,14 +445,14 @@ body.cur-body {
   letter-spacing: 0.05em;
 }
 
-.cur-feature__title {
+.cur-card__title {
   margin: 0 0 10px;
   font-family: var(--cur-display);
   font-size: 1.15rem;
   font-weight: 700;
 }
 
-.cur-feature__text {
+.cur-card__text {
   margin: 0;
   font-size: 0.92rem;
   color: var(--cur-text-muted);
@@ -482,7 +500,7 @@ body.cur-body {
   border-radius: var(--cur-radius);
 }
 
-.cur-page-header__eyebrow {
+.cur-page-header__label {
   margin: 0 0 8px;
   font-size: 0.75rem;
   letter-spacing: 0.08em;
@@ -505,38 +523,38 @@ body.cur-body {
 
 /* —— 下载 —— */
 
-.cur-quick-downloads {
+.cur-download-quick {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   gap: 14px;
   margin-bottom: 32px;
 }
 
-.cur-quick-download {
+.cur-download-tile {
   padding: 20px;
   background: var(--cur-surface);
   border: 1px solid var(--cur-border);
   border-radius: var(--cur-radius);
 }
 
-.cur-quick-download__label {
+.cur-download-tile__label {
   margin: 0 0 10px;
   font-size: 0.82rem;
   color: var(--cur-text-muted);
 }
 
-.cur-quick-download__link {
+.cur-download-tile__link {
   display: inline-block;
   color: var(--cur-accent);
   font-weight: 600;
   text-decoration: none;
 }
 
-.cur-quick-download__link:hover {
+.cur-download-tile__link:hover {
   text-decoration: underline;
 }
 
-.cur-quick-download__hint {
+.cur-download-tile__hint {
   margin: 8px 0 0;
   font-size: 0.75rem;
   color: var(--cur-text-muted);
@@ -683,20 +701,20 @@ body.cur-body {
   border-radius: var(--cur-radius);
 }
 
-.cur-faq__question {
+.cur-faq__q {
   margin: 0 0 10px;
   font-family: var(--cur-display);
   font-size: 1rem;
   font-weight: 600;
 }
 
-.cur-faq__answer {
+.cur-faq__a {
   margin: 0;
   font-size: 0.9rem;
   color: var(--cur-text-muted);
 }
 
-.cur-faq__answer a {
+.cur-faq__a a {
   color: var(--cur-accent);
 }
 
@@ -830,7 +848,8 @@ body.cur-body {
 /* —— 无障碍：减少动效 —— */
 
 @media (prefers-reduced-motion: reduce) {
-  .cur-body--cursor-active {
+  html.cur-cursor-active,
+  html.cur-cursor-active body {
     cursor: auto;
   }
 
@@ -840,9 +859,11 @@ body.cur-body {
   }
 
   .cur-magnetic,
-  .cur-hover-zoom {
+  .cur-hover-scale,
+  .cur-hero__orbit {
     transform: none !important;
     transition: none !important;
+    animation: none !important;
   }
 }
 
@@ -859,7 +880,7 @@ body.cur-body {
     padding-top: 48px;
   }
 
-  .cur-hero__spotlight {
+  .cur-hero__orbit {
     display: none;
   }
 
