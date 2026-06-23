@@ -1,0 +1,861 @@
+/* Kinetic Typography — UI-30 动态字体排版风格 */
+
+:root {
+  --kin-bg: #0a0a0f;
+  --kin-bg-elevated: #12121a;
+  --kin-surface: #1a1a24;
+  --kin-ink: #f5f5f7;
+  --kin-ink-muted: #a1a1aa;
+  --kin-ink-dim: #71717a;
+  --kin-accent: #ff4d6d;
+  --kin-accent-2: #7c3aed;
+  --kin-accent-3: #06b6d4;
+  --kin-gradient: linear-gradient(135deg, #ff4d6d 0%, #7c3aed 50%, #06b6d4 100%);
+  --kin-border: rgba(255, 255, 255, 0.08);
+  --kin-radius: 16px;
+  --kin-max: 1140px;
+  --kin-font-display: "SF Pro Display", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    sans-serif;
+  --kin-font-mono: "SF Mono", "Cascadia Code", "Fira Code", monospace;
+  --kin-ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --kin-ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body.kin-body {
+  font-family: var(--kin-font-display);
+  color: var(--kin-ink);
+  background: var(--kin-bg);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--kin-accent-3);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--kin-accent);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.kin-page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.kin-container {
+  width: min(100% - 2.5rem, var(--kin-max));
+  margin-inline: auto;
+}
+
+.kin-main {
+  flex: 1;
+}
+
+/* ── 顶栏 ── */
+
+.kin-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--kin-border);
+}
+
+.kin-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1rem;
+  gap: 1.5rem;
+}
+
+.kin-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--kin-ink);
+  font-weight: 700;
+  font-size: 1.05rem;
+  letter-spacing: -0.02em;
+}
+
+.kin-header__brand:hover {
+  color: var(--kin-accent);
+  text-decoration: none;
+}
+
+.kin-header__logo {
+  width: 28px;
+  height: 28px;
+}
+
+.kin-header__nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.25rem 1.25rem;
+  list-style: none;
+}
+
+.kin-header__link {
+  color: var(--kin-ink-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  transition: color 0.2s ease, transform 0.2s var(--kin-ease-out);
+}
+
+.kin-header__link:hover {
+  color: var(--kin-ink);
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.kin-header__link--cta {
+  padding: 0.45rem 1rem;
+  background: var(--kin-gradient);
+  color: #fff !important;
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.kin-header__link--cta:hover {
+  opacity: 0.9;
+  transform: scale(1.03);
+}
+
+/* ── 按钮 ── */
+
+.kin-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.85rem 1.75rem;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.25s var(--kin-ease-bounce), box-shadow 0.25s ease;
+}
+
+.kin-btn:hover {
+  text-decoration: none;
+  transform: scale(1.04);
+}
+
+.kin-btn--primary {
+  background: var(--kin-gradient);
+  color: #fff;
+  box-shadow: 0 4px 24px rgba(255, 77, 109, 0.35);
+}
+
+.kin-btn--outline {
+  background: transparent;
+  color: var(--kin-ink);
+  border: 1px solid var(--kin-border);
+}
+
+.kin-btn--outline:hover {
+  border-color: var(--kin-accent);
+  color: var(--kin-accent);
+}
+
+.kin-btn--light {
+  background: #fff;
+  color: var(--kin-bg);
+}
+
+/* ── Hero 动态标题 ── */
+
+.kin-hero {
+  position: relative;
+  min-height: 92vh;
+  display: flex;
+  align-items: center;
+  padding-block: 4rem 6rem;
+  overflow: hidden;
+}
+
+.kin-hero__bg-text {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: clamp(6rem, 18vw, 14rem);
+  font-weight: 900;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.04);
+  white-space: nowrap;
+  pointer-events: none;
+  user-select: none;
+  animation: kin-bg-drift 24s linear infinite;
+}
+
+@keyframes kin-bg-drift {
+  0% {
+    transform: translateX(5%) rotate(-2deg);
+  }
+  50% {
+    transform: translateX(-5%) rotate(2deg);
+  }
+  100% {
+    transform: translateX(5%) rotate(-2deg);
+  }
+}
+
+.kin-hero__content {
+  position: relative;
+  z-index: 1;
+}
+
+.kin-hero__tag {
+  display: inline-block;
+  margin-bottom: 1.5rem;
+  padding: 0.35rem 0.9rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--kin-accent-3);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  border-radius: 999px;
+  opacity: 0;
+  animation: kin-fade-up 0.8s var(--kin-ease-out) 0.2s forwards;
+}
+
+.kin-hero__title {
+  font-size: clamp(2.5rem, 7vw, 5rem);
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+}
+
+.kin-hero__title-line {
+  display: block;
+  overflow: hidden;
+}
+
+.kin-char {
+  display: inline-block;
+  opacity: 0;
+  transform: translateY(110%) rotateX(-80deg);
+  transform-origin: bottom center;
+  animation: kin-char-in 0.7s var(--kin-ease-bounce) forwards;
+}
+
+.kin-char--punct {
+  margin-inline: 0.05em;
+}
+
+@keyframes kin-char-in {
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateX(0);
+  }
+}
+
+.kin-hero__subtitle {
+  font-size: clamp(1.1rem, 2.5vw, 1.45rem);
+  color: var(--kin-ink-muted);
+  max-width: 36em;
+  margin-bottom: 2.5rem;
+  opacity: 0;
+  animation: kin-fade-up 0.9s var(--kin-ease-out) 1.2s forwards;
+}
+
+.kin-hero__subtitle em {
+  font-style: normal;
+  background: var(--kin-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 600;
+}
+
+.kin-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  opacity: 0;
+  animation: kin-fade-up 0.8s var(--kin-ease-out) 1.5s forwards;
+}
+
+.kin-hero__version {
+  margin-top: 2.5rem;
+  font-family: var(--kin-font-mono);
+  font-size: 0.85rem;
+  color: var(--kin-ink-dim);
+  opacity: 0;
+  animation: kin-fade-up 0.8s var(--kin-ease-out) 1.8s forwards;
+}
+
+@keyframes kin-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ── 滚动变形标题 ── */
+
+.kin-morph {
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  transition: letter-spacing 0.6s var(--kin-ease-out), transform 0.6s var(--kin-ease-out);
+  transform-origin: left center;
+}
+
+.kin-morph.is-visible {
+  letter-spacing: 0.08em;
+}
+
+.kin-morph--center.is-visible {
+  letter-spacing: 0.12em;
+}
+
+.kin-scale-text {
+  display: inline-block;
+  font-size: 1em;
+  transition: font-size 0.5s var(--kin-ease-out), color 0.4s ease;
+}
+
+.kin-scale-text.is-expanded {
+  font-size: 1.35em;
+  background: var(--kin-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* ── 区块 ── */
+
+.kin-section {
+  padding-block: 5rem;
+  border-top: 1px solid var(--kin-border);
+}
+
+.kin-section__header {
+  margin-bottom: 3rem;
+}
+
+.kin-section__num {
+  font-family: var(--kin-font-mono);
+  font-size: 0.8rem;
+  color: var(--kin-accent);
+  letter-spacing: 0.2em;
+  margin-bottom: 0.75rem;
+}
+
+.kin-section__title {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  margin-bottom: 0.75rem;
+}
+
+.kin-section__desc {
+  color: var(--kin-ink-muted);
+  max-width: 42em;
+  font-size: 1.05rem;
+}
+
+/* ── 功能卡片（文字动效强调）── */
+
+.kin-features {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .kin-features {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.kin-feature {
+  padding: 2rem;
+  background: var(--kin-surface);
+  border: 1px solid var(--kin-border);
+  border-radius: var(--kin-radius);
+  transition: border-color 0.3s ease;
+}
+
+.kin-feature:hover {
+  border-color: rgba(255, 77, 109, 0.3);
+}
+
+.kin-feature__index {
+  font-family: var(--kin-font-mono);
+  font-size: 0.75rem;
+  color: var(--kin-accent-2);
+  letter-spacing: 0.15em;
+  margin-bottom: 1rem;
+}
+
+.kin-feature__title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  overflow: hidden;
+}
+
+.kin-feature__title .kin-char {
+  animation: none;
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 0.4s var(--kin-ease-out), transform 0.5s var(--kin-ease-bounce);
+}
+
+.kin-feature.is-visible .kin-feature__title .kin-char {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.kin-feature__text {
+  color: var(--kin-ink-muted);
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* ── 滚动打字机带 ── */
+
+.kin-ticker {
+  padding-block: 1.25rem;
+  background: var(--kin-bg-elevated);
+  border-block: 1px solid var(--kin-border);
+  overflow: hidden;
+}
+
+.kin-ticker__track {
+  display: flex;
+  gap: 3rem;
+  width: max-content;
+  animation: kin-ticker-scroll 40s linear infinite;
+}
+
+.kin-ticker__item {
+  flex-shrink: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: var(--kin-ink-dim);
+  white-space: nowrap;
+}
+
+.kin-ticker__item span {
+  color: var(--kin-accent-3);
+  margin-right: 0.5rem;
+}
+
+@keyframes kin-ticker-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* ── 波浪文字 ── */
+
+.kin-wave {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.05em;
+  font-size: clamp(1.5rem, 4vw, 2.25rem);
+  font-weight: 700;
+  padding-block: 3rem;
+}
+
+.kin-wave__char {
+  display: inline-block;
+  animation: kin-wave-bounce 2s ease-in-out infinite;
+}
+
+@keyframes kin-wave-bounce {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+    color: var(--kin-accent);
+  }
+}
+
+/* ── CTA ── */
+
+.kin-cta {
+  padding-block: 4rem;
+  text-align: center;
+  background: linear-gradient(180deg, transparent, rgba(124, 58, 237, 0.08));
+}
+
+.kin-cta__text {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.01em;
+}
+
+/* ── 子页页头 ── */
+
+.kin-page-header {
+  padding-block: 4rem 3rem;
+  text-align: center;
+}
+
+.kin-page-header__title {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  margin-bottom: 1rem;
+}
+
+.kin-page-header__desc {
+  color: var(--kin-ink-muted);
+  max-width: 36em;
+  margin-inline: auto;
+  font-size: 1.05rem;
+}
+
+/* ── 下载页 ── */
+
+.kin-download-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .kin-download-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .kin-download-grid--quick {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.kin-download-card {
+  padding: 1.75rem;
+  background: var(--kin-surface);
+  border: 1px solid var(--kin-border);
+  border-radius: var(--kin-radius);
+}
+
+.kin-download-card__platform {
+  font-family: var(--kin-font-mono);
+  font-size: 0.75rem;
+  color: var(--kin-accent-3);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+.kin-download-card__title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.kin-download-card__links {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.kin-download-card__links a {
+  font-size: 0.9rem;
+}
+
+.kin-quick-card {
+  padding: 1.25rem;
+  background: var(--kin-bg-elevated);
+  border: 1px solid var(--kin-border);
+  border-radius: var(--kin-radius);
+  text-align: center;
+}
+
+.kin-quick-card__label {
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+
+.kin-quick-card__link {
+  display: block;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+.kin-quick-card__hint {
+  font-size: 0.8rem;
+  color: var(--kin-ink-dim);
+}
+
+/* ── 定价页 ── */
+
+.kin-pricing-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+@media (min-width: 900px) {
+  .kin-pricing-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.kin-pricing-card {
+  padding: 2rem;
+  background: var(--kin-surface);
+  border: 1px solid var(--kin-border);
+  border-radius: var(--kin-radius);
+  display: flex;
+  flex-direction: column;
+}
+
+.kin-pricing-card--featured {
+  border-color: var(--kin-accent-2);
+  background: linear-gradient(160deg, rgba(124, 58, 237, 0.15), var(--kin-surface));
+  transform: scale(1.02);
+}
+
+.kin-pricing-card__tier {
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--kin-accent-3);
+  margin-bottom: 0.75rem;
+}
+
+.kin-pricing-card__price {
+  font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  margin-bottom: 0.25rem;
+}
+
+.kin-price-strike {
+  font-size: 1rem;
+  color: var(--kin-ink-dim);
+  text-decoration: line-through;
+  margin-left: 0.35rem;
+  font-weight: 400;
+}
+
+.kin-pricing-card__period {
+  font-size: 0.9rem;
+  color: var(--kin-ink-muted);
+  margin-bottom: 1.5rem;
+}
+
+.kin-pricing-card__features {
+  list-style: none;
+  flex: 1;
+  margin-bottom: 1.5rem;
+}
+
+.kin-pricing-card__features li {
+  padding-block: 0.4rem;
+  font-size: 0.9rem;
+  color: var(--kin-ink-muted);
+  border-bottom: 1px solid var(--kin-border);
+}
+
+.kin-pricing-card__features li:last-child {
+  border-bottom: none;
+}
+
+/* ── 社区页 ── */
+
+.kin-community-grid {
+  display: grid;
+  gap: 1.25rem;
+}
+
+@media (min-width: 768px) {
+  .kin-community-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.kin-community-card {
+  padding: 2rem;
+  background: var(--kin-surface);
+  border: 1px solid var(--kin-border);
+  border-radius: var(--kin-radius);
+  transition: transform 0.3s var(--kin-ease-out), border-color 0.3s ease;
+}
+
+.kin-community-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(6, 182, 212, 0.35);
+}
+
+.kin-community-card--wide {
+  grid-column: 1 / -1;
+}
+
+.kin-community-card--accent {
+  background: linear-gradient(135deg, rgba(255, 77, 109, 0.12), var(--kin-surface));
+}
+
+.kin-community-card__title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.kin-community-card__desc {
+  color: var(--kin-ink-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1.25rem;
+}
+
+.kin-community-card__link {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+/* ── FAQ ── */
+
+.kin-faq {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .kin-faq {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.kin-faq__item {
+  padding: 1.5rem;
+  background: var(--kin-bg-elevated);
+  border-radius: var(--kin-radius);
+  border: 1px solid var(--kin-border);
+}
+
+.kin-faq__question {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.kin-faq__answer {
+  font-size: 0.9rem;
+  color: var(--kin-ink-muted);
+  line-height: 1.65;
+}
+
+/* ── 页脚 ── */
+
+.kin-footer {
+  padding-block: 2rem;
+  border-top: 1px solid var(--kin-border);
+  margin-top: auto;
+}
+
+.kin-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.kin-footer__legal {
+  font-size: 0.85rem;
+  color: var(--kin-ink-dim);
+}
+
+.kin-footer__legal a {
+  color: var(--kin-ink-dim);
+}
+
+.kin-footer__nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  list-style: none;
+}
+
+.kin-footer__nav a {
+  font-size: 0.85rem;
+  color: var(--kin-ink-muted);
+}
+
+/* ── 减弱动效偏好 ── */
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .kin-char {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+
+  .kin-ticker__track {
+    animation: none;
+  }
+}
+
+/* ── 响应式 ── */
+
+@media (max-width: 640px) {
+  .kin-header__nav {
+    display: none;
+  }
+
+  .kin-hero {
+    min-height: auto;
+    padding-block: 3rem 4rem;
+  }
+}
