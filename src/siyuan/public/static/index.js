@@ -1,197 +1,74 @@
-const type = () => {
-  const typeElement = document.querySelector('#slogan')
-  let texts
-  if (typeof lang !== 'undefined' && 'zh' === lang) {
-    texts = [
-      '随时随地离线可用',
-      '端到端加密保证隐私安全',
-      '优雅的 Markdown 编辑体验',
-      '文字创作时沉浸在内容构思中',
-      '触摸灵感和思绪的清晰脉络',
-      '将知识碎片构建成结构化的体系',
-      '找到那些埋藏在记忆深处的灵犀',
-      '思源有云，往来随心',
-    ]
-  } else {
-    texts = [
-      'Available offline anytime, anywhere',
-      'End-to-end encryption ensures privacy and security',
-      'Elegant Markdown editing experience',
-      'Immerse yourself in content ideas while writing',
-      'Touch a clear vein of inspiration and thought',
-      'Build knowledge fragments into a structured system',
-      'Find those consonants buried deep in memory',
-      'SiYuan has a cloud, and you can communicate with your heart',
-    ]
-  }
-  let textLength = 0
-  let time = 0
-  texts.forEach((text, i) => {
-    if (i > 0) {
-      textLength += text[i - 1].length + 20
-    }
-    for (let j = 0; j < text.length; j++) {
-      time += 150
-      setTimeout(() => {
-        typeElement.innerHTML = text.substr(0, j + 1) +
-          `<span class="second__caret" style="${(j === text.length - 1
-            ? 'animation-name:flash'
-            : '')}"></span>`
-      }, time)
-    }
-    if (i !== texts.length - 1) {
-      time += 2000
-      for (let k = 0; k < text.length; k++) {
-        time += 50
-        setTimeout(() => {
-          typeElement.innerHTML = typeElement.textContent.substr(0,
-              typeElement.textContent.length - 1) +
-            '<span class="second__caret"></span>'
-        }, time)
-      }
-    } else {
-      setTimeout(() => {
-        document.querySelector('.second__caret').style.animationName = 'flash'
-      }, time + 1)
-    }
-  })
-}
+/** UI-02 新拟态站点交互 */
 
-const hasClosestByClassName = (element, className) => {
-  let isClosest = false
-  while (element && !isClosest && !element.classList.contains('navigation')) {
-    if (element.classList.contains(className)) {
-      isClosest = true
-    } else {
-      element = element.parentElement
-    }
-  }
-  return isClosest && element
-}
+const neuTypewriter = () => {
+  const el = document.querySelector('#slogan')
+  if (!el) return
 
-const getOS = () => {
-  const appVersion = navigator.appVersion
-  if (appVersion.indexOf('Win') !== -1) {
-    return 'Windows'
-  }
-  if (appVersion.indexOf('Mac') !== -1) {
-    return 'macOS'
-  }
-  if (/Android/.test(window.navigator.userAgent)) {
-    return 'Android'
-  }
-  if (appVersion.indexOf('X11') !== -1 || appVersion.indexOf('Linux') !== -1) {
-    return 'Linux'
-  }
-  return 'Windows'
-}
+  const texts = [
+    '在柔和界面里，思绪缓缓展开',
+    '离线书写，像呼吸一样安稳',
+    '加密同步，隐私轻柔守护',
+    '块与块之间，灵感悄然相连',
+    '沉浸编辑，不被工具打断',
+    '知识碎片，织成温柔的网络',
+    '找到记忆深处的那一缕灵犀',
+    '思源有云，往来随心',
+  ]
 
-(function () {
-  const downloadElements = document.querySelectorAll('#download a')
-  if (downloadElements.length > 0) {
-    const os = getOS()
-    downloadElements.forEach(item => {
-      if (item.getAttribute('data-os') === os) {
-        item.style.display = 'inline-block'
+  let time = 600
+  let idx = 0
+
+  const tick = () => {
+    const text = texts[idx]
+    let char = 0
+
+    const typeChar = () => {
+      el.innerHTML =
+        text.slice(0, char + 1) + '<span class="neu-hero__caret"></span>'
+      char++
+      if (char < text.length) {
+        setTimeout(typeChar, 120)
       } else {
-        item.style.display = 'none'
+        setTimeout(erase, 2200)
       }
-    })
-  }
+    }
 
-  if (!document.querySelector('.navigation')) {
-    return
-  }
-
-  const observer = new IntersectionObserver((e) => {
-    e.forEach(item => {
-      if (item.isIntersecting) {
-        item.target.classList.add('animate--in')
+    const erase = () => {
+      if (char > 0) {
+        char--
+        el.innerHTML = text.slice(0, char) + '<span class="neu-hero__caret"></span>'
+        setTimeout(erase, 40)
       } else {
-        item.target.classList.remove('animate--in')
+        idx = (idx + 1) % texts.length
+        setTimeout(tick, 400)
       }
-    })
-  }, {
-    rootMargin: '-0% 0% -30% 0%',
-    threshold: 0,
+    }
+
+    typeChar()
+  }
+
+  tick()
+}
+
+const neuDetectOS = () => {
+  const items = document.querySelectorAll('#download .neu-download-quick__item')
+  if (!items.length) return
+
+  const ua = navigator.appVersion
+  let os = 'Windows'
+  if (ua.indexOf('Mac') !== -1) os = 'macOS'
+  else if (/Android/.test(navigator.userAgent)) os = 'Android'
+  else if (ua.indexOf('X11') !== -1 || ua.indexOf('Linux') !== -1) os = 'Linux'
+
+  items.forEach((item) => {
+    const match = item.getAttribute('data-os') === os && !item.hasAttribute('data-alt')
+    item.setAttribute('data-os-match', match ? '' : null)
+    if (match) item.style.display = 'block'
+    else if (!item.hasAttribute('data-alt')) item.style.display = 'none'
   })
+}
 
-  document.querySelectorAll('.animate').forEach(item => {
-    observer.observe(item)
-  })
-
-  document.querySelector('.navigation').addEventListener('click', (event) => {
-    const itemElement = hasClosestByClassName(event.target, 'item')
-    if (itemElement) {
-      document.querySelector('html').scrollTop = document.getElementById(
-        itemElement.getAttribute('data-id')).offsetTop
-    }
-  })
-
-  let initType = false
-  const navigationElement = document.querySelector('.navigation')
-  const block1Element = document.getElementById('block1')
-  const block2Element = document.getElementById('block2')
-  const blockImgElement = document.getElementById('blockImg')
-  window.addEventListener('scroll', function () {
-    const top = document.querySelector('html').scrollTop
-
-    // type
-    if (!initType && top > 214) {
-      type()
-      initType = true
-    }
-
-    // nav box-shadow
-    if (top >= document.getElementById('feature1').offsetTop - 58) {
-      navigationElement.classList.add('navigation--pin')
-    } else {
-      navigationElement.classList.remove('navigation--pin')
-    }
-
-    // nav select
-    document.querySelectorAll('.navigation .item').forEach(item => {
-      item.classList.remove('item--select')
-    })
-    if (top >= document.getElementById('feature1').offsetTop - 58 && top <
-      document.getElementById('feature2').offsetTop - 58) {
-      navigationElement.querySelector('.item[data-id="feature1"]').
-        classList.
-        add('item--select')
-    } else if (top >= document.getElementById('feature2').offsetTop - 58 &&
-      top <
-      document.getElementById('feature3').offsetTop - 58) {
-      navigationElement.querySelector('.item[data-id="feature2"]').
-        classList.
-        add('item--select')
-    } else if (top >= document.getElementById('feature3').offsetTop - 58 &&
-      top <
-      document.getElementById('feature4').offsetTop - 58) {
-      navigationElement.querySelector('.item[data-id="feature3"]').
-        classList.
-        add('item--select')
-    } else if (top >= document.getElementById('feature4').offsetTop - 58 &&
-      top <
-      document.getElementById('feature5').offsetTop - 58) {
-      navigationElement.querySelector('.item[data-id="feature4"]').
-        classList.
-        add('item--select')
-    } else if (top >= document.getElementById('feature5').offsetTop - 58) {
-      navigationElement.querySelector('.item[data-id="feature5"]').
-        classList.
-        add('item--select')
-    }
-
-    // 块级双链图片切换
-    blockImgElement.src = 'https://b3log.org/siyuan/static/feature3-1.png'
-    if (top >= block1Element.offsetTop + block1Element.offsetParent.offsetTop +
-      block1Element.clientHeight - 58 &&
-      top < block2Element.offsetTop + block2Element.offsetParent.offsetTop +
-      block2Element.clientHeight - 58) {
-      blockImgElement.src = 'https://b3log.org/siyuan/static/feature3-2.png'
-    } else if (top >= block2Element.offsetTop +
-      block2Element.offsetParent.offsetTop + block2Element.clientHeight - 58) {
-      blockImgElement.src = 'https://b3log.org/siyuan/static/feature3-3.png'
-    }
-  })
-})()
+document.addEventListener('DOMContentLoaded', () => {
+  neuTypewriter()
+  neuDetectOS()
+})
