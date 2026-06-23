@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+  <include src="partials/head-zh.html" locals='{"title":"下载 - "}'></include>
+  <body>
+    <include src="partials/header-zh.html" locals='{"headerClass":""}'></include>
+
+    <header class="vib-page-head">
+      <div class="vib-wrapper">
+        <h1 class="vib-page-head__title">下载思源笔记</h1>
+        <p class="vib-page-head__desc">选一块属于你的颜色，开始在本地构建你的知识色板。全平台支持，完全免费。</p>
+      </div>
+    </header>
+
+    <section class="vib-download-hero">
+      <div class="vib-wrapper">
+        <div class="vib-download-hero__actions" id="download">
+          <a
+            class="vib-btn vib-btn--magenta"
+            style="display: none"
+            target="_blank"
+            rel="nofollow"
+            href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac.dmg"
+            data-os="macOS">
+            macOS · 英特尔芯片
+            <span>升级需要再次下载</span>
+          </a>
+          <a
+            class="vib-btn vib-btn--magenta"
+            style="display: none"
+            target="_blank"
+            rel="nofollow"
+            href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac-arm64.dmg"
+            data-os="macOS">
+            macOS · 苹果芯片
+            <span>升级需要再次下载</span>
+          </a>
+          <a class="vib-btn vib-btn--blue" target="_blank" rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-win.exe" data-os="Windows">
+            Windows · x86_64 安装包
+            <span>升级需要再次下载</span>
+          </a>
+          <a class="vib-btn vib-btn--blue" target="_blank" href="https://apps.microsoft.com/detail/9p7hpmxp73k4" data-os="Windows">
+            Windows · 微软商店
+            <span>支持一键升级</span>
+          </a>
+          <a
+            class="vib-btn vib-btn--green"
+            style="display: none"
+            target="_blank"
+            rel="nofollow"
+            href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@.apk"
+            data-os="Android">
+            Android · 安装包
+            <span>升级需要再次下载</span>
+          </a>
+          <a
+            class="vib-btn vib-btn--yellow"
+            style="display: none"
+            target="_blank"
+            rel="nofollow"
+            href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.AppImage"
+            data-os="Linux">
+            Linux · AppImage
+            <span>升级需要再次下载</span>
+          </a>
+        </div>
+        <p class="vib-download-hero__version">
+          当前版本 @@SIYUAN_VERSION_V@@ · 也可通过
+          <a href="https://pan.baidu.com/s/1ivC6QGYBZSC1E_-ZeS2Omg?pwd=open" target="_blank" rel="nofollow">百度网盘</a>
+          下载
+        </p>
+
+        <div class="vib-platforms">
+          <div class="vib-platform">
+            <h3 class="vib-platform__name">Windows</h3>
+            <div class="vib-platform__links">
+              <span>
+                安装包
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-win.exe" target="_blank">x86_64</a>
+                ·
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-win-arm64.exe" target="_blank">arm64</a>
+              </span>
+              <span>
+                微软商店
+                <a rel="nofollow" href="https://apps.microsoft.com/detail/9p7hpmxp73k4" target="_blank">下载</a>
+              </span>
+              <a href="https://github.com/siyuan-note/siyuan" target="_blank">源代码</a>
+            </div>
+          </div>
+          <div class="vib-platform">
+            <h3 class="vib-platform__name">macOS</h3>
+            <div class="vib-platform__links">
+              <span>
+                苹果芯片
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac-arm64.dmg" target="_blank">arm64</a>
+              </span>
+              <span>
+                英特尔芯片
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac.dmg" target="_blank">x86_64</a>
+              </span>
+              <a href="https://github.com/siyuan-note/siyuan" target="_blank">源代码</a>
+            </div>
+          </div>
+          <div class="vib-platform">
+            <h3 class="vib-platform__name">Linux</h3>
+            <div class="vib-platform__links">
+              <span>
+                AppImage
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.AppImage" target="_blank">x86_64</a>
+                ·
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux-arm64.AppImage" target="_blank">arm64</a>
+              </span>
+              <span>
+                deb
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.deb" target="_blank">x86_64</a>
+                ·
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux-arm64.deb" target="_blank">arm64</a>
+              </span>
+              <a href="https://github.com/siyuan-note/siyuan" target="_blank">源代码</a>
+            </div>
+          </div>
+          <div class="vib-platform">
+            <h3 class="vib-platform__name">移动端</h3>
+            <div class="vib-platform__links">
+              <span>
+                Android
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@.apk" target="_blank">APK</a>
+              </span>
+              <span>
+                iOS
+                <a href="https://apps.apple.com/cn/app/id1606064083" target="_blank">App Store</a>
+              </span>
+              <span>
+                鸿蒙
+                <a href="https://appgallery.huawei.com/app/C108624141" target="_blank">应用市场</a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <include src="partials/footer-zh.html"></include>
+    <include src="partials/site-script.html"></include>
+  </body>
+</html>
