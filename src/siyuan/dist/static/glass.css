@@ -1,0 +1,915 @@
+/* Glassmorphism — UI-03 玻璃拟态风格 */
+
+:root {
+  --glass-bg-1: #0f1729;
+  --glass-bg-2: #1a2a5e;
+  --glass-bg-3: #2d1b69;
+  --glass-accent: #5eead4;
+  --glass-accent-soft: rgba(94, 234, 212, 0.15);
+  --glass-text: #f0f4ff;
+  --glass-text-muted: rgba(240, 244, 255, 0.72);
+  --glass-border: rgba(255, 255, 255, 0.22);
+  --glass-border-strong: rgba(255, 255, 255, 0.38);
+  --glass-surface: rgba(255, 255, 255, 0.08);
+  --glass-surface-hover: rgba(255, 255, 255, 0.12);
+  --glass-blur: 18px;
+  --glass-radius: 16px;
+  --glass-radius-lg: 24px;
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.28);
+  --glass-max: 1120px;
+  --glass-header-h: 64px;
+  --glass-font: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", sans-serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--glass-font);
+  color: var(--glass-text);
+  background: var(--glass-bg-1);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--glass-accent);
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+a:hover {
+  opacity: 0.85;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── 页面背景 ── */
+
+.glass-page {
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.glass-page__bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 10%, rgba(94, 234, 212, 0.18) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 50% at 80% 80%, rgba(139, 92, 246, 0.22) 0%, transparent 55%),
+    linear-gradient(145deg, var(--glass-bg-1) 0%, var(--glass-bg-2) 45%, var(--glass-bg-3) 100%);
+  pointer-events: none;
+}
+
+.glass-page__orb {
+  position: fixed;
+  border-radius: 50%;
+  filter: blur(80px);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.glass-page__orb--1 {
+  width: 480px;
+  height: 480px;
+  top: -120px;
+  right: -80px;
+  background: rgba(94, 234, 212, 0.12);
+}
+
+.glass-page__orb--2 {
+  width: 360px;
+  height: 360px;
+  bottom: 10%;
+  left: -100px;
+  background: rgba(167, 139, 250, 0.14);
+}
+
+.glass-page__content {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── 玻璃卡片 ── */
+
+.glass-card {
+  background: var(--glass-surface);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
+  border-radius: var(--glass-radius);
+  box-shadow: var(--glass-shadow);
+}
+
+.glass-card--lg {
+  border-radius: var(--glass-radius-lg);
+  padding: 40px;
+}
+
+.glass-card--hover:hover {
+  background: var(--glass-surface-hover);
+  border-color: var(--glass-border-strong);
+}
+
+/* ── 布局 ── */
+
+.glass-wrap {
+  max-width: var(--glass-max);
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.glass-flex {
+  display: flex;
+}
+
+.glass-flex--1 {
+  flex: 1;
+}
+
+.glass-flex--center {
+  align-items: center;
+}
+
+.glass-flex--between {
+  justify-content: space-between;
+}
+
+.glass-gap {
+  gap: 24px;
+}
+
+.glass-spacer {
+  height: 48px;
+}
+
+.glass-spacer--sm {
+  height: 24px;
+}
+
+.glass-spacer--lg {
+  height: 80px;
+}
+
+/* ── 页眉 ── */
+
+.glass-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--glass-header-h);
+  display: flex;
+  align-items: center;
+  background: rgba(15, 23, 41, 0.55);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--glass-border);
+}
+
+.glass-header__logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--glass-text);
+  text-decoration: none;
+}
+
+.glass-header__logo img {
+  width: 32px;
+  height: 32px;
+}
+
+.glass-header__logo h1 {
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.glass-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.glass-header__link {
+  color: var(--glass-text-muted);
+  font-size: 14px;
+  padding: 8px 14px;
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.glass-header__link:hover {
+  color: var(--glass-text);
+  background: var(--glass-surface);
+  opacity: 1;
+}
+
+.glass-header__link--active {
+  color: var(--glass-accent);
+  background: var(--glass-accent-soft);
+}
+
+.glass-header__icon {
+  display: flex;
+  align-items: center;
+  padding: 8px;
+  color: var(--glass-text-muted);
+}
+
+.glass-header__icon svg {
+  fill: currentColor;
+}
+
+/* ── Hero ── */
+
+.glass-hero {
+  padding: 80px 0 64px;
+}
+
+.glass-hero__panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.glass-hero__badge {
+  display: inline-block;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--glass-accent);
+  background: var(--glass-accent-soft);
+  border: 1px solid rgba(94, 234, 212, 0.3);
+  border-radius: 100px;
+  padding: 4px 14px;
+  margin-bottom: 20px;
+}
+
+.glass-hero__title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+}
+
+.glass-hero__subtitle {
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--glass-text-muted);
+  margin-bottom: 32px;
+  max-width: 480px;
+}
+
+.glass-hero__keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 32px;
+}
+
+.glass-hero__tag {
+  font-size: 13px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  background: var(--glass-surface);
+  border: 1px solid var(--glass-border);
+  color: var(--glass-text-muted);
+}
+
+.glass-hero__desc {
+  font-size: 15px;
+  color: var(--glass-text-muted);
+  line-height: 1.8;
+}
+
+.glass-hero__visual {
+  position: relative;
+}
+
+.glass-hero__visual .glass-card {
+  padding: 12px;
+  overflow: hidden;
+}
+
+.glass-hero__visual img {
+  border-radius: calc(var(--glass-radius) - 4px);
+  width: 100%;
+}
+
+/* ── 按钮 ── */
+
+.glass-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 32px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 12px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.glass-btn--primary {
+  background: linear-gradient(135deg, rgba(94, 234, 212, 0.9), rgba(45, 212, 191, 0.75));
+  color: #0f1729;
+  border-color: rgba(94, 234, 212, 0.5);
+  box-shadow: 0 4px 20px rgba(94, 234, 212, 0.25);
+}
+
+.glass-btn--primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 28px rgba(94, 234, 212, 0.35);
+  opacity: 1;
+}
+
+.glass-btn--outline {
+  background: transparent;
+  color: var(--glass-text);
+  border-color: var(--glass-border-strong);
+}
+
+.glass-btn--outline:hover {
+  background: var(--glass-surface);
+  opacity: 1;
+}
+
+.glass-btn--sm {
+  padding: 8px 20px;
+  font-size: 13px;
+}
+
+/* ── 打字机标语 ── */
+
+.glass-slogan {
+  text-align: center;
+  font-size: clamp(1.1rem, 3vw, 1.6rem);
+  color: var(--glass-text-muted);
+  min-height: 2.5em;
+  padding: 48px 0;
+}
+
+.glass-slogan__caret {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--glass-accent);
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  animation: glass-flash 1s step-end infinite;
+}
+
+@keyframes glass-flash {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ── 功能导航 ── */
+
+.glass-nav {
+  position: sticky;
+  top: var(--glass-header-h);
+  z-index: 90;
+  padding: 12px 0;
+  background: rgba(15, 23, 41, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.glass-nav--pin {
+  border-bottom-color: var(--glass-border);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.2);
+}
+
+.glass-nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.glass-nav__inner::-webkit-scrollbar {
+  display: none;
+}
+
+.glass-nav__item {
+  flex-shrink: 0;
+  padding: 8px 16px;
+  font-size: 13px;
+  color: var(--glass-text-muted);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+  border: 1px solid transparent;
+}
+
+.glass-nav__item:hover {
+  color: var(--glass-text);
+  background: var(--glass-surface);
+}
+
+.glass-nav__item--active {
+  color: var(--glass-accent);
+  background: var(--glass-accent-soft);
+  border-color: rgba(94, 234, 212, 0.25);
+}
+
+/* ── 功能区块 ── */
+
+.glass-feature {
+  padding: 64px 0;
+}
+
+.glass-feature__label {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--glass-accent);
+  margin-bottom: 12px;
+}
+
+.glass-feature__title {
+  font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+  font-weight: 700;
+  line-height: 1.25;
+  margin-bottom: 16px;
+}
+
+.glass-feature__desc {
+  font-size: 16px;
+  color: var(--glass-text-muted);
+  line-height: 1.8;
+  max-width: 520px;
+}
+
+.glass-feature__desc em {
+  color: var(--glass-accent);
+  font-style: normal;
+}
+
+.glass-feature__highlight {
+  color: var(--glass-text);
+  display: block;
+  margin-top: 8px;
+}
+
+.glass-feature__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.glass-feature__grid--reverse .glass-feature__info {
+  order: 2;
+}
+
+.glass-feature__grid--reverse .glass-feature__media {
+  order: 1;
+}
+
+.glass-feature__media .glass-card {
+  padding: 8px;
+  overflow: hidden;
+}
+
+.glass-feature__media img {
+  border-radius: calc(var(--glass-radius) - 4px);
+  width: 100%;
+}
+
+.glass-feature__cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-top: 40px;
+}
+
+.glass-feature__mini {
+  padding: 24px;
+}
+
+.glass-feature__mini h3 {
+  font-size: 16px;
+  margin-bottom: 8px;
+}
+
+.glass-feature__mini p {
+  font-size: 14px;
+  color: var(--glass-text-muted);
+  line-height: 1.7;
+}
+
+/* ── 下载页 ── */
+
+.glass-download-hero {
+  text-align: center;
+  padding: 64px 0 32px;
+}
+
+.glass-download-hero__title {
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.glass-download-hero__desc {
+  color: var(--glass-text-muted);
+  font-size: 15px;
+}
+
+.glass-download__primary {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: 32px;
+  text-align: center;
+}
+
+.glass-download__primary .glass-btn {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.glass-download__primary .glass-btn span {
+  display: block;
+  font-size: 12px;
+  font-weight: 400;
+  opacity: 0.7;
+  margin-top: 4px;
+}
+
+.glass-download__version {
+  font-size: 12px;
+  color: var(--glass-text-muted);
+  margin-top: 16px;
+}
+
+.glass-download__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 20px;
+  padding-bottom: 64px;
+}
+
+.glass-download__card {
+  padding: 28px 24px;
+  text-align: center;
+}
+
+.glass-download__card img {
+  width: 48px;
+  height: 48px;
+  margin: 0 auto 16px;
+}
+
+.glass-download__card h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.glass-download__card span,
+.glass-download__card a {
+  display: block;
+  font-size: 13px;
+  color: var(--glass-text-muted);
+  margin-bottom: 6px;
+}
+
+.glass-download__card a {
+  color: var(--glass-accent);
+}
+
+.glass-download__card em {
+  display: block;
+  font-size: 12px;
+  color: var(--glass-text-muted);
+  font-style: normal;
+  margin-bottom: 8px;
+}
+
+/* ── 定价页 ── */
+
+.glass-pricing {
+  padding: 64px 0;
+}
+
+.glass-pricing__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.glass-pricing__plan {
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+}
+
+.glass-pricing__plan--featured {
+  border-color: rgba(94, 234, 212, 0.4);
+  background: rgba(94, 234, 212, 0.06);
+}
+
+.glass-pricing__plan h3 {
+  font-size: 18px;
+  margin-bottom: 16px;
+}
+
+.glass-pricing__price {
+  font-size: 2.4rem;
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.glass-pricing__price small {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--glass-text-muted);
+  text-decoration: line-through;
+  margin-right: 8px;
+}
+
+.glass-pricing__price span {
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--glass-text-muted);
+}
+
+.glass-pricing__note {
+  font-size: 13px;
+  color: var(--glass-text-muted);
+  margin-bottom: 20px;
+}
+
+.glass-pricing__features {
+  flex: 1;
+  margin: 20px 0;
+  font-size: 14px;
+  color: var(--glass-text-muted);
+}
+
+.glass-pricing__features div {
+  padding: 8px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-pricing__features div:last-child {
+  border-bottom: none;
+}
+
+.glass-pricing__table {
+  overflow-x: auto;
+}
+
+.glass-pricing__row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 12px;
+  padding: 14px 16px;
+  font-size: 14px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  align-items: center;
+}
+
+.glass-pricing__row--head {
+  font-weight: 600;
+  color: var(--glass-text-muted);
+  font-size: 13px;
+}
+
+.glass-pricing__row .glass-pricing__cell {
+  text-align: center;
+}
+
+.glass-pricing__row .glass-pricing__cell:first-child {
+  text-align: left;
+}
+
+.glass-pricing__row img {
+  width: 18px;
+  height: 18px;
+  margin: 0 auto;
+}
+
+/* ── 社区页 ── */
+
+.glass-community {
+  padding: 64px 0;
+}
+
+.glass-community__title {
+  text-align: center;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  margin-bottom: 48px;
+}
+
+.glass-community__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.glass-community__card {
+  padding: 36px 28px;
+  text-align: center;
+}
+
+.glass-community__card img {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 16px;
+  border-radius: 12px;
+}
+
+.glass-community__card h3 {
+  font-size: 17px;
+  margin-bottom: 12px;
+}
+
+.glass-community__card a {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+}
+
+/* ── FAQ ── */
+
+.glass-faq {
+  padding: 64px 0;
+}
+
+.glass-faq__title {
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 32px;
+}
+
+.glass-faq__item {
+  padding: 24px 28px;
+  margin-bottom: 16px;
+}
+
+.glass-faq__item h3 {
+  font-size: 16px;
+  margin-bottom: 12px;
+}
+
+.glass-faq__item p,
+.glass-faq__item li {
+  font-size: 14px;
+  color: var(--glass-text-muted);
+  line-height: 1.8;
+}
+
+.glass-faq__item ul {
+  padding-left: 20px;
+  margin-top: 8px;
+}
+
+.glass-faq__item code {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 13px;
+}
+
+/* ── 页脚 ── */
+
+.glass-footer {
+  border-top: 1px solid var(--glass-border);
+  padding: 32px 0;
+  margin-top: 48px;
+  background: rgba(15, 23, 41, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.glass-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+  font-size: 13px;
+  color: var(--glass-text-muted);
+}
+
+.glass-footer__link {
+  color: var(--glass-text-muted);
+}
+
+.glass-footer__link:hover {
+  color: var(--glass-text);
+  opacity: 1;
+}
+
+.glass-footer__icons {
+  display: flex;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.glass-footer__icon {
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.glass-footer__icon:hover {
+  opacity: 1;
+}
+
+/* ── 动画 ── */
+
+.glass-animate {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1), transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-animate--in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.glass-animate--left {
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-animate--left.glass-animate--in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.glass-animate--right {
+  opacity: 0;
+  transform: translateX(20px);
+  transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.glass-animate--right.glass-animate--in {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* ── 响应式 ── */
+
+@media (max-width: 900px) {
+  .glass-hero__panel,
+  .glass-feature__grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .glass-feature__grid--reverse .glass-feature__info,
+  .glass-feature__grid--reverse .glass-feature__media {
+    order: unset;
+  }
+
+  .glass-feature__cards {
+    grid-template-columns: 1fr;
+  }
+
+  .glass-pricing__grid,
+  .glass-community__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .glass-header__nav .glass-header__link:not(.glass-header__link--cta) {
+    display: none;
+  }
+}
