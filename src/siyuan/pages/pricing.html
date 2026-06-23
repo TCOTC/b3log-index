@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+  <include src="partials/head-zh.html" locals='{"title":"定价 - "}'></include>
+  <body>
+    <div class="clay-bubbles" aria-hidden="true">
+      <div class="clay-bubbles__item clay-bubbles__item--1"></div>
+      <div class="clay-bubbles__item clay-bubbles__item--2"></div>
+      <div class="clay-bubbles__item clay-bubbles__item--3"></div>
+    </div>
+
+    <include src="partials/header-zh.html"></include>
+
+    <main>
+      <div class="clay__inner">
+        <header class="clay-page-head">
+          <h1 class="clay-page-head__title">定价方案</h1>
+          <p class="clay-page-head__desc">柔软的功能，透明的价格——按需选择你的「陶土套餐」</p>
+        </header>
+
+        <div class="clay-pricing">
+          <article class="clay-price-card clay-price-card--free">
+            <h2 class="clay-price-card__name">完全免费</h2>
+            <div class="clay-price-card__amount">￥0</div>
+            <div class="clay-price-card__period">终身</div>
+            <p class="clay-price-card__note">
+              💖
+              <a href="https://ld246.com/sponsor" target="_blank">靠爱发电</a>
+            </p>
+            <a class="clay-btn clay-btn--soft" href="download.html">下载</a>
+            <ul class="clay-price-card__features">
+              <li>全部基础功能</li>
+              <li>本地存储与离线使用</li>
+              <li>块引用与双向链接</li>
+              <li>Markdown 编辑</li>
+            </ul>
+          </article>
+
+          <article class="clay-price-card clay-price-card--feature">
+            <h2 class="clay-price-card__name">功能特性</h2>
+            <div class="clay-price-card__amount"><del>￥96</del> ￥80</div>
+            <div class="clay-price-card__period">终身</div>
+            <p class="clay-price-card__note">一次付费，终身使用</p>
+            <a class="clay-btn clay-btn--primary" href="https://ld246.com/one-time-pay/siyuan" target="_blank">去升级</a>
+            <ul class="clay-price-card__features">
+              <li>接入第三方 S3 数据同步和备份</li>
+              <li>
+                接入第三方 WebDAV 数据同步和备份（
+                <a href="https://help.jianguoyun.com/?p=2064" target="_blank">不支持坚果云</a>
+                ）
+              </li>
+            </ul>
+          </article>
+
+          <article class="clay-price-card clay-price-card--sub">
+            <h2 class="clay-price-card__name">年付订阅</h2>
+            <div class="clay-price-card__amount"><del>￥192</del> ￥148</div>
+            <div class="clay-price-card__period">每年</div>
+            <p class="clay-price-card__note">
+              🔥
+              <a href="https://ld246.com/subscribe/siyuan/batch" target="_blank">两人团首年 6.4 折</a>
+            </p>
+            <a class="clay-btn clay-btn--primary" href="https://ld246.com/subscribe/siyuan" target="_blank">去订阅</a>
+            <ul class="clay-price-card__features">
+              <li>资源文件图床</li>
+              <li>定时微信提醒</li>
+              <li>收集箱</li>
+              <li>官方云端存储 8G</li>
+              <li>官方数据同步和备份</li>
+              <li>第三方 S3 / WebDAV 同步</li>
+            </ul>
+          </article>
+        </div>
+
+        <section class="clay-faq">
+          <h2 class="clay-section__title" style="text-align: center">常见问题</h2>
+          <div class="clay-faq__item">
+            <h3 class="clay-faq__q">订阅后是否支持退款？</h3>
+            <p class="clay-faq__a">
+              付费订阅后不支持退款。建议先在思源桌面端 - 设置 - 账号中开启试用订阅，满意后再付费。详见
+              <a href="https://ld246.com/article/1623032639157" target="_blank">思源笔记付费须知</a>
+              。
+            </p>
+          </div>
+          <div class="clay-faq__item">
+            <h3 class="clay-faq__q">官方同步空间为什么只有 8GB？</h3>
+            <p class="clay-faq__a">
+              思源官方同步服务相对于云笔记流量成本更高，8G 是目前所能承担的极限。容量需求较大时，建议使用第三方 S3 同步服务。
+            </p>
+          </div>
+          <div class="clay-faq__item">
+            <h3 class="clay-faq__q">中断过订阅后重新订阅价格怎么算？</h3>
+            <p class="clay-faq__a">
+              续订价格终身按第一次订阅时的价格。该政策不适用于团购订阅激活码，团购续订价格为正常订阅价（目前 ￥148）。
+            </p>
+          </div>
+          <div class="clay-faq__item">
+            <h3 class="clay-faq__q">什么是「第三方数据同步和备份」？</h3>
+            <p class="clay-faq__a">
+              指你可以自行搭建 S3 服务（如七牛云、阿里云等）或 WebDAV 服务，并对接到思源中进行同步和备份。
+            </p>
+          </div>
+          <div class="clay-faq__item">
+            <h3 class="clay-faq__q">学生用户有教育优惠吗？</h3>
+            <p class="clay-faq__a">
+              有的，详见
+              <a href="https://ld246.com/article/1618844886264" target="_blank">学生优惠订阅教育邮箱支持列表</a>
+              。
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <include src="partials/footer-zh.html"></include>
+    <include src="partials/site-script.html"></include>
+  </body>
+</html>

@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+  <include src="partials/head-zh.html" locals='{"title":"下载 - "}'></include>
+  <body>
+    <div class="clay-bubbles" aria-hidden="true">
+      <div class="clay-bubbles__item clay-bubbles__item--1"></div>
+      <div class="clay-bubbles__item clay-bubbles__item--2"></div>
+      <div class="clay-bubbles__item clay-bubbles__item--3"></div>
+    </div>
+
+    <include src="partials/header-zh.html"></include>
+
+    <main>
+      <div class="clay__inner">
+        <header class="clay-page-head">
+          <h1 class="clay-page-head__title">下载思源笔记</h1>
+          <p class="clay-page-head__desc">选一块「软陶」，在你的设备上开始捏笔记</p>
+        </header>
+
+        <div class="clay-download-hero" id="download">
+          <a
+            class="clay-download-btn"
+            style="display: none"
+            target="_blank"
+            rel="nofollow"
+            href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac.dmg"
+            data-os="macOS">
+            英特尔芯片
+            <span>升级需要再次下载</span>
+          </a>
+          <a
+            class="clay-download-btn"
+            style="display: none"
+            target="_blank"
+            rel="nofollow"
+            href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac-arm64.dmg"
+            data-os="macOS">
+            苹果芯片
+            <span>升级需要再次下载</span>
+          </a>
+          <a
+            class="clay-download-btn"
+            target="_blank"
+            rel="nofollow"
+            href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-win.exe"
+            data-os="Windows">
+            x86_64 安装包
+            <span>升级需要再次下载</span>
+          </a>
+          <a class="clay-download-btn" target="_blank" href="https://apps.microsoft.com/detail/9p7hpmxp73k4" data-os="Windows">
+            微软商店
+            <span>支持一键升级</span>
+          </a>
+          <a
+            class="clay-download-btn"
+            style="display: none"
+            target="_blank"
+            rel="nofollow"
+            href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@.apk"
+            data-os="Android">
+            安卓安装包
+            <span>升级需要再次下载</span>
+          </a>
+          <a
+            class="clay-download-btn"
+            style="display: none"
+            target="_blank"
+            rel="nofollow"
+            href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.AppImage"
+            data-os="Linux">
+            Linux AppImage
+            <span>升级需要再次下载</span>
+          </a>
+        </div>
+
+        <p class="clay-version">@@SIYUAN_VERSION_V@@</p>
+
+        <section class="clay-platform">
+          <h2 class="clay-platform__title">
+            <img src="@@STATIC@@/logo-windows.png" alt="" />
+            Windows
+          </h2>
+          <div class="clay-platform__links">
+            <a class="clay-platform__link" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-win.exe" target="_blank" rel="nofollow">安装包 x86_64</a>
+            <a class="clay-platform__link" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-win-arm64.exe" target="_blank" rel="nofollow">安装包 arm64</a>
+            <a class="clay-platform__link" href="https://apps.microsoft.com/detail/9p7hpmxp73k4" target="_blank">微软商店</a>
+            <a class="clay-platform__link" href="https://github.com/siyuan-note/siyuan" target="_blank" rel="nofollow">源代码</a>
+          </div>
+        </section>
+
+        <section class="clay-platform">
+          <h2 class="clay-platform__title">
+            <img src="@@STATIC@@/logo-macOS.png" alt="" />
+            macOS
+          </h2>
+          <div class="clay-platform__links">
+            <a class="clay-platform__link" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac-arm64.dmg" target="_blank" rel="nofollow">苹果芯片 arm64</a>
+            <a class="clay-platform__link" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac.dmg" target="_blank" rel="nofollow">英特尔芯片 x86_64</a>
+            <a class="clay-platform__link" href="https://github.com/siyuan-note/siyuan" target="_blank" rel="nofollow">源代码</a>
+          </div>
+        </section>
+
+        <section class="clay-platform">
+          <h2 class="clay-platform__title">
+            <img src="@@STATIC@@/logo-linux.png" alt="" />
+            Linux
+          </h2>
+          <div class="clay-platform__links">
+            <a class="clay-platform__link" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.AppImage" target="_blank" rel="nofollow">AppImage x86_64</a>
+            <a class="clay-platform__link" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux-arm64.AppImage" target="_blank" rel="nofollow">AppImage arm64</a>
+            <a class="clay-platform__link" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.deb" target="_blank" rel="nofollow">deb x86_64</a>
+            <a class="clay-platform__link" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux-arm64.deb" target="_blank" rel="nofollow">deb arm64</a>
+            <a class="clay-platform__link" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.tar.gz" target="_blank" rel="nofollow">tar.gz x86_64</a>
+            <a class="clay-platform__link" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux-arm64.tar.gz" target="_blank" rel="nofollow">tar.gz arm64</a>
+            <a class="clay-platform__link" href="https://github.com/siyuan-note/siyuan" target="_blank" rel="nofollow">源代码</a>
+          </div>
+        </section>
+
+        <section class="clay-platform">
+          <h2 class="clay-platform__title">
+            <img src="@@STATIC@@/logo-android.png" alt="" />
+            Android
+          </h2>
+          <div class="clay-platform__links">
+            <a class="clay-platform__link" href="https://appgallery.huawei.com/app/C105558879" target="_blank">华为应用市场</a>
+            <a class="clay-platform__link" href="https://app.mi.com/details?id=org.b3log.siyuan" target="_blank">小米应用商店</a>
+            <a class="clay-platform__link" href="https://play.google.com/store/apps/details?id=org.b3log.siyuan" target="_blank">Google Play</a>
+            <a class="clay-platform__link" href="https://www.coolapk.com/apk/292664" target="_blank">酷安</a>
+            <a class="clay-platform__link" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@.apk" target="_blank" rel="nofollow">APK</a>
+            <a class="clay-platform__link" href="https://github.com/siyuan-note/siyuan-android" target="_blank" rel="nofollow">源代码</a>
+          </div>
+        </section>
+
+        <section class="clay-platform">
+          <h2 class="clay-platform__title">
+            <img src="@@STATIC@@/logo-ios.png" alt="" />
+            iPhone / iPad
+          </h2>
+          <div class="clay-platform__links">
+            <a class="clay-platform__link" href="https://apps.apple.com/cn/app/siyuan/id1583226508" target="_blank">App Store</a>
+            <a class="clay-platform__link" href="https://testflight.apple.com/join/BBLHMJ4g" target="_blank">TestFlight</a>
+            <a class="clay-platform__link" href="https://github.com/siyuan-note/siyuan-ios" target="_blank" rel="nofollow">源代码</a>
+          </div>
+        </section>
+
+        <section class="clay-platform">
+          <h2 class="clay-platform__title">
+            <img src="@@STATIC@@/logo-harmonyos.png" alt="" />
+            鸿蒙 NEXT
+          </h2>
+          <div class="clay-platform__links">
+            <a class="clay-platform__link" href="#" onclick="return false">已上架应用市场（手机 / 平板 / PC）</a>
+            <a class="clay-platform__link" href="https://github.com/siyuan-note/siyuan-harmony" target="_blank" rel="nofollow">源代码</a>
+          </div>
+        </section>
+
+        <section class="clay-platform">
+          <h2 class="clay-platform__title">
+            <img src="@@STATIC@@/logo-chromium.png" alt="" />
+            浏览器扩展
+          </h2>
+          <div class="clay-platform__links">
+            <a class="clay-platform__link" href="https://chrome.google.com/webstore/detail/siyuan/hkcgjbeblifaincobbcfiffbpgoafepk" target="_blank">Chrome</a>
+            <a class="clay-platform__link" href="https://microsoftedge.microsoft.com/addons/detail/siyuan/lclhdlhleinlppggbbgimbekofanbkcf" target="_blank">Edge</a>
+            <a class="clay-platform__link" href="https://github.com/siyuan-note/siyuan-chrome" target="_blank" rel="nofollow">源代码</a>
+          </div>
+        </section>
+
+        <section class="clay-platform">
+          <h2 class="clay-platform__title">
+            <img src="@@STATIC@@/logo-docker.png" alt="" />
+            服务器
+          </h2>
+          <p style="margin-bottom: 16px; color: var(--clay-text-soft); font-size: 0.9rem">非程序员请勿尝试</p>
+          <div class="clay-platform__links">
+            <a class="clay-platform__link" href="https://hub.docker.com/r/b3log/siyuan" target="_blank">Docker 镜像</a>
+            <a class="clay-platform__link" href="https://github.com/siyuan-note/siyuan" target="_blank" rel="nofollow">源代码</a>
+          </div>
+        </section>
+
+        <div style="text-align: center; margin: 32px 0">
+          <p style="color: var(--clay-text-soft); margin-bottom: 12px">
+            也可以考虑通过
+            <a href="https://pan.baidu.com/s/1ivC6QGYBZSC1E_-ZeS2Omg?pwd=open" target="_blank">百度网盘</a>
+            下载
+          </p>
+          <a class="clay-platform__link" href="https://github.com/siyuan-note/siyuan/releases" target="_blank">历史版本下载</a>
+        </div>
+
+        <section class="clay-faq">
+          <h2 class="clay-section__title" style="text-align: center">常见问题</h2>
+          <div class="clay-faq__item">
+            <h3 class="clay-faq__q">思源是如何存储数据的？</h3>
+            <p class="clay-faq__a">
+              数据保存在工作空间文件夹下。笔记本文件夹中的 .sy 文件以 JSON 格式存储文档，assets、templates、plugins 等子目录分别存放资源、模板和插件——就像一个个独立的陶土容器。
+            </p>
+          </div>
+          <div class="clay-faq__item">
+            <h3 class="clay-faq__q">思源是开源的吗？</h3>
+            <p class="clay-faq__a">
+              完全开源！界面内核、Android、iOS、鸿蒙端和 Chrome 剪藏扩展的代码均在 GitHub 公开，欢迎一起捏出更好的思源。
+            </p>
+          </div>
+          <div class="clay-faq__item">
+            <h3 class="clay-faq__q">使用需要付费吗？</h3>
+            <p class="clay-faq__a">
+              大部分功能免费，包括商业环境。部分高级功能需付费，详情请参考
+              <a href="pricing.html">定价</a>
+              页面。
+            </p>
+          </div>
+        </section>
+      </div>
+    </main>
+
+    <include src="partials/footer-zh.html"></include>
+    <include src="partials/site-script.html"></include>
+  </body>
+</html>
