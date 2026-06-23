@@ -1,0 +1,1125 @@
+/* SiYuan Aurora UI — 流动极光渐变 · 梦幻深色界面 */
+
+:root {
+  --auri-bg: #070712;
+  --auri-bg-elevated: rgba(14, 14, 28, 0.72);
+  --auri-bg-card: rgba(18, 18, 36, 0.55);
+  --auri-primary: #c084fc;
+  --auri-primary-soft: #e9d5ff;
+  --auri-accent: #22d3ee;
+  --auri-accent-pink: #f472b6;
+  --auri-accent-green: #34d399;
+  --auri-text: #e8e6f2;
+  --auri-text-secondary: #a8a4c0;
+  --auri-text-muted: #6b6788;
+  --auri-border: rgba(192, 132, 252, 0.18);
+  --auri-border-glow: rgba(34, 211, 238, 0.25);
+  --auri-content-max: 720px;
+  --auri-wide-max: 1080px;
+  --auri-header-h: 64px;
+  --auri-radius: 12px;
+  --auri-sans: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --auri-mono: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body.auri-body {
+  margin: 0;
+  color: var(--auri-text);
+  background: var(--auri-bg);
+  font-family: var(--auri-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--auri-accent);
+  text-decoration: none;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+a:hover {
+  color: var(--auri-primary-soft);
+  text-shadow: 0 0 12px rgba(192, 132, 252, 0.45);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 流动极光背景 */
+.auri-aurora {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background: radial-gradient(ellipse 80% 60% at 50% 110%, #12102a 0%, var(--auri-bg) 70%);
+}
+
+.auri-aurora__band {
+  position: absolute;
+  width: 140%;
+  height: 45%;
+  border-radius: 50%;
+  filter: blur(72px);
+  opacity: 0.55;
+  mix-blend-mode: screen;
+  will-change: transform, opacity;
+}
+
+.auri-aurora__band--1 {
+  top: -8%;
+  left: -20%;
+  background: linear-gradient(105deg, transparent 10%, #7c3aed 35%, #c084fc 55%, transparent 80%);
+  animation: auri-flow-1 22s ease-in-out infinite;
+}
+
+.auri-aurora__band--2 {
+  top: 18%;
+  right: -30%;
+  background: linear-gradient(250deg, transparent 5%, #ec4899 30%, #f472b6 50%, transparent 75%);
+  animation: auri-flow-2 26s ease-in-out infinite;
+}
+
+.auri-aurora__band--3 {
+  top: 42%;
+  left: -15%;
+  background: linear-gradient(80deg, transparent 15%, #06b6d4 40%, #22d3ee 58%, transparent 85%);
+  animation: auri-flow-3 20s ease-in-out infinite;
+}
+
+.auri-aurora__band--4 {
+  bottom: -5%;
+  right: -10%;
+  background: linear-gradient(300deg, transparent 10%, #10b981 35%, #34d399 55%, #6ee7b7 70%, transparent 90%);
+  animation: auri-flow-4 24s ease-in-out infinite;
+}
+
+.auri-aurora__band--5 {
+  top: 55%;
+  left: 25%;
+  width: 90%;
+  height: 30%;
+  background: linear-gradient(180deg, transparent, rgba(168, 85, 247, 0.35), rgba(236, 72, 153, 0.25), transparent);
+  filter: blur(96px);
+  animation: auri-flow-5 18s ease-in-out infinite;
+}
+
+@keyframes auri-flow-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg) scale(1);
+    opacity: 0.45;
+  }
+  33% {
+    transform: translate(8%, 6%) rotate(4deg) scale(1.08);
+    opacity: 0.62;
+  }
+  66% {
+    transform: translate(-5%, 10%) rotate(-3deg) scale(0.95);
+    opacity: 0.5;
+  }
+}
+
+@keyframes auri-flow-2 {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.4;
+  }
+  50% {
+    transform: translate(-12%, 8%) rotate(-6deg);
+    opacity: 0.58;
+  }
+}
+
+@keyframes auri-flow-3 {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.48;
+  }
+  40% {
+    transform: translate(10%, -6%) scale(1.12);
+    opacity: 0.65;
+  }
+  80% {
+    transform: translate(-8%, 4%) scale(0.92);
+    opacity: 0.42;
+  }
+}
+
+@keyframes auri-flow-4 {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+    opacity: 0.38;
+  }
+  35% {
+    transform: translate(-6%, -10%) rotate(5deg);
+    opacity: 0.55;
+  }
+  70% {
+    transform: translate(8%, -4%) rotate(-4deg);
+    opacity: 0.45;
+  }
+}
+
+@keyframes auri-flow-5 {
+  0%,
+  100% {
+    transform: translateX(0) scaleY(1);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateX(15%) scaleY(1.2);
+    opacity: 0.5;
+  }
+}
+
+.auri-aurora__veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(7, 7, 18, 0.3) 0%, rgba(7, 7, 18, 0.85) 100%);
+}
+
+/* 布局容器 */
+.auri-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: var(--auri-content-max);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.auri-wrap--wide {
+  max-width: var(--auri-wide-max);
+}
+
+/* 顶栏 */
+.auri-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--auri-header-h);
+  background: rgba(7, 7, 18, 0.55);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--auri-border);
+}
+
+.auri-header__inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: var(--auri-wide-max);
+  height: var(--auri-header-h);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.auri-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--auri-primary-soft);
+  font-weight: 600;
+  font-size: 17px;
+  text-decoration: none;
+}
+
+.auri-header__brand:hover {
+  color: var(--auri-accent);
+  text-shadow: 0 0 16px rgba(34, 211, 238, 0.5);
+  text-decoration: none;
+}
+
+.auri-header__brand img {
+  width: 26px;
+  height: 26px;
+  filter: drop-shadow(0 0 8px rgba(192, 132, 252, 0.4));
+}
+
+.auri-header__spacer {
+  flex: 1;
+}
+
+.auri-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.auri-header__link {
+  padding: 6px 14px;
+  color: var(--auri-text-secondary);
+  font-size: 14px;
+  border-radius: 999px;
+  transition: color 0.2s, background 0.2s, box-shadow 0.2s;
+}
+
+.auri-header__link:hover {
+  color: var(--auri-text);
+  background: rgba(192, 132, 252, 0.12);
+  text-decoration: none;
+  box-shadow: 0 0 20px rgba(192, 132, 252, 0.15);
+}
+
+.auri-header__link--active {
+  color: var(--auri-accent);
+  background: rgba(34, 211, 238, 0.1);
+  box-shadow: 0 0 24px rgba(34, 211, 238, 0.2);
+}
+
+.auri-header__github {
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  color: var(--auri-text-secondary);
+  border-radius: 8px;
+}
+
+.auri-header__github:hover {
+  color: var(--auri-primary);
+  text-decoration: none;
+}
+
+.auri-header__github svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.auri-header__toggle {
+  display: none;
+  padding: 6px;
+  background: none;
+  border: none;
+  color: var(--auri-text);
+  cursor: pointer;
+}
+
+/* 主内容 */
+.auri-main {
+  position: relative;
+  z-index: 1;
+  padding-top: var(--auri-header-h);
+}
+
+/* Hero */
+.auri-hero {
+  padding: 88px 0 72px;
+}
+
+.auri-hero__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 48px 56px;
+  align-items: center;
+  max-width: var(--auri-wide-max);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.auri-hero__kicker {
+  display: inline-block;
+  margin-bottom: 24px;
+  padding: 6px 16px;
+  background: rgba(192, 132, 252, 0.12);
+  border: 1px solid var(--auri-border);
+  border-radius: 999px;
+  color: var(--auri-accent-pink);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+}
+
+.auri-hero__title {
+  margin: 0 0 24px;
+  background: linear-gradient(135deg, #e9d5ff 0%, #c084fc 35%, #22d3ee 70%, #34d399 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: clamp(2.5rem, 6vw, 4.25rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  animation: auri-title-shimmer 8s ease-in-out infinite;
+}
+
+@keyframes auri-title-shimmer {
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+.auri-hero__subtitle {
+  margin: 0 0 32px;
+  color: var(--auri-text-secondary);
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+.auri-hero__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.auri-hero__tag {
+  padding: 6px 14px;
+  background: var(--auri-bg-card);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--auri-border);
+  border-radius: 999px;
+  color: var(--auri-primary-soft);
+  font-size: 13px;
+}
+
+.auri-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.auri-hero__aside {
+  padding: 32px;
+  background: var(--auri-bg-card);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--auri-border-glow);
+  border-radius: var(--auri-radius);
+  box-shadow: 0 8px 40px rgba(124, 58, 237, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.auri-hero__aside p {
+  margin: 0 0 16px;
+  color: var(--auri-text-secondary);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.auri-hero__aside p:last-child {
+  margin-bottom: 0;
+}
+
+.auri-hero__aside strong {
+  color: var(--auri-accent);
+  font-weight: 600;
+}
+
+/* 按钮 */
+.auri-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.auri-btn:hover {
+  text-decoration: none;
+  transform: translateY(-1px);
+}
+
+.auri-btn--primary {
+  background: linear-gradient(135deg, #7c3aed, #a855f7);
+  color: #fff;
+  box-shadow: 0 4px 24px rgba(124, 58, 237, 0.45);
+}
+
+.auri-btn--primary:hover {
+  box-shadow: 0 6px 32px rgba(168, 85, 247, 0.55);
+  color: #fff;
+}
+
+.auri-btn--outline {
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--auri-primary-soft);
+  border-color: var(--auri-border);
+  backdrop-filter: blur(8px);
+}
+
+.auri-btn--outline:hover {
+  border-color: var(--auri-accent);
+  color: var(--auri-accent);
+  box-shadow: 0 0 24px rgba(34, 211, 238, 0.2);
+}
+
+.auri-btn--glow {
+  background: linear-gradient(135deg, #06b6d4, #22d3ee);
+  color: #070712;
+  box-shadow: 0 4px 28px rgba(34, 211, 238, 0.4);
+}
+
+.auri-btn--glow:hover {
+  box-shadow: 0 6px 36px rgba(34, 211, 238, 0.55);
+  color: #070712;
+}
+
+/* Section */
+.auri-section {
+  padding: 72px 0;
+}
+
+.auri-section--glass {
+  background: rgba(14, 14, 28, 0.35);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid var(--auri-border);
+  border-bottom: 1px solid var(--auri-border);
+}
+
+.auri-section__label {
+  margin: 0 0 12px;
+  color: var(--auri-accent-pink);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.auri-section__title {
+  margin: 0 0 40px;
+  color: var(--auri-primary-soft);
+  font-size: clamp(1.75rem, 3.5vw, 2.35rem);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+/* 三栏特性 */
+.auri-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.auri-pillar {
+  padding: 32px 28px;
+  background: var(--auri-bg-card);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--auri-border);
+  border-radius: var(--auri-radius);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.auri-pillar:hover {
+  border-color: var(--auri-border-glow);
+  box-shadow: 0 8px 32px rgba(34, 211, 238, 0.12);
+}
+
+.auri-pillar__icon {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 1.5rem;
+}
+
+.auri-pillar__title {
+  margin: 0 0 12px;
+  color: var(--auri-accent);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.auri-pillar__desc {
+  margin: 0;
+  color: var(--auri-text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* 双栏特性 */
+.auri-split {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 48px 64px;
+  align-items: start;
+}
+
+.auri-split--reverse {
+  grid-template-columns: 1.15fr 0.85fr;
+}
+
+.auri-split--reverse .auri-split__lead {
+  order: 2;
+}
+
+.auri-split--reverse .auri-split__body {
+  order: 1;
+}
+
+.auri-split__lead {
+  position: sticky;
+  top: calc(var(--auri-header-h) + 32px);
+}
+
+.auri-split__num {
+  margin: 0 0 16px;
+  background: linear-gradient(135deg, var(--auri-primary), var(--auri-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0.85;
+}
+
+.auri-split__heading {
+  margin: 0 0 16px;
+  color: var(--auri-primary-soft);
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.auri-split__intro {
+  margin: 0;
+  color: var(--auri-text-secondary);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.auri-split__body h3 {
+  margin: 0 0 8px;
+  color: var(--auri-accent-pink);
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.auri-split__body p {
+  margin: 0 0 20px;
+  color: var(--auri-text-secondary);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.auri-split__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* 引用 */
+.auri-pullquote {
+  padding: 64px 0;
+  text-align: center;
+}
+
+.auri-pullquote__text {
+  margin: 0 auto 16px;
+  max-width: 640px;
+  background: linear-gradient(90deg, var(--auri-primary-soft), var(--auri-accent), var(--auri-accent-green));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.auri-pullquote__attr {
+  margin: 0;
+  color: var(--auri-text-muted);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+}
+
+/* CTA */
+.auri-cta {
+  padding: 80px 0;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(124, 58, 237, 0.15) 0%, rgba(6, 182, 212, 0.08) 100%);
+  border-top: 1px solid var(--auri-border);
+}
+
+.auri-cta__title {
+  margin: 0 0 14px;
+  color: var(--auri-primary-soft);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.auri-cta__subtitle {
+  margin: 0 0 32px;
+  color: var(--auri-text-secondary);
+  font-size: 15px;
+}
+
+/* 开源社区 */
+.auri-oss {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.auri-oss__card {
+  padding: 28px 24px;
+  background: var(--auri-bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--auri-border);
+  border-radius: var(--auri-radius);
+  transition: box-shadow 0.3s;
+}
+
+.auri-oss__card:hover {
+  box-shadow: 0 0 40px rgba(192, 132, 252, 0.15);
+}
+
+.auri-oss__card h3 {
+  margin: 0 0 10px;
+  color: var(--auri-accent);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.auri-oss__card p {
+  margin: 0 0 14px;
+  color: var(--auri-text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.auri-oss__card a {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* 内页 */
+.auri-page-title {
+  margin: 56px 0 12px;
+  background: linear-gradient(135deg, var(--auri-primary-soft), var(--auri-accent));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.auri-page-desc {
+  margin: 0 0 40px;
+  max-width: 560px;
+  color: var(--auri-text-secondary);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+.auri-version {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 4px 12px;
+  background: rgba(34, 211, 238, 0.1);
+  border: 1px solid var(--auri-border-glow);
+  border-radius: 999px;
+  color: var(--auri-accent);
+  font-size: 13px;
+  font-family: var(--auri-mono);
+}
+
+/* 下载页 */
+.auri-platforms {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.auri-platform {
+  padding: 28px 24px;
+  background: var(--auri-bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--auri-border);
+  border-radius: var(--auri-radius);
+}
+
+.auri-platform h3 {
+  margin: 0 0 14px;
+  color: var(--auri-accent);
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.auri-platform ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.auri-platform li {
+  margin-bottom: 8px;
+  color: var(--auri-text-secondary);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.auri-platform em {
+  display: block;
+  margin-bottom: 8px;
+  color: var(--auri-text-muted);
+  font-size: 13px;
+  font-style: normal;
+}
+
+/* 定价 */
+.auri-pricing {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.auri-plan {
+  padding: 32px 28px;
+  background: var(--auri-bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--auri-border);
+  border-radius: var(--auri-radius);
+}
+
+.auri-plan--highlight {
+  border-color: var(--auri-accent);
+  box-shadow: 0 0 48px rgba(34, 211, 238, 0.18);
+}
+
+.auri-plan h3 {
+  margin: 0 0 10px;
+  color: var(--auri-primary-soft);
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.auri-plan__price {
+  margin: 0 0 6px;
+  color: var(--auri-text);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.auri-plan__price del {
+  margin-right: 6px;
+  color: var(--auri-text-muted);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.auri-plan__period {
+  color: var(--auri-text-muted);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.auri-plan__note {
+  margin: 0 0 18px;
+  color: var(--auri-text-secondary);
+  font-size: 14px;
+}
+
+.auri-plan__features {
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.auri-plan__features li {
+  position: relative;
+  margin-bottom: 10px;
+  padding-left: 18px;
+  color: var(--auri-text-secondary);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.auri-plan__features li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  color: var(--auri-accent-pink);
+  font-size: 8px;
+  top: 5px;
+}
+
+.auri-plan .auri-btn {
+  width: 100%;
+  margin-top: 18px;
+}
+
+/* 对比表 */
+.auri-compare {
+  width: 100%;
+  margin-bottom: 48px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.auri-compare th,
+.auri-compare td {
+  padding: 14px 16px;
+  border: 1px solid var(--auri-border);
+  text-align: center;
+}
+
+.auri-compare th {
+  background: rgba(192, 132, 252, 0.08);
+  color: var(--auri-primary-soft);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.auri-compare td:first-child,
+.auri-compare th:first-child {
+  text-align: left;
+}
+
+.auri-compare .auri-yes {
+  color: var(--auri-accent-green);
+  font-weight: 600;
+}
+
+.auri-compare .auri-no {
+  color: var(--auri-text-muted);
+}
+
+/* FAQ */
+.auri-faq details {
+  margin-bottom: 10px;
+  background: var(--auri-bg-card);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--auri-border);
+  border-radius: var(--auri-radius);
+  overflow: hidden;
+}
+
+.auri-faq summary {
+  padding: 18px 22px;
+  color: var(--auri-primary-soft);
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.auri-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.auri-faq details[open] summary {
+  border-bottom: 1px solid var(--auri-border);
+  background: rgba(192, 132, 252, 0.06);
+}
+
+.auri-faq__body {
+  padding: 18px 22px;
+  color: var(--auri-text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.auri-faq__body p {
+  margin: 0 0 12px;
+}
+
+.auri-faq__body p:last-child {
+  margin-bottom: 0;
+}
+
+.auri-faq__body ul {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.auri-faq__body code {
+  padding: 2px 8px;
+  background: rgba(34, 211, 238, 0.1);
+  border-radius: 4px;
+  font-family: var(--auri-mono);
+  font-size: 13px;
+  color: var(--auri-accent);
+}
+
+/* 社区 */
+.auri-community {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.auri-community__card {
+  padding: 36px 28px;
+  background: var(--auri-bg-card);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--auri-border);
+  border-radius: var(--auri-radius);
+  text-align: center;
+  transition: box-shadow 0.3s, border-color 0.3s;
+}
+
+.auri-community__card:hover {
+  border-color: var(--auri-border-glow);
+  box-shadow: 0 0 36px rgba(34, 211, 238, 0.12);
+}
+
+.auri-community__card h3 {
+  margin: 0 0 18px;
+  color: var(--auri-accent);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.auri-community__links {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.auri-community__links a {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* 页脚 */
+.auri-footer {
+  position: relative;
+  z-index: 1;
+  padding: 40px 0;
+  border-top: 1px solid var(--auri-border);
+  background: rgba(7, 7, 18, 0.6);
+  backdrop-filter: blur(12px);
+}
+
+.auri-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  max-width: var(--auri-wide-max);
+  margin: 0 auto;
+  padding: 0 28px;
+  font-size: 13px;
+  color: var(--auri-text-muted);
+}
+
+.auri-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+
+.auri-footer__links a {
+  color: var(--auri-text-secondary);
+  font-size: 13px;
+}
+
+.auri-footer__links a:hover {
+  color: var(--auri-accent);
+}
+
+.auri-footer__spacer {
+  flex: 1;
+}
+
+/* 响应式 */
+@media (max-width: 900px) {
+  .auri-hero__grid,
+  .auri-split,
+  .auri-split--reverse {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .auri-split--reverse .auri-split__lead,
+  .auri-split--reverse .auri-split__body {
+    order: unset;
+  }
+
+  .auri-split__lead {
+    position: static;
+  }
+
+  .auri-pillars,
+  .auri-oss,
+  .auri-pricing,
+  .auri-community {
+    grid-template-columns: 1fr;
+  }
+
+  .auri-platforms {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .auri-header__toggle {
+    display: flex;
+  }
+
+  .auri-header__nav {
+    display: none;
+    position: absolute;
+    top: var(--auri-header-h);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px 28px;
+    background: rgba(7, 7, 18, 0.95);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--auri-border);
+  }
+
+  .auri-header__nav.is-open {
+    display: flex;
+  }
+
+  .auri-header__link {
+    padding: 12px 14px;
+  }
+
+  .auri-hero {
+    padding: 56px 0 48px;
+  }
+
+  .auri-compare {
+    font-size: 12px;
+  }
+
+  .auri-compare th,
+  .auri-compare td {
+    padding: 8px 6px;
+  }
+
+  .auri-aurora__band {
+    filter: blur(56px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .auri-aurora__band,
+  .auri-hero__title {
+    animation: none;
+  }
+}
