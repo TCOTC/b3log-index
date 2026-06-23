@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+  <include src="partials/head-zh.html" locals='{"title":"下载 - "}'></include>
+  <body class="brut">
+    <include src="partials/script-redirect-zh.html"></include>
+    <div class="brut-strip">DOWNLOAD / 别犹豫 / @@SIYUAN_VERSION_V@@</div>
+    <include src="partials/header-zh.html" locals='{"activeDownload":"brut-header__link--active","activePricing":"","activeCommunity":""}'></include>
+
+    <div class="brut-wrap">
+      <div class="brut-dl-hero">
+        <h1 class="brut-dl-hero__title">下载</h1>
+        <p style="margin: 16px 0 0; font-weight: 700; font-size: 1.1rem">装上去。写字。完事。</p>
+      </div>
+
+      <div class="brut-dl-primary" id="download">
+        <a style="display: none" target="_blank" rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac.dmg" data-os="macOS">
+          英特尔芯片 macOS
+          <span>升级需重新下载安装包</span>
+        </a>
+        <a style="display: none" target="_blank" rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac-arm64.dmg" data-os="macOS">
+          苹果芯片 macOS
+          <span>升级需重新下载安装包</span>
+        </a>
+        <a target="_blank" rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-win.exe" data-os="Windows">
+          Windows x86_64 安装包
+          <span>升级需重新下载安装包</span>
+        </a>
+        <a target="_blank" href="https://apps.microsoft.com/detail/9p7hpmxp73k4" data-os="Windows">
+          微软商店
+          <span>支持一键升级</span>
+        </a>
+        <a style="display: none" target="_blank" rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@.apk" data-os="Android">
+          Android APK
+          <span>升级需重新下载安装包</span>
+        </a>
+        <a style="display: none" target="_blank" rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.AppImage" data-os="Linux">
+          Linux AppImage
+          <span>升级需重新下载安装包</span>
+        </a>
+      </div>
+
+      <p class="brut-dl-meta">
+        版本 @@SIYUAN_VERSION_V@@ · 备用：
+        <a href="https://pan.baidu.com/s/1ivC6QGYBZSC1E_-ZeS2Omg?pwd=open" target="_blank" rel="nofollow">百度网盘</a>
+      </p>
+
+      <section class="brut-section" style="padding-top: 0">
+        <h2 class="brut-section__title" style="margin-bottom: 24px">全平台链接</h2>
+
+        <div class="brut-platform">
+          <h3 class="brut-platform__name">Windows</h3>
+          <ul class="brut-platform__links">
+            <li>
+              安装包：
+              <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-win.exe" target="_blank">x86_64</a>
+              ·
+              <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-win-arm64.exe" target="_blank">arm64</a>
+            </li>
+            <li>
+              微软商店：
+              <a rel="nofollow" href="https://apps.microsoft.com/detail/9p7hpmxp73k4" target="_blank">安装</a>
+            </li>
+            <li><a href="https://github.com/siyuan-note/siyuan" target="_blank">源代码</a></li>
+          </ul>
+        </div>
+
+        <div class="brut-platform">
+          <h3 class="brut-platform__name">macOS</h3>
+          <ul class="brut-platform__links">
+            <li>
+              苹果芯片：
+              <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac-arm64.dmg" target="_blank">arm64 dmg</a>
+            </li>
+            <li>
+              英特尔：
+              <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac.dmg" target="_blank">x86_64 dmg</a>
+            </li>
+            <li><a href="https://github.com/siyuan-note/siyuan" target="_blank">源代码</a></li>
+          </ul>
+        </div>
+
+        <div class="brut-platform">
+          <h3 class="brut-platform__name">Linux</h3>
+          <ul class="brut-platform__links">
+            <li>
+              AppImage：
+              <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.AppImage" target="_blank">x86_64</a>
+              ·
+              <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux-arm64.AppImage" target="_blank">arm64</a>
+            </li>
+            <li>
+              deb：
+              <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.deb" target="_blank">x86_64</a>
+              ·
+              <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux-arm64.deb" target="_blank">arm64</a>
+            </li>
+            <li><a href="https://github.com/siyuan-note/siyuan" target="_blank">源代码</a></li>
+          </ul>
+        </div>
+
+        <div class="brut-platform">
+          <h3 class="brut-platform__name">Android / iOS / 鸿蒙</h3>
+          <ul class="brut-platform__links">
+            <li><a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@.apk" target="_blank">Android APK</a></li>
+            <li><a href="https://github.com/siyuan-note/siyuan-android" target="_blank">Android 源码</a></li>
+            <li><a href="https://github.com/siyuan-note/siyuan-ios" target="_blank">iOS 源码</a></li>
+            <li><a href="https://github.com/siyuan-note/siyuan-harmony" target="_blank">鸿蒙源码</a></li>
+          </ul>
+        </div>
+      </section>
+    </div>
+
+    <include src="partials/footer-zh.html"></include>
+    <include src="partials/site-script.html"></include>
+  </body>
+</html>
