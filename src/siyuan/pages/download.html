@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>下载 - 思源笔记 - 隐私优先的个人知识管理系统，支持 Markdown 排版、块级引用和双向链接</title>
+    <include src="partials/head-zh.html"></include>
+  </head>
+  <body class="hud-body">
+    <div class="hud-page">
+      <include src="partials/header-zh.html"></include>
+
+      <main class="hud-main">
+        <header class="hud-page-header">
+          <div class="hud-container">
+            <p class="hud-page-header__tag">DEPLOY.CENTER // PKG.DOWNLOAD</p>
+            <h1 class="hud-page-header__title">下载</h1>
+            <p class="hud-page-header__desc">
+              选择目标平台部署包。当前构建 @@SIYUAN_VERSION_V@@，大部分模块免费开放，商业环境亦可部署。
+            </p>
+          </div>
+        </header>
+
+        <section class="hud-section">
+          <div class="hud-container">
+            <div class="hud-version-strip">
+              <span class="hud-version-strip__label">ACTIVE.BUILD</span>
+              <span class="hud-version-strip__value">@@SIYUAN_VERSION_V@@</span>
+              <span class="hud-version-strip__label">ALT.CHANNEL</span>
+              <a href="https://pan.baidu.com/s/1ivC6QGYBZSC1E_-ZeS2Omg?pwd=open">百度网盘镜像</a>
+            </div>
+
+            <div class="hud-quick-grid">
+              <div class="hud-quick-card hud-panel">
+                <p class="hud-quick-card__platform">MACOS // ARM64</p>
+                <a class="hud-quick-card__link" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac-arm64.dmg">苹果芯片</a>
+                <p class="hud-quick-card__hint">升级需重新部署</p>
+              </div>
+              <div class="hud-quick-card hud-panel">
+                <p class="hud-quick-card__platform">MACOS // X86_64</p>
+                <a class="hud-quick-card__link" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac.dmg">英特尔芯片</a>
+                <p class="hud-quick-card__hint">升级需重新部署</p>
+              </div>
+              <div class="hud-quick-card hud-panel">
+                <p class="hud-quick-card__platform">WINDOWS // X86_64</p>
+                <a class="hud-quick-card__link" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-win.exe">安装包</a>
+                <p class="hud-quick-card__hint">升级需重新部署</p>
+              </div>
+              <div class="hud-quick-card hud-panel">
+                <p class="hud-quick-card__platform">WINDOWS // STORE</p>
+                <a class="hud-quick-card__link" href="https://apps.microsoft.com/detail/9p7hpmxp73k4">微软商店</a>
+                <p class="hud-quick-card__hint">支持一键升级</p>
+              </div>
+              <div class="hud-quick-card hud-panel">
+                <p class="hud-quick-card__platform">ANDROID // APK</p>
+                <a class="hud-quick-card__link" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@.apk">安卓安装包</a>
+                <p class="hud-quick-card__hint">升级需重新部署</p>
+              </div>
+              <div class="hud-quick-card hud-panel">
+                <p class="hud-quick-card__platform">LINUX // APPIMAGE</p>
+                <a class="hud-quick-card__link" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.AppImage">AppImage</a>
+                <p class="hud-quick-card__hint">升级需重新部署</p>
+              </div>
+            </div>
+
+            <div class="hud-download-grid">
+              <article class="hud-download-card hud-panel">
+                <p class="hud-download-card__platform">PLATFORM.WIN</p>
+                <h2 class="hud-download-card__title">桌面端</h2>
+                <ul class="hud-download-card__links">
+                  <li><a href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-win.exe">安装包 x86_64</a></li>
+                  <li><a href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-win-arm64.exe">安装包 arm64</a></li>
+                  <li><a href="https://apps.microsoft.com/detail/9p7hpmxp73k4">微软商店 x86_64 / arm64</a></li>
+                  <li><a href="https://github.com/siyuan-note/siyuan">源代码</a></li>
+                </ul>
+              </article>
+
+              <article class="hud-download-card hud-panel">
+                <p class="hud-download-card__platform">PLATFORM.MAC</p>
+                <h2 class="hud-download-card__title">桌面端</h2>
+                <ul class="hud-download-card__links">
+                  <li><a href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac-arm64.dmg">苹果芯片 arm64</a></li>
+                  <li><a href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac.dmg">英特尔芯片 x86_64</a></li>
+                  <li><a href="https://github.com/siyuan-note/siyuan">源代码</a></li>
+                </ul>
+              </article>
+
+              <article class="hud-download-card hud-panel">
+                <p class="hud-download-card__platform">PLATFORM.LNX</p>
+                <h2 class="hud-download-card__title">桌面端</h2>
+                <ul class="hud-download-card__links">
+                  <li><a href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.AppImage">AppImage x86_64</a></li>
+                  <li><a href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux-arm64.AppImage">AppImage arm64</a></li>
+                  <li><a href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.deb">deb x86_64</a></li>
+                  <li><a href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux-arm64.deb">deb arm64</a></li>
+                  <li><a href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.tar.gz">tar.gz x86_64</a></li>
+                  <li><a href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux-arm64.tar.gz">tar.gz arm64</a></li>
+                  <li><a href="https://github.com/siyuan-note/siyuan">源代码</a></li>
+                </ul>
+              </article>
+
+              <article class="hud-download-card hud-panel">
+                <p class="hud-download-card__platform">PLATFORM.AND</p>
+                <h2 class="hud-download-card__title">移动端</h2>
+                <ul class="hud-download-card__links">
+                  <li><a href="https://appgallery.huawei.com/app/C105558879">华为应用市场</a></li>
+                  <li><a href="https://app.mi.com/details?id=org.b3log.siyuan">小米应用商店</a></li>
+                  <li><a href="https://play.google.com/store/apps/details?id=org.b3log.siyuan">Google Play</a></li>
+                  <li><a href="https://www.coolapk.com/apk/292664">酷安</a></li>
+                  <li><a href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@.apk">APK</a></li>
+                  <li><a href="https://github.com/siyuan-note/siyuan-android">源代码</a></li>
+                </ul>
+              </article>
+
+              <article class="hud-download-card hud-panel">
+                <p class="hud-download-card__platform">PLATFORM.IOS</p>
+                <h2 class="hud-download-card__title">移动端</h2>
+                <ul class="hud-download-card__links">
+                  <li><a href="https://apps.apple.com/cn/app/siyuan/id1583226508">App Store</a></li>
+                  <li><a href="https://testflight.apple.com/join/BBLHMJ4g">TestFlight</a></li>
+                  <li><a href="https://github.com/siyuan-note/siyuan-ios">源代码</a></li>
+                </ul>
+              </article>
+
+              <article class="hud-download-card hud-panel">
+                <p class="hud-download-card__platform">PLATFORM.HM</p>
+                <h2 class="hud-download-card__title">鸿蒙 NEXT</h2>
+                <ul class="hud-download-card__links">
+                  <li>已上架应用市场（手机 / 平板 / PC/2in1）</li>
+                  <li><a href="https://github.com/siyuan-note/siyuan-harmony">源代码</a></li>
+                </ul>
+              </article>
+
+              <article class="hud-download-card hud-panel">
+                <p class="hud-download-card__platform">EXT.BROWSER</p>
+                <h2 class="hud-download-card__title">浏览器扩展</h2>
+                <ul class="hud-download-card__links">
+                  <li><a href="https://chrome.google.com/webstore/detail/siyuan/hkcgjbeblifaincobbcfiffbpgoafepk">Chrome</a></li>
+                  <li><a href="https://microsoftedge.microsoft.com/addons/detail/siyuan/lclhdlhleinlppggbbgimbekofanbkcf">Edge</a></li>
+                  <li><a href="https://github.com/siyuan-note/siyuan-chrome">源代码</a></li>
+                </ul>
+              </article>
+
+              <article class="hud-download-card hud-panel">
+                <p class="hud-download-card__platform">SRV.DOCKER</p>
+                <h2 class="hud-download-card__title">服务器</h2>
+                <ul class="hud-download-card__links">
+                  <li>非程序员请勿尝试</li>
+                  <li><a href="https://hub.docker.com/r/b3log/siyuan">Docker 镜像</a></li>
+                  <li><a href="https://github.com/siyuan-note/siyuan">源代码</a></li>
+                </ul>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <include src="partials/footer-zh.html"></include>
+    </div>
+  </body>
+</html>
