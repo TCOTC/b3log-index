@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>思源笔记 - 隐私优先的个人知识管理系统，支持 Markdown 排版、块级引用和双向链接</title>
+    <include src="partials/head-zh.html"></include>
+  </head>
+  <body class="edi-body">
+    <div class="edi-page">
+      <include src="partials/header-zh.html"></include>
+
+      <main class="edi-main">
+        <section class="edi-hero">
+          <div class="edi-container">
+            <div class="edi-hero__grid">
+              <p class="edi-hero__kicker">封面故事 · Cover Story</p>
+              <h1 class="edi-hero__title">版式即叙事，每一页都是封面</h1>
+
+              <dl class="edi-hero__meta">
+                <dt>刊号</dt>
+                <dd>@@SIYUAN_VERSION_V@@</dd>
+                <dt>栏目</dt>
+                <dd>知识管理</dd>
+                <dt>发行</dt>
+                <dd>本地优先</dd>
+              </dl>
+
+              <p class="edi-hero__deck">杂志级排版的知识阅读体验</p>
+
+              <p class="edi-hero__lead">
+                当笔记不再只是输入框里的字符，而是可以被翻阅、被引述、被编排的版面——思源把块级编辑、双向链接与
+                Markdown 排版汇成一份持续发行的个人知识刊物。每一篇文档都是独立文章，每一次引用都是跨页脚注，你的笔记本，就是一座只属于自己的编辑部。
+              </p>
+
+              <div class="edi-hero__visual">
+                <figure class="edi-hero__figure">
+                  <div
+                    class="edi-hero__img"
+                    role="img"
+                    aria-label="杂志版式示意"
+                    style="
+                      background: linear-gradient(135deg, #1c1c1c 0%, #3d3d3d 40%, #b91c1c 100%);
+                      display: flex;
+                      align-items: flex-end;
+                      padding: 1.5rem;
+                    "
+                  >
+                    <span
+                      style="
+                        font-family: var(--edi-serif);
+                        font-size: 2rem;
+                        font-weight: 900;
+                        color: #fff;
+                        line-height: 1.1;
+                      "
+                      >SiYuan<br />Editorial</span
+                    >
+                  </div>
+                  <figcaption class="edi-hero__caption">图 01 · 块级版面与引用脚注示意</figcaption>
+                </figure>
+              </div>
+
+              <div class="edi-hero__actions">
+                <a class="edi-btn edi-btn--primary" href="download.html">获取本期</a>
+                <a class="edi-btn edi-btn--outline" href="pricing.html">订阅方案</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="edi-section">
+          <div class="edi-container">
+            <header class="edi-section__header">
+              <p class="edi-section__kicker">特稿</p>
+              <h2 class="edi-section__title">六大栏目，构筑你的知识刊物</h2>
+              <p class="edi-section__deck">从导语到大纲，从引用到版心——每一栏都是一期精心排版的专题报道。</p>
+            </header>
+
+            <div class="edi-features">
+              <article class="edi-article">
+                <span class="edi-article__num" aria-hidden="true">01</span>
+                <div class="edi-article__content">
+                  <h3 class="edi-article__headline">跨栏引用</h3>
+                  <p class="edi-article__byline">专题 · 双向链接</p>
+                  <p class="edi-article__text">
+                    像杂志文末的「参见 P.42」——双向链接让知识节点彼此呼应。正向引用标注出处，反向链接揭示被谁提及，形成可回溯的脚注网络。你的观点不再孤立成段，而是在刊物内部形成交叉索引，读者（未来的你）可以沿引用线索翻阅整本笔记。
+                  </p>
+                </div>
+                <div class="edi-article__visual">
+                  <figure class="edi-article__figure">
+                    <div
+                      class="edi-article__img"
+                      style="
+                        background: repeating-linear-gradient(
+                            90deg,
+                            var(--edi-rule) 0,
+                            var(--edi-rule) 1px,
+                            transparent 1px,
+                            transparent 33%
+                          ),
+                          var(--edi-paper-dark);
+                      "
+                      role="img"
+                      aria-label="跨栏引用示意"
+                    ></div>
+                    <figcaption class="edi-article__caption">双向链接 · 跨页脚注</figcaption>
+                  </figure>
+                </div>
+              </article>
+
+              <article class="edi-article edi-article--reverse">
+                <span class="edi-article__num" aria-hidden="true">02</span>
+                <div class="edi-article__content">
+                  <h3 class="edi-article__headline">块级分栏</h3>
+                  <p class="edi-article__byline">版面 · 块编辑</p>
+                  <p class="edi-article__text">
+                    段落、列表、代码各自占据独立版心——像报纸编辑把稿件切成可移动的铅字块。拖拽重排、折叠收纳、嵌入引用，每一「块」都是版面上的一个单元。写作时不必顾虑整体结构，先落笔成块，再像拼版一样组织成完整报道。
+                  </p>
+                </div>
+                <div class="edi-article__visual">
+                  <figure class="edi-article__figure">
+                    <div
+                      class="edi-article__img"
+                      style="
+                        background: linear-gradient(180deg, #fff 0%, #fff 30%, var(--edi-rule) 30%, var(--edi-rule) 32%, #fff 32%, #fff 55%, var(--edi-rule) 55%, var(--edi-rule) 57%, #fff 57%);
+                      "
+                      role="img"
+                      aria-label="块级分栏示意"
+                    ></div>
+                    <figcaption class="edi-article__caption">块编辑 · 拼版式排版</figcaption>
+                  </figure>
+                </div>
+              </article>
+
+              <article class="edi-article">
+                <span class="edi-article__num" aria-hidden="true">03</span>
+                <div class="edi-article__content">
+                  <h3 class="edi-article__headline">导语大纲</h3>
+                  <p class="edi-article__byline">结构 · 层级目录</p>
+                  <p class="edi-article__text">
+                    大纲视图像杂志目录页——一眼纵览全文骨架。标题层级对应栏目与分题，折叠展开配合阅读节奏。长篇调研、系列专题、读书笔记，都能在目录中快速定位章节，从导语跳入正文，从分题退回总览。
+                  </p>
+                </div>
+                <div class="edi-article__visual">
+                  <figure class="edi-article__figure">
+                    <div
+                      class="edi-article__img"
+                      style="
+                        background: linear-gradient(90deg, var(--edi-accent) 3px, transparent 3px),
+                          linear-gradient(180deg, transparent 20%, var(--edi-paper-dark) 20%, var(--edi-paper-dark) 25%, transparent 25%, transparent 45%, var(--edi-paper-dark) 45%, var(--edi-paper-dark) 48%, transparent 48%);
+                      "
+                      role="img"
+                      aria-label="导语大纲示意"
+                    ></div>
+                    <figcaption class="edi-article__caption">大纲 · 目录式导航</figcaption>
+                  </figure>
+                </div>
+              </article>
+
+              <article class="edi-article edi-article--reverse">
+                <span class="edi-article__num" aria-hidden="true">04</span>
+                <div class="edi-article__content">
+                  <h3 class="edi-article__headline">版心 Markdown</h3>
+                  <p class="edi-article__byline">排版 · 标记语言</p>
+                  <p class="edi-article__text">
+                    Markdown 是编辑部的排版规范——标题定级、强调标注、代码块独立成栏。输入时保持写作流畅，输出时自动套用版式规则。所见即所得的渲染让标记语言不再冰冷，而是像印刷工艺一样，把结构隐于美观的版面之下。
+                  </p>
+                </div>
+                <div class="edi-article__visual">
+                  <figure class="edi-article__figure">
+                    <div
+                      class="edi-article__img"
+                      style="
+                        font-family: monospace;
+                        font-size: 0.75rem;
+                        padding: 1rem;
+                        background: #fff;
+                        color: var(--edi-ink-muted);
+                        display: flex;
+                        align-items: center;
+                      "
+                      role="img"
+                      aria-label="Markdown 版心示意"
+                    >
+                      # 标题<br />**强调** · `代码`
+                    </div>
+                    <figcaption class="edi-article__caption">Markdown · 排版规范</figcaption>
+                  </figure>
+                </div>
+              </article>
+
+              <article class="edi-article">
+                <span class="edi-article__num" aria-hidden="true">05</span>
+                <div class="edi-article__content">
+                  <h3 class="edi-article__headline">离线印版</h3>
+                  <p class="edi-article__byline">发行 · 本地存储</p>
+                  <p class="edi-article__text">
+                    数据保存在本地工作空间，像印刷厂里的底片——不依赖云端即可完整阅读与编辑。地铁、机舱、断网环境，刊物照常发行。同步服务是可选的加印渠道，而非阅读的前提。你的知识刊物，首先属于你桌上的那一叠。
+                  </p>
+                </div>
+                <div class="edi-article__visual">
+                  <figure class="edi-article__figure">
+                    <div
+                      class="edi-article__img"
+                      style="background: var(--edi-ink); opacity: 0.9"
+                      role="img"
+                      aria-label="离线印版示意"
+                    ></div>
+                    <figcaption class="edi-article__caption">本地优先 · 随时可读</figcaption>
+                  </figure>
+                </div>
+              </article>
+
+              <article class="edi-article edi-article--reverse">
+                <span class="edi-article__num" aria-hidden="true">06</span>
+                <div class="edi-article__content">
+                  <h3 class="edi-article__headline">隐私专栏</h3>
+                  <p class="edi-article__byline">社论 · 端到端加密</p>
+                  <p class="edi-article__text">
+                    端到端加密是刊物背面的版权申明——内容在传输与存储中保持私密。不采集无关数据，不将笔记变为广告素材。个人知识刊物理应享有与私人日记同等的庇护，写作不必顾虑旁观者目光，思考可以毫无顾忌地落于纸面。
+                  </p>
+                </div>
+                <div class="edi-article__visual">
+                  <figure class="edi-article__figure">
+                    <div
+                      class="edi-article__img"
+                      style="
+                        background: linear-gradient(45deg, var(--edi-accent-soft), #fff);
+                        border: 2px solid var(--edi-accent);
+                      "
+                      role="img"
+                      aria-label="隐私专栏示意"
+                    ></div>
+                    <figcaption class="edi-article__caption">端到端加密 · 隐私优先</figcaption>
+                  </figure>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="edi-pullquote">
+          <div class="edi-container">
+            <div class="edi-pullquote__inner">
+              <span class="edi-pullquote__mark" aria-hidden="true">"</span>
+              <blockquote class="edi-pullquote__text">
+                好的版式让信息自己说话——标题引领视线，分栏引导节奏，引用串联叙事。思源把你的笔记变成可以反复翻阅的私人刊物。
+              </blockquote>
+              <p class="edi-pullquote__attr">编辑部寄语</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="edi-cta">
+          <div class="edi-container">
+            <div class="edi-cta__grid">
+              <p class="edi-cta__text">开始编排你的第一期知识刊物——免费下载，即刻发刊。</p>
+              <div class="edi-cta__actions">
+                <a class="edi-btn edi-btn--primary" href="download.html">免费获取</a>
+                <a class="edi-btn edi-btn--outline" href="community.html">加入读者社群</a>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <include src="partials/footer-zh.html"></include>
+    </div>
+  </body>
+</html>
