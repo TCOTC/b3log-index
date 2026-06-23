@@ -1,0 +1,1267 @@
+/* SiYuan Liquid Glass UI — 流动液态玻璃 · 奢华深色折射界面 */
+
+:root {
+  --liq-bg: #050508;
+  --liq-bg-elevated: rgba(12, 12, 20, 0.65);
+  --liq-glass: rgba(255, 255, 255, 0.04);
+  --liq-glass-strong: rgba(255, 255, 255, 0.08);
+  --liq-primary: #e8dcc8;
+  --liq-primary-soft: #f5efe4;
+  --liq-accent: #c9a962;
+  --liq-accent-warm: #d4a574;
+  --liq-refract: #8ecae6;
+  --liq-refract-deep: #5a9fd4;
+  --liq-text: #ece8e0;
+  --liq-text-secondary: #a8a29a;
+  --liq-text-muted: #6b6560;
+  --liq-border: rgba(255, 255, 255, 0.12);
+  --liq-border-glow: rgba(201, 169, 98, 0.28);
+  --liq-specular: rgba(255, 255, 255, 0.55);
+  --liq-content-max: 720px;
+  --liq-wide-max: 1080px;
+  --liq-header-h: 64px;
+  --liq-radius: 20px;
+  --liq-radius-blob: 42% 58% 62% 38% / 48% 42% 58% 52%;
+  --liq-sans: system-ui, -apple-system, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  --liq-mono: ui-monospace, "Cascadia Code", Menlo, Consolas, monospace;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body.liq-body {
+  margin: 0;
+  color: var(--liq-text);
+  background: var(--liq-bg);
+  font-family: var(--liq-sans);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--liq-refract);
+  text-decoration: none;
+  transition: color 0.25s, text-shadow 0.25s;
+}
+
+a:hover {
+  color: var(--liq-primary-soft);
+  text-shadow: 0 0 16px rgba(142, 202, 230, 0.35);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 流动液态背景 */
+.liq-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 80%, rgba(90, 159, 212, 0.08) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 45% at 85% 15%, rgba(201, 169, 98, 0.1) 0%, transparent 50%),
+    var(--liq-bg);
+}
+
+.liq-bg__blob {
+  position: absolute;
+  filter: blur(64px);
+  opacity: 0.5;
+  mix-blend-mode: screen;
+  will-change: transform, border-radius;
+}
+
+.liq-bg__blob--1 {
+  top: -12%;
+  left: -8%;
+  width: 55vw;
+  height: 55vw;
+  background: linear-gradient(135deg, rgba(142, 202, 230, 0.35), rgba(90, 159, 212, 0.15));
+  border-radius: var(--liq-radius-blob);
+  animation: liq-morph-1 18s ease-in-out infinite, liq-drift-1 24s ease-in-out infinite;
+}
+
+.liq-bg__blob--2 {
+  top: 30%;
+  right: -15%;
+  width: 48vw;
+  height: 48vw;
+  background: linear-gradient(220deg, rgba(201, 169, 98, 0.3), rgba(212, 165, 116, 0.12));
+  border-radius: 58% 42% 38% 62% / 52% 58% 42% 48%;
+  animation: liq-morph-2 22s ease-in-out infinite, liq-drift-2 28s ease-in-out infinite;
+}
+
+.liq-bg__blob--3 {
+  bottom: -10%;
+  left: 20%;
+  width: 42vw;
+  height: 42vw;
+  background: linear-gradient(160deg, rgba(255, 255, 255, 0.08), rgba(142, 202, 230, 0.2));
+  border-radius: 45% 55% 60% 40% / 55% 45% 55% 45%;
+  animation: liq-morph-3 20s ease-in-out infinite, liq-drift-3 26s ease-in-out infinite;
+}
+
+.liq-bg__blob--4 {
+  top: 50%;
+  left: 45%;
+  width: 30vw;
+  height: 30vw;
+  background: radial-gradient(circle, rgba(232, 220, 200, 0.15), transparent 70%);
+  border-radius: 50% 50% 48% 52% / 52% 48% 52% 48%;
+  animation: liq-morph-4 16s ease-in-out infinite;
+}
+
+.liq-bg__sheen {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    125deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.03) 45%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0.03) 55%,
+    transparent 70%
+  );
+  animation: liq-sheen-sweep 12s ease-in-out infinite;
+}
+
+.liq-bg__veil {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(5, 5, 8, 0.2) 0%, rgba(5, 5, 8, 0.88) 100%);
+}
+
+@keyframes liq-morph-1 {
+  0%,
+  100% {
+    border-radius: 42% 58% 62% 38% / 48% 42% 58% 52%;
+  }
+  33% {
+    border-radius: 58% 42% 38% 62% / 42% 58% 42% 58%;
+  }
+  66% {
+    border-radius: 38% 62% 55% 45% / 62% 38% 62% 38%;
+  }
+}
+
+@keyframes liq-morph-2 {
+  0%,
+  100% {
+    border-radius: 58% 42% 38% 62% / 52% 58% 42% 48%;
+  }
+  50% {
+    border-radius: 42% 58% 62% 38% / 58% 42% 58% 42%;
+  }
+}
+
+@keyframes liq-morph-3 {
+  0%,
+  100% {
+    border-radius: 45% 55% 60% 40% / 55% 45% 55% 45%;
+  }
+  40% {
+    border-radius: 60% 40% 45% 55% / 40% 60% 40% 60%;
+  }
+  80% {
+    border-radius: 50% 50% 38% 62% / 62% 38% 50% 50%;
+  }
+}
+
+@keyframes liq-morph-4 {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.35;
+  }
+  50% {
+    transform: scale(1.15);
+    opacity: 0.55;
+  }
+}
+
+@keyframes liq-drift-1 {
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+  50% {
+    transform: translate(6%, 8%) rotate(8deg);
+  }
+}
+
+@keyframes liq-drift-2 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(-10%, 5%);
+  }
+}
+
+@keyframes liq-drift-3 {
+  0%,
+  100% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(8%, -6%);
+  }
+}
+
+@keyframes liq-sheen-sweep {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: translateX(-20%);
+  }
+  50% {
+    opacity: 0.7;
+    transform: translateX(20%);
+  }
+}
+
+/* 液态玻璃面板 mixin 效果 */
+.liq-glass {
+  position: relative;
+  background: var(--liq-glass);
+  backdrop-filter: blur(24px) saturate(1.4);
+  -webkit-backdrop-filter: blur(24px) saturate(1.4);
+  border: 1px solid var(--liq-border);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    inset 0 1px 0 var(--liq-specular),
+    inset 0 -1px 0 rgba(0, 0, 0, 0.2);
+}
+
+.liq-glass::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.12) 0%,
+    transparent 40%,
+    transparent 60%,
+    rgba(142, 202, 230, 0.06) 100%
+  );
+  pointer-events: none;
+}
+
+/* 布局容器 */
+.liq-wrap {
+  position: relative;
+  z-index: 1;
+  max-width: var(--liq-content-max);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.liq-wrap--wide {
+  max-width: var(--liq-wide-max);
+}
+
+/* 顶栏 */
+.liq-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: var(--liq-header-h);
+  background: rgba(5, 5, 8, 0.45);
+  backdrop-filter: blur(20px) saturate(1.3);
+  -webkit-backdrop-filter: blur(20px) saturate(1.3);
+  border-bottom: 1px solid var(--liq-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.06);
+}
+
+.liq-header__inner {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: var(--liq-wide-max);
+  height: var(--liq-header-h);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.liq-header__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--liq-primary-soft);
+  font-weight: 600;
+  font-size: 17px;
+  text-decoration: none;
+}
+
+.liq-header__brand:hover {
+  color: var(--liq-refract);
+  text-shadow: 0 0 20px rgba(142, 202, 230, 0.4);
+  text-decoration: none;
+}
+
+.liq-header__brand img {
+  width: 26px;
+  height: 26px;
+  filter: drop-shadow(0 0 6px rgba(201, 169, 98, 0.35));
+}
+
+.liq-header__spacer {
+  flex: 1;
+}
+
+.liq-header__nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.liq-header__link {
+  padding: 6px 14px;
+  color: var(--liq-text-secondary);
+  font-size: 14px;
+  border-radius: 999px;
+  transition: color 0.25s, background 0.25s, box-shadow 0.25s;
+}
+
+.liq-header__link:hover {
+  color: var(--liq-text);
+  background: var(--liq-glass-strong);
+  text-decoration: none;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.liq-header__link--active {
+  color: var(--liq-accent);
+  background: rgba(201, 169, 98, 0.12);
+  box-shadow:
+    0 0 24px rgba(201, 169, 98, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.12);
+}
+
+.liq-header__github {
+  display: flex;
+  align-items: center;
+  padding: 6px;
+  color: var(--liq-text-secondary);
+  border-radius: 8px;
+}
+
+.liq-header__github:hover {
+  color: var(--liq-primary);
+  text-decoration: none;
+}
+
+.liq-header__github svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+.liq-header__toggle {
+  display: none;
+  padding: 6px;
+  background: none;
+  border: none;
+  color: var(--liq-text);
+  cursor: pointer;
+}
+
+/* 主内容 */
+.liq-main {
+  position: relative;
+  z-index: 1;
+  padding-top: var(--liq-header-h);
+}
+
+/* Hero */
+.liq-hero {
+  padding: 88px 0 72px;
+}
+
+.liq-hero__grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 48px 56px;
+  align-items: center;
+  max-width: var(--liq-wide-max);
+  margin: 0 auto;
+  padding: 0 28px;
+}
+
+.liq-hero__kicker {
+  display: inline-block;
+  margin-bottom: 24px;
+  padding: 6px 16px;
+  background: var(--liq-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--liq-border-glow);
+  border-radius: 999px;
+  color: var(--liq-accent);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.liq-hero__title {
+  margin: 0 0 24px;
+  background: linear-gradient(
+    135deg,
+    var(--liq-primary-soft) 0%,
+    var(--liq-accent) 35%,
+    var(--liq-refract) 65%,
+    var(--liq-primary) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: clamp(2.5rem, 6vw, 4.25rem);
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  animation: liq-title-flow 10s ease-in-out infinite;
+}
+
+@keyframes liq-title-flow {
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+.liq-hero__subtitle {
+  margin: 0 0 32px;
+  color: var(--liq-text-secondary);
+  font-size: 1.125rem;
+  line-height: 1.8;
+}
+
+.liq-hero__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 36px;
+}
+
+.liq-hero__tag {
+  padding: 6px 14px;
+  background: var(--liq-glass);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--liq-border);
+  border-radius: 999px;
+  color: var(--liq-primary);
+  font-size: 13px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.liq-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.liq-hero__aside {
+  padding: 32px;
+  border-radius: var(--liq-radius);
+  overflow: hidden;
+}
+
+.liq-hero__aside.liq-glass {
+  border-radius: 42% 58% 55% 45% / 48% 52% 48% 52%;
+  animation: liq-card-morph 16s ease-in-out infinite;
+}
+
+@keyframes liq-card-morph {
+  0%,
+  100% {
+    border-radius: 42% 58% 55% 45% / 48% 52% 48% 52%;
+  }
+  50% {
+    border-radius: 55% 45% 48% 52% / 52% 48% 55% 45%;
+  }
+}
+
+.liq-hero__aside p {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 16px;
+  color: var(--liq-text-secondary);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.liq-hero__aside p:last-child {
+  margin-bottom: 0;
+}
+
+.liq-hero__aside strong {
+  color: var(--liq-refract);
+  font-weight: 600;
+}
+
+/* 按钮 */
+.liq-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 28px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: inherit;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.25s, box-shadow 0.25s, background 0.25s;
+}
+
+.liq-btn:hover {
+  text-decoration: none;
+  transform: translateY(-2px);
+}
+
+.liq-btn--primary {
+  background: linear-gradient(135deg, rgba(201, 169, 98, 0.9), rgba(212, 165, 116, 0.85));
+  color: #1a1612;
+  box-shadow:
+    0 4px 24px rgba(201, 169, 98, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.35);
+}
+
+.liq-btn--primary:hover {
+  box-shadow:
+    0 6px 32px rgba(201, 169, 98, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.45);
+  color: #1a1612;
+}
+
+.liq-btn--outline {
+  background: var(--liq-glass);
+  backdrop-filter: blur(12px);
+  color: var(--liq-primary-soft);
+  border-color: var(--liq-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+.liq-btn--outline:hover {
+  border-color: var(--liq-refract);
+  color: var(--liq-refract);
+  box-shadow:
+    0 0 28px rgba(142, 202, 230, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+}
+
+.liq-btn--glow {
+  background: linear-gradient(135deg, rgba(142, 202, 230, 0.85), rgba(90, 159, 212, 0.8));
+  color: #050508;
+  box-shadow:
+    0 4px 28px rgba(142, 202, 230, 0.35),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.liq-btn--glow:hover {
+  box-shadow:
+    0 6px 36px rgba(142, 202, 230, 0.5),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  color: #050508;
+}
+
+/* Section */
+.liq-section {
+  padding: 72px 0;
+}
+
+.liq-section--glass {
+  background: var(--liq-glass);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid var(--liq-border);
+  border-bottom: 1px solid var(--liq-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
+}
+
+.liq-section__label {
+  margin: 0 0 12px;
+  color: var(--liq-accent);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.liq-section__title {
+  margin: 0 0 40px;
+  color: var(--liq-primary-soft);
+  font-size: clamp(1.75rem, 3.5vw, 2.35rem);
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+/* 三栏特性 */
+.liq-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.liq-pillar {
+  padding: 32px 28px;
+  border-radius: var(--liq-radius);
+  transition: border-color 0.35s, box-shadow 0.35s, transform 0.35s;
+}
+
+.liq-pillar.liq-glass:hover {
+  border-color: var(--liq-border-glow);
+  box-shadow:
+    0 12px 40px rgba(0, 0, 0, 0.4),
+    0 0 32px rgba(142, 202, 230, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-3px);
+}
+
+.liq-pillar__icon {
+  display: block;
+  margin-bottom: 16px;
+  font-size: 1.5rem;
+  filter: drop-shadow(0 0 8px rgba(201, 169, 98, 0.4));
+}
+
+.liq-pillar__title {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 12px;
+  color: var(--liq-refract);
+  font-size: 1.125rem;
+  font-weight: 600;
+}
+
+.liq-pillar__desc {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  color: var(--liq-text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* 双栏特性 */
+.liq-split {
+  display: grid;
+  grid-template-columns: 0.85fr 1.15fr;
+  gap: 48px 64px;
+  align-items: start;
+}
+
+.liq-split--reverse {
+  grid-template-columns: 1.15fr 0.85fr;
+}
+
+.liq-split--reverse .liq-split__lead {
+  order: 2;
+}
+
+.liq-split--reverse .liq-split__body {
+  order: 1;
+}
+
+.liq-split__lead {
+  position: sticky;
+  top: calc(var(--liq-header-h) + 32px);
+}
+
+.liq-split__num {
+  margin: 0 0 16px;
+  background: linear-gradient(135deg, var(--liq-accent), var(--liq-refract));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  opacity: 0.9;
+}
+
+.liq-split__heading {
+  margin: 0 0 16px;
+  color: var(--liq-primary-soft);
+  font-size: 1.75rem;
+  font-weight: 600;
+  line-height: 1.25;
+}
+
+.liq-split__intro {
+  margin: 0;
+  color: var(--liq-text-secondary);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.liq-split__body h3 {
+  margin: 0 0 8px;
+  color: var(--liq-accent-warm);
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.liq-split__body p {
+  margin: 0 0 20px;
+  color: var(--liq-text-secondary);
+  font-size: 15px;
+  line-height: 1.75;
+}
+
+.liq-split__body p:last-child {
+  margin-bottom: 0;
+}
+
+/* 引用 */
+.liq-pullquote {
+  padding: 64px 0;
+  text-align: center;
+}
+
+.liq-pullquote__text {
+  margin: 0 auto 16px;
+  max-width: 640px;
+  background: linear-gradient(90deg, var(--liq-primary-soft), var(--liq-accent), var(--liq-refract));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: clamp(1.25rem, 2.5vw, 1.75rem);
+  font-style: italic;
+  line-height: 1.55;
+}
+
+.liq-pullquote__attr {
+  margin: 0;
+  color: var(--liq-text-muted);
+  font-size: 13px;
+  letter-spacing: 0.06em;
+}
+
+/* CTA */
+.liq-cta {
+  padding: 80px 0;
+  text-align: center;
+  background: linear-gradient(180deg, rgba(201, 169, 98, 0.08) 0%, rgba(142, 202, 230, 0.05) 100%);
+  border-top: 1px solid var(--liq-border);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.liq-cta__title {
+  margin: 0 0 14px;
+  color: var(--liq-primary-soft);
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.liq-cta__subtitle {
+  margin: 0 0 32px;
+  color: var(--liq-text-secondary);
+  font-size: 15px;
+}
+
+/* 开源社区 */
+.liq-oss {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.liq-oss__card {
+  padding: 28px 24px;
+  border-radius: var(--liq-radius);
+  transition: box-shadow 0.35s, transform 0.35s;
+}
+
+.liq-oss__card.liq-glass:hover {
+  box-shadow:
+    0 0 40px rgba(201, 169, 98, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.liq-oss__card h3 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 10px;
+  color: var(--liq-refract);
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.liq-oss__card p {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 14px;
+  color: var(--liq-text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.liq-oss__card a {
+  position: relative;
+  z-index: 1;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* 内页 */
+.liq-page-title {
+  margin: 56px 0 12px;
+  background: linear-gradient(135deg, var(--liq-primary-soft), var(--liq-refract));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: clamp(2rem, 4vw, 2.75rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.liq-page-desc {
+  margin: 0 0 40px;
+  max-width: 560px;
+  color: var(--liq-text-secondary);
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+.liq-version {
+  display: inline-block;
+  margin-bottom: 8px;
+  padding: 4px 12px;
+  background: rgba(142, 202, 230, 0.1);
+  border: 1px solid rgba(142, 202, 230, 0.25);
+  border-radius: 999px;
+  color: var(--liq-refract);
+  font-size: 13px;
+  font-family: var(--liq-mono);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+}
+
+/* 下载页 */
+.liq-platforms {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+}
+
+.liq-platform {
+  padding: 28px 24px;
+  border-radius: var(--liq-radius);
+}
+
+.liq-platform h3 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 14px;
+  color: var(--liq-refract);
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.liq-platform ul {
+  position: relative;
+  z-index: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.liq-platform li {
+  margin-bottom: 8px;
+  color: var(--liq-text-secondary);
+  font-size: 14px;
+  line-height: 1.55;
+}
+
+.liq-platform em {
+  position: relative;
+  z-index: 1;
+  display: block;
+  margin-bottom: 8px;
+  color: var(--liq-text-muted);
+  font-size: 13px;
+  font-style: normal;
+}
+
+/* 定价 */
+.liq-pricing {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 48px;
+}
+
+.liq-plan {
+  padding: 32px 28px;
+  border-radius: var(--liq-radius);
+}
+
+.liq-plan--highlight {
+  border-color: var(--liq-refract-deep);
+  box-shadow:
+    0 0 48px rgba(142, 202, 230, 0.15),
+    inset 0 1px 0 rgba(255, 255, 255, 0.18);
+}
+
+.liq-plan h3 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 10px;
+  color: var(--liq-primary-soft);
+  font-size: 1.0625rem;
+  font-weight: 600;
+}
+
+.liq-plan__price {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 6px;
+  color: var(--liq-text);
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.liq-plan__price del {
+  margin-right: 6px;
+  color: var(--liq-text-muted);
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.liq-plan__period {
+  color: var(--liq-text-muted);
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.liq-plan__note {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 18px;
+  color: var(--liq-text-secondary);
+  font-size: 14px;
+}
+
+.liq-plan__features {
+  position: relative;
+  z-index: 1;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.liq-plan__features li {
+  position: relative;
+  margin-bottom: 10px;
+  padding-left: 18px;
+  color: var(--liq-text-secondary);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.liq-plan__features li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  color: var(--liq-accent);
+  font-size: 8px;
+  top: 5px;
+}
+
+.liq-plan .liq-btn {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  margin-top: 18px;
+}
+
+/* 对比表 */
+.liq-compare {
+  width: 100%;
+  margin-bottom: 48px;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.liq-compare th,
+.liq-compare td {
+  padding: 14px 16px;
+  border: 1px solid var(--liq-border);
+  text-align: center;
+}
+
+.liq-compare th {
+  background: rgba(201, 169, 98, 0.08);
+  color: var(--liq-primary-soft);
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.liq-compare td:first-child,
+.liq-compare th:first-child {
+  text-align: left;
+}
+
+.liq-compare .liq-yes {
+  color: var(--liq-refract);
+  font-weight: 600;
+}
+
+.liq-compare .liq-no {
+  color: var(--liq-text-muted);
+}
+
+/* FAQ */
+.liq-faq details {
+  margin-bottom: 10px;
+  border-radius: var(--liq-radius);
+  overflow: hidden;
+}
+
+.liq-faq details.liq-glass summary {
+  position: relative;
+  z-index: 1;
+}
+
+.liq-faq summary {
+  padding: 18px 22px;
+  color: var(--liq-primary-soft);
+  font-weight: 500;
+  font-size: 15px;
+  cursor: pointer;
+  list-style: none;
+}
+
+.liq-faq summary::-webkit-details-marker {
+  display: none;
+}
+
+.liq-faq details[open] summary {
+  border-bottom: 1px solid var(--liq-border);
+  background: rgba(255, 255, 255, 0.03);
+}
+
+.liq-faq__body {
+  position: relative;
+  z-index: 1;
+  padding: 18px 22px;
+  color: var(--liq-text-secondary);
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.liq-faq__body p {
+  margin: 0 0 12px;
+}
+
+.liq-faq__body p:last-child {
+  margin-bottom: 0;
+}
+
+.liq-faq__body ul {
+  margin: 8px 0;
+  padding-left: 20px;
+}
+
+.liq-faq__body code {
+  padding: 2px 8px;
+  background: rgba(142, 202, 230, 0.1);
+  border-radius: 4px;
+  font-family: var(--liq-mono);
+  font-size: 13px;
+  color: var(--liq-refract);
+}
+
+/* 社区 */
+.liq-community {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.liq-community__card {
+  padding: 36px 28px;
+  border-radius: var(--liq-radius);
+  text-align: center;
+  transition: box-shadow 0.35s, border-color 0.35s, transform 0.35s;
+}
+
+.liq-community__card.liq-glass:hover {
+  border-color: var(--liq-border-glow);
+  box-shadow:
+    0 0 36px rgba(142, 202, 230, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+.liq-community__card h3 {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 18px;
+  color: var(--liq-refract);
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.liq-community__links {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.liq-community__links a {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* 页脚 */
+.liq-footer {
+  position: relative;
+  z-index: 1;
+  padding: 40px 0;
+  border-top: 1px solid var(--liq-border);
+  background: rgba(5, 5, 8, 0.55);
+  backdrop-filter: blur(16px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.liq-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px 20px;
+  max-width: var(--liq-wide-max);
+  margin: 0 auto;
+  padding: 0 28px;
+  font-size: 13px;
+  color: var(--liq-text-muted);
+}
+
+.liq-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px 20px;
+}
+
+.liq-footer__links a {
+  color: var(--liq-text-secondary);
+  font-size: 13px;
+}
+
+.liq-footer__links a:hover {
+  color: var(--liq-refract);
+}
+
+.liq-footer__spacer {
+  flex: 1;
+}
+
+/* 响应式 */
+@media (max-width: 900px) {
+  .liq-hero__grid,
+  .liq-split,
+  .liq-split--reverse {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .liq-split--reverse .liq-split__lead,
+  .liq-split--reverse .liq-split__body {
+    order: unset;
+  }
+
+  .liq-split__lead {
+    position: static;
+  }
+
+  .liq-pillars,
+  .liq-oss,
+  .liq-pricing,
+  .liq-community {
+    grid-template-columns: 1fr;
+  }
+
+  .liq-platforms {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .liq-header__toggle {
+    display: flex;
+  }
+
+  .liq-header__nav {
+    display: none;
+    position: absolute;
+    top: var(--liq-header-h);
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    padding: 16px 28px;
+    background: rgba(5, 5, 8, 0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--liq-border);
+  }
+
+  .liq-header__nav.is-open {
+    display: flex;
+  }
+
+  .liq-header__link {
+    padding: 12px 14px;
+  }
+
+  .liq-hero {
+    padding: 56px 0 48px;
+  }
+
+  .liq-compare {
+    font-size: 12px;
+  }
+
+  .liq-compare th,
+  .liq-compare td {
+    padding: 8px 6px;
+  }
+
+  .liq-bg__blob {
+    filter: blur(48px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .liq-bg__blob,
+  .liq-bg__sheen,
+  .liq-hero__title,
+  .liq-hero__aside.liq-glass {
+    animation: none;
+  }
+}
