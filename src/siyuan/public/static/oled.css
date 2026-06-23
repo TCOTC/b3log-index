@@ -1,0 +1,639 @@
+/* OLED 深色模式 — 纯黑画布、细线分隔、低亮度灰字、单一 accent */
+
+:root {
+  --oled-bg: #000000;
+  --oled-surface: #0a0a0a;
+  --oled-text: #6b6b6b;
+  --oled-text-muted: #444444;
+  --oled-text-bright: #9a9a9a;
+  --oled-text-heading: #c8c8c8;
+  --oled-accent: #00ff88;
+  --oled-accent-dim: rgba(0, 255, 136, 0.12);
+  --oled-border: rgba(255, 255, 255, 0.08);
+  --oled-border-bright: rgba(255, 255, 255, 0.14);
+  --oled-font-mono: "SF Mono", "Cascadia Code", "Fira Code", "JetBrains Mono", ui-monospace, monospace;
+  --oled-font-sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+  --oled-inner: min(1120px, calc(100% - 48px));
+  --oled-radius: 2px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--oled-bg);
+  color: var(--oled-text);
+  font-family: var(--oled-font-sans);
+  font-size: 15px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--oled-accent);
+  text-decoration: none;
+  transition: opacity 0.15s ease;
+}
+
+a:hover {
+  opacity: 0.8;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 布局 */
+
+.oled {
+  min-height: 100vh;
+  background: var(--oled-bg);
+}
+
+.oled__inner {
+  width: var(--oled-inner);
+  margin-inline: auto;
+}
+
+.oled__divider {
+  border: none;
+  border-top: 1px solid var(--oled-border);
+  margin: 0;
+}
+
+/* 导航 */
+
+.oled-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+
+.oled-nav--pin {
+  border-bottom-color: var(--oled-border);
+}
+
+.oled-nav__inner {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  padding: 16px 0;
+}
+
+.oled-nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--oled-text-heading);
+  font-family: var(--oled-font-mono);
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+.oled-nav__brand img {
+  width: 28px;
+  height: 28px;
+  opacity: 0.9;
+}
+
+.oled-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-left: auto;
+}
+
+.oled-nav__link {
+  color: var(--oled-text);
+  font-family: var(--oled-font-mono);
+  font-size: 13px;
+}
+
+.oled-nav__link:hover {
+  color: var(--oled-text-bright);
+  opacity: 1;
+}
+
+.oled-nav__cta {
+  padding: 8px 16px;
+  border: 1px solid var(--oled-accent);
+  color: var(--oled-accent);
+  font-family: var(--oled-font-mono);
+  font-size: 13px;
+  border-radius: var(--oled-radius);
+}
+
+.oled-nav__cta:hover {
+  background: var(--oled-accent-dim);
+  opacity: 1;
+}
+
+/* 按钮 */
+
+.oled-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 24px;
+  font-family: var(--oled-font-mono);
+  font-size: 14px;
+  border-radius: var(--oled-radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+
+.oled-btn--primary {
+  background: var(--oled-accent);
+  color: #000000;
+  border-color: var(--oled-accent);
+  font-weight: 600;
+}
+
+.oled-btn--primary:hover {
+  opacity: 0.9;
+}
+
+.oled-btn--ghost {
+  background: transparent;
+  color: var(--oled-text-bright);
+  border-color: var(--oled-border-bright);
+}
+
+.oled-btn--ghost:hover {
+  border-color: var(--oled-accent);
+  color: var(--oled-accent);
+  opacity: 1;
+}
+
+/* 标签 */
+
+.oled-tag {
+  display: inline-block;
+  padding: 4px 10px;
+  font-family: var(--oled-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--oled-accent);
+  border: 1px solid var(--oled-border);
+  border-radius: var(--oled-radius);
+}
+
+/* Hero */
+
+.oled-hero {
+  padding: 80px 0 96px;
+}
+
+.oled-hero__inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.oled-hero__title {
+  margin: 20px 0 16px;
+  font-family: var(--oled-font-mono);
+  font-size: clamp(32px, 5vw, 48px);
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--oled-text-heading);
+  letter-spacing: -0.02em;
+}
+
+.oled-hero__title em {
+  font-style: normal;
+  color: var(--oled-accent);
+}
+
+.oled-hero__subtitle {
+  margin: 0 0 32px;
+  font-size: 16px;
+  color: var(--oled-text);
+  max-width: 420px;
+}
+
+.oled-hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.oled-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--oled-border);
+  font-family: var(--oled-font-mono);
+  font-size: 12px;
+  color: var(--oled-text-muted);
+}
+
+.oled-hero__meta span::before {
+  content: "// ";
+  color: var(--oled-accent);
+  opacity: 0.6;
+}
+
+/* 终端预览 */
+
+.oled-terminal {
+  border: 1px solid var(--oled-border);
+  border-radius: var(--oled-radius);
+  overflow: hidden;
+  background: var(--oled-surface);
+}
+
+.oled-terminal__bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--oled-border);
+  font-family: var(--oled-font-mono);
+  font-size: 11px;
+  color: var(--oled-text-muted);
+}
+
+.oled-terminal__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--oled-border-bright);
+}
+
+.oled-terminal__dot--accent {
+  background: var(--oled-accent);
+  opacity: 0.5;
+}
+
+.oled-terminal__body {
+  padding: 20px;
+  font-family: var(--oled-font-mono);
+  font-size: 13px;
+  line-height: 1.7;
+  color: var(--oled-text);
+}
+
+.oled-terminal__prompt {
+  color: var(--oled-accent);
+  opacity: 0.7;
+}
+
+.oled-terminal__comment {
+  color: var(--oled-text-muted);
+}
+
+.oled-terminal__keyword {
+  color: var(--oled-text-bright);
+}
+
+/* 区块 */
+
+.oled-section {
+  padding: 72px 0;
+}
+
+.oled-section__label {
+  margin: 0 0 8px;
+  font-family: var(--oled-font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--oled-accent);
+  opacity: 0.8;
+}
+
+.oled-section__title {
+  margin: 0 0 48px;
+  font-family: var(--oled-font-mono);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--oled-text-heading);
+}
+
+/* 功能网格 */
+
+.oled-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--oled-border);
+  border: 1px solid var(--oled-border);
+  border-radius: var(--oled-radius);
+}
+
+.oled-grid__item {
+  padding: 28px 24px;
+  background: var(--oled-bg);
+}
+
+.oled-grid__icon {
+  font-family: var(--oled-font-mono);
+  font-size: 12px;
+  color: var(--oled-accent);
+  margin-bottom: 12px;
+}
+
+.oled-grid__title {
+  margin: 0 0 10px;
+  font-family: var(--oled-font-mono);
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--oled-text-heading);
+}
+
+.oled-grid__desc {
+  margin: 0;
+  font-size: 14px;
+  color: var(--oled-text);
+}
+
+/* 页面标题 */
+
+.oled-page {
+  padding: 64px 0 80px;
+}
+
+.oled-page__title {
+  margin: 0 0 12px;
+  font-family: var(--oled-font-mono);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--oled-text-heading);
+  text-align: center;
+}
+
+.oled-page__desc {
+  margin: 0 auto 48px;
+  max-width: 480px;
+  text-align: center;
+  color: var(--oled-text);
+  font-size: 15px;
+}
+
+/* 下载 */
+
+.oled-download {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  max-width: 520px;
+  margin: 0 auto;
+  border: 1px solid var(--oled-border);
+  border-radius: var(--oled-radius);
+  overflow: hidden;
+}
+
+.oled-download__item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 18px 20px;
+  background: var(--oled-bg);
+  border-bottom: 1px solid var(--oled-border);
+  color: var(--oled-text-heading);
+  font-family: var(--oled-font-mono);
+  font-size: 14px;
+  transition: background 0.15s ease;
+}
+
+.oled-download__item:last-child {
+  border-bottom: none;
+}
+
+.oled-download__item:hover {
+  background: var(--oled-surface);
+  opacity: 1;
+}
+
+.oled-download__item span {
+  font-size: 12px;
+  color: var(--oled-text-muted);
+}
+
+.oled-download__note {
+  margin-top: 32px;
+  text-align: center;
+  font-family: var(--oled-font-mono);
+  font-size: 12px;
+  color: var(--oled-text-muted);
+}
+
+/* 定价 */
+
+.oled-pricing {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--oled-border);
+  border: 1px solid var(--oled-border);
+  border-radius: var(--oled-radius);
+  overflow: hidden;
+}
+
+.oled-pricing__card {
+  padding: 32px 24px;
+  background: var(--oled-bg);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.oled-pricing__name {
+  margin: 0;
+  font-family: var(--oled-font-mono);
+  font-size: 14px;
+  color: var(--oled-accent);
+  letter-spacing: 0.05em;
+}
+
+.oled-pricing__price {
+  margin: 0;
+  font-family: var(--oled-font-mono);
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--oled-text-heading);
+}
+
+.oled-pricing__price small {
+  font-size: 14px;
+  color: var(--oled-text-muted);
+  text-decoration: line-through;
+  margin-right: 8px;
+}
+
+.oled-pricing__price span {
+  display: block;
+  font-size: 12px;
+  color: var(--oled-text-muted);
+  margin-top: 4px;
+}
+
+.oled-pricing__desc {
+  margin: 0;
+  font-size: 13px;
+  color: var(--oled-text);
+  flex: 1;
+}
+
+.oled-pricing__features {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 13px;
+  color: var(--oled-text);
+}
+
+.oled-pricing__features li {
+  padding: 6px 0;
+  border-top: 1px solid var(--oled-border);
+}
+
+.oled-pricing__features li::before {
+  content: "→ ";
+  color: var(--oled-accent);
+  opacity: 0.6;
+}
+
+/* 社区 */
+
+.oled-community {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1px;
+  background: var(--oled-border);
+  border: 1px solid var(--oled-border);
+  border-radius: var(--oled-radius);
+  overflow: hidden;
+}
+
+.oled-community__card {
+  padding: 32px 24px;
+  background: var(--oled-bg);
+  text-align: center;
+}
+
+.oled-community__card img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 16px;
+  opacity: 0.85;
+}
+
+.oled-community__title {
+  margin: 0 0 16px;
+  font-family: var(--oled-font-mono);
+  font-size: 16px;
+  color: var(--oled-text-heading);
+}
+
+.oled-community__links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.oled-community__links a {
+  font-family: var(--oled-font-mono);
+  font-size: 13px;
+}
+
+/* 页脚 */
+
+.oled-footer {
+  padding: 32px 0 48px;
+  border-top: 1px solid var(--oled-border);
+}
+
+.oled-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px 24px;
+  font-family: var(--oled-font-mono);
+  font-size: 12px;
+}
+
+.oled-footer__copy {
+  color: var(--oled-text-muted);
+}
+
+.oled-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.oled-footer__links a {
+  color: var(--oled-text);
+}
+
+.oled-footer__links a:hover {
+  color: var(--oled-accent);
+  opacity: 1;
+}
+
+.oled-footer__social {
+  display: flex;
+  gap: 12px;
+  margin-left: auto;
+}
+
+.oled-footer__social a {
+  opacity: 0.6;
+  transition: opacity 0.15s ease;
+}
+
+.oled-footer__social a:hover {
+  opacity: 1;
+}
+
+.oled-footer__social img {
+  width: 20px;
+  height: 20px;
+  filter: grayscale(1) brightness(0.7);
+}
+
+/* 响应式 */
+
+@media (max-width: 900px) {
+  .oled-hero__inner {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .oled-grid,
+  .oled-pricing,
+  .oled-community {
+    grid-template-columns: 1fr;
+  }
+
+  .oled-nav__links {
+    display: none;
+  }
+
+  .oled-footer__social {
+    margin-left: 0;
+  }
+}

@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+  <include src="partials/head-zh.html" locals='{"title":"下载 - "}'></include>
+  <body>
+    <div class="oled">
+      <include src="partials/header-zh.html"></include>
+
+      <section class="oled-page">
+        <div class="oled__inner">
+          <h1 class="oled-page__title">下载思源笔记</h1>
+          <p class="oled-page__desc">
+            在纯黑界面中开始你的暗夜写作之旅。选择对应平台，一键安装 @@SIYUAN_VERSION_V@@。
+          </p>
+
+          <div class="oled-download" id="download">
+            <a
+              class="oled-download__item"
+              style="display: none"
+              target="_blank"
+              rel="nofollow"
+              href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac.dmg"
+              data-os="macOS">
+              英特尔芯片
+              <span>升级需重新下载</span>
+            </a>
+            <a
+              class="oled-download__item"
+              style="display: none"
+              target="_blank"
+              rel="nofollow"
+              href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac-arm64.dmg"
+              data-os="macOS">
+              苹果芯片
+              <span>升级需重新下载</span>
+            </a>
+            <a
+              class="oled-download__item"
+              target="_blank"
+              rel="nofollow"
+              href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-win.exe"
+              data-os="Windows">
+              Windows x86_64
+              <span>升级需重新下载</span>
+            </a>
+            <a class="oled-download__item" target="_blank" href="https://apps.microsoft.com/detail/9p7hpmxp73k4" data-os="Windows">
+              微软商店
+              <span>支持一键升级</span>
+            </a>
+            <a
+              class="oled-download__item"
+              style="display: none"
+              target="_blank"
+              rel="nofollow"
+              href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@.apk"
+              data-os="Android">
+              Android 安装包
+              <span>升级需重新下载</span>
+            </a>
+            <a
+              class="oled-download__item"
+              style="display: none"
+              target="_blank"
+              rel="nofollow"
+              href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.AppImage"
+              data-os="Linux">
+              Linux AppImage
+              <span>升级需重新下载</span>
+            </a>
+            <a
+              class="oled-download__item"
+              style="display: none"
+              target="_blank"
+              rel="nofollow"
+              href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.deb"
+              data-os="Linux">
+              Linux deb
+              <span>升级需重新下载</span>
+            </a>
+            <a class="oled-download__item" target="_blank" rel="nofollow" href="https://hub.docker.com/r/b3log/siyuan">
+              Docker 镜像
+              <span>容器部署</span>
+            </a>
+            <a class="oled-download__item" target="_blank" rel="nofollow" href="@@GITHUB_RELEASE@@">
+              GitHub Release
+              <span>全部平台</span>
+            </a>
+          </div>
+
+          <p class="oled-download__note">
+            // 安装后可在设置中切换深色主题，获得最佳 OLED 护眼体验
+          </p>
+        </div>
+      </section>
+
+      <include src="partials/footer-zh.html"></include>
+    </div>
+
+    <include src="partials/site-script.html"></include>
+  </body>
+</html>
