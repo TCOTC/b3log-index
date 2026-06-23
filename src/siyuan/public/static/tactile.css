@@ -1,0 +1,807 @@
+/* 触感数字与可变形界面 — Tactile Digital / Deformable UI */
+
+:root {
+  --tac-bg: #f4f0ff;
+  --tac-bg-soft: #ebe4ff;
+  --tac-surface: #ffffff;
+  --tac-text: #2a2540;
+  --tac-text-soft: #6b6280;
+  --tac-coral: #ff7b6b;
+  --tac-coral-soft: #ffe8e4;
+  --tac-mint: #5ed4b8;
+  --tac-mint-soft: #d8f8ef;
+  --tac-violet: #8b7cf6;
+  --tac-violet-soft: #e8e3ff;
+  --tac-shadow: rgba(42, 37, 64, 0.12);
+  --tac-shadow-deep: rgba(42, 37, 64, 0.2);
+  --tac-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --tac-spring-soft: cubic-bezier(0.25, 1.25, 0.5, 1);
+  --tac-radius: 24px;
+  --tac-radius-sm: 16px;
+  --tac-radius-pill: 999px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Outfit', system-ui, -apple-system, sans-serif;
+  background: var(--tac-bg);
+  color: var(--tac-text);
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+a {
+  color: var(--tac-violet);
+  text-decoration: none;
+  transition: color 0.2s var(--tac-spring-soft);
+}
+
+a:hover {
+  color: var(--tac-coral);
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.tac__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+/* ── 背景果冻气泡 ── */
+.tac-blobs {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.tac-blobs__item {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.55;
+  animation: tac-blob-float 12s ease-in-out infinite;
+}
+
+.tac-blobs__item--1 {
+  width: 420px;
+  height: 420px;
+  background: var(--tac-violet-soft);
+  top: -120px;
+  right: -80px;
+}
+
+.tac-blobs__item--2 {
+  width: 360px;
+  height: 360px;
+  background: var(--tac-coral-soft);
+  bottom: 10%;
+  left: -100px;
+  animation-delay: -4s;
+}
+
+.tac-blobs__item--3 {
+  width: 280px;
+  height: 280px;
+  background: var(--tac-mint-soft);
+  top: 40%;
+  right: 15%;
+  animation-delay: -8s;
+}
+
+@keyframes tac-blob-float {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    border-radius: 50% 45% 55% 50%;
+  }
+  33% {
+    transform: translate(20px, -30px) scale(1.08);
+    border-radius: 45% 55% 50% 50%;
+  }
+  66% {
+    transform: translate(-15px, 20px) scale(0.95);
+    border-radius: 55% 50% 45% 55%;
+  }
+}
+
+/* ── 全局挤压交互 ── */
+.tac-squish {
+  transition:
+    transform 0.35s var(--tac-spring),
+    box-shadow 0.35s var(--tac-spring-soft),
+    border-radius 0.35s var(--tac-spring-soft);
+  transform-origin: center;
+  will-change: transform;
+}
+
+.tac-squish:hover {
+  transform: scale(1.04) translateY(-2px);
+}
+
+.tac-squish:active {
+  transform: scale(0.94) translateY(1px);
+  transition-duration: 0.1s;
+}
+
+.tac-jelly {
+  animation: tac-jelly-idle 4s ease-in-out infinite;
+}
+
+@keyframes tac-jelly-idle {
+  0%,
+  100% {
+    border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+  }
+  50% {
+    border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+  }
+}
+
+/* ── 导航 ── */
+.tac-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 16px 24px;
+  background: rgba(244, 240, 255, 0.75);
+  backdrop-filter: blur(16px);
+  border-bottom: 2px solid rgba(139, 124, 246, 0.1);
+}
+
+.tac-nav__inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.tac-nav__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  color: var(--tac-text);
+  padding: 8px 14px;
+  border-radius: var(--tac-radius-pill);
+  background: var(--tac-surface);
+  box-shadow:
+    0 4px 0 var(--tac-shadow),
+    inset 0 -2px 0 rgba(0, 0, 0, 0.04);
+}
+
+.tac-nav__spacer {
+  flex: 1;
+}
+
+.tac-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.tac-nav__link {
+  padding: 8px 16px;
+  font-weight: 500;
+  color: var(--tac-text-soft);
+  border-radius: var(--tac-radius-pill);
+}
+
+.tac-nav__link:hover {
+  color: var(--tac-violet);
+  background: var(--tac-violet-soft);
+}
+
+.tac-nav__cta {
+  padding: 10px 20px;
+  font-weight: 600;
+  color: #fff;
+  background: linear-gradient(135deg, var(--tac-coral), #ff9a8b);
+  border-radius: var(--tac-radius-pill);
+  box-shadow:
+    0 5px 0 #e05a4a,
+    0 8px 20px rgba(255, 123, 107, 0.35);
+}
+
+.tac-nav__cta:active {
+  box-shadow:
+    0 2px 0 #e05a4a,
+    0 4px 10px rgba(255, 123, 107, 0.25);
+}
+
+/* ── Hero ── */
+.tac-hero {
+  position: relative;
+  z-index: 1;
+  padding: 80px 0 64px;
+  text-align: center;
+}
+
+.tac-hero__badge {
+  display: inline-block;
+  padding: 8px 20px;
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  background: var(--tac-mint-soft);
+  color: #2a8a72;
+  border-radius: var(--tac-radius-pill);
+  box-shadow: 0 4px 0 rgba(94, 212, 184, 0.3);
+}
+
+.tac-hero__title {
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 20px;
+  letter-spacing: -0.02em;
+}
+
+.tac-hero__subtitle {
+  font-size: 1.15rem;
+  color: var(--tac-text-soft);
+  max-width: 620px;
+  margin: 0 auto 36px;
+}
+
+.tac-hero__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+/* ── 按钮 ── */
+.tac-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: var(--tac-radius-pill);
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.tac-btn--primary {
+  color: #fff;
+  background: linear-gradient(135deg, var(--tac-violet), #a99bf8);
+  box-shadow:
+    0 6px 0 #6b5cd4,
+    0 10px 28px rgba(139, 124, 246, 0.4);
+}
+
+.tac-btn--primary:active {
+  box-shadow:
+    0 2px 0 #6b5cd4,
+    0 4px 12px rgba(139, 124, 246, 0.3);
+}
+
+.tac-btn--ghost {
+  color: var(--tac-violet);
+  background: var(--tac-surface);
+  box-shadow:
+    0 5px 0 var(--tac-shadow),
+    inset 0 0 0 2px var(--tac-violet-soft);
+}
+
+.tac-btn--ghost:active {
+  box-shadow:
+    0 2px 0 var(--tac-shadow),
+    inset 0 0 0 2px var(--tac-violet-soft);
+}
+
+/* ── 打字机标语 ── */
+.tac-slogan {
+  display: inline-block;
+  min-height: 2em;
+  padding: 12px 28px;
+  font-size: 1.05rem;
+  font-weight: 500;
+  color: var(--tac-text-soft);
+  background: var(--tac-surface);
+  border-radius: var(--tac-radius);
+  box-shadow:
+    0 6px 0 var(--tac-shadow),
+    inset 0 2px 8px rgba(139, 124, 246, 0.06);
+}
+
+.tac-slogan__caret {
+  display: inline-block;
+  width: 2px;
+  height: 1.1em;
+  margin-left: 2px;
+  vertical-align: text-bottom;
+  background: var(--tac-coral);
+  animation: tac-blink 1s step-end infinite;
+}
+
+@keyframes tac-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* ── 区块 ── */
+.tac-section {
+  position: relative;
+  z-index: 1;
+  padding: 64px 0;
+}
+
+.tac-section__label {
+  display: block;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: var(--tac-coral);
+  margin-bottom: 12px;
+}
+
+.tac-section__title {
+  text-align: center;
+  font-size: clamp(1.6rem, 3.5vw, 2.2rem);
+  font-weight: 700;
+  margin-bottom: 40px;
+}
+
+.tac-section__title--center {
+  text-align: center;
+}
+
+.tac-cta-block {
+  text-align: center;
+  padding: 48px 0;
+}
+
+/* ── 功能卡片 ── */
+.tac-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.tac-feature {
+  padding: 32px 28px;
+  border-radius: var(--tac-radius);
+  background: var(--tac-surface);
+  box-shadow:
+    0 8px 0 var(--tac-shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.tac-feature--coral {
+  border-top: 4px solid var(--tac-coral);
+}
+
+.tac-feature--mint {
+  border-top: 4px solid var(--tac-mint);
+}
+
+.tac-feature--violet {
+  border-top: 4px solid var(--tac-violet);
+}
+
+.tac-feature__icon {
+  font-size: 2rem;
+  margin-bottom: 16px;
+}
+
+.tac-feature__title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.tac-feature__desc {
+  font-size: 0.95rem;
+  color: var(--tac-text-soft);
+  line-height: 1.7;
+}
+
+/* ── 页头 ── */
+.tac-page-head {
+  text-align: center;
+  padding: 48px 0 32px;
+}
+
+.tac-page-head__title {
+  font-size: clamp(1.8rem, 4vw, 2.6rem);
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.tac-page-head__desc {
+  font-size: 1.05rem;
+  color: var(--tac-text-soft);
+}
+
+/* ── 下载 ── */
+.tac-download-hero {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.tac-download-btn {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 32px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(145deg, var(--tac-violet), #9d8ff9);
+  border-radius: var(--tac-radius);
+  box-shadow:
+    0 8px 0 #6b5cd4,
+    0 12px 32px rgba(139, 124, 246, 0.35);
+  text-decoration: none;
+}
+
+.tac-download-btn span {
+  font-size: 0.75rem;
+  font-weight: 400;
+  opacity: 0.85;
+  margin-top: 4px;
+}
+
+.tac-download-btn:active {
+  box-shadow:
+    0 3px 0 #6b5cd4,
+    0 6px 16px rgba(139, 124, 246, 0.25);
+}
+
+.tac-version {
+  text-align: center;
+  font-size: 0.9rem;
+  color: var(--tac-text-soft);
+  margin-bottom: 40px;
+}
+
+.tac-platform {
+  margin-bottom: 32px;
+  padding: 28px;
+  background: var(--tac-surface);
+  border-radius: var(--tac-radius);
+  box-shadow: 0 6px 0 var(--tac-shadow);
+}
+
+.tac-platform__title {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.tac-platform__title img {
+  width: 32px;
+  height: 32px;
+}
+
+.tac-platform__note {
+  margin-bottom: 16px;
+  color: var(--tac-text-soft);
+  font-size: 0.9rem;
+}
+
+.tac-platform__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.tac-platform__link {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--tac-text);
+  background: var(--tac-bg-soft);
+  border-radius: var(--tac-radius-pill);
+  box-shadow: 0 3px 0 var(--tac-shadow);
+}
+
+.tac-download-extra {
+  text-align: center;
+  margin: 32px 0;
+  color: var(--tac-text-soft);
+}
+
+.tac-download-extra p {
+  margin-bottom: 12px;
+}
+
+/* ── 定价 ── */
+.tac-pricing {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 48px;
+}
+
+.tac-price-card {
+  padding: 32px 28px;
+  border-radius: var(--tac-radius);
+  background: var(--tac-surface);
+  box-shadow: 0 8px 0 var(--tac-shadow);
+  text-align: center;
+}
+
+.tac-price-card--free {
+  border-top: 5px solid var(--tac-mint);
+}
+
+.tac-price-card--feature {
+  border-top: 5px solid var(--tac-coral);
+}
+
+.tac-price-card--sub {
+  border-top: 5px solid var(--tac-violet);
+  transform: scale(1.02);
+}
+
+.tac-price-card__name {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.tac-price-card__amount {
+  font-size: 2rem;
+  font-weight: 800;
+  margin-bottom: 4px;
+}
+
+.tac-price-card__amount del {
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--tac-text-soft);
+}
+
+.tac-price-card__period {
+  font-size: 0.9rem;
+  color: var(--tac-text-soft);
+  margin-bottom: 12px;
+}
+
+.tac-price-card__note {
+  font-size: 0.85rem;
+  margin-bottom: 20px;
+}
+
+.tac-price-card .tac-btn {
+  width: 100%;
+  margin-bottom: 24px;
+}
+
+.tac-price-card__features {
+  list-style: none;
+  text-align: left;
+  font-size: 0.9rem;
+  color: var(--tac-text-soft);
+}
+
+.tac-price-card__features li {
+  padding: 8px 0;
+  border-bottom: 1px solid var(--tac-bg-soft);
+}
+
+.tac-price-card__features li:last-child {
+  border-bottom: none;
+}
+
+/* ── FAQ ── */
+.tac-faq {
+  margin-top: 48px;
+}
+
+.tac-faq__item {
+  padding: 24px 28px;
+  margin-bottom: 16px;
+  background: var(--tac-surface);
+  border-radius: var(--tac-radius-sm);
+  box-shadow: 0 4px 0 var(--tac-shadow);
+}
+
+.tac-faq__q {
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.tac-faq__a {
+  font-size: 0.95rem;
+  color: var(--tac-text-soft);
+  line-height: 1.7;
+}
+
+/* ── 社区 ── */
+.tac-community {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
+  padding-bottom: 48px;
+}
+
+.tac-community-card {
+  padding: 32px 24px;
+  text-align: center;
+  background: var(--tac-surface);
+  border-radius: var(--tac-radius);
+  box-shadow: 0 6px 0 var(--tac-shadow);
+}
+
+.tac-community-card img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 16px;
+  border-radius: 20px;
+}
+
+.tac-community-card__title {
+  font-size: 1.15rem;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+
+.tac-community-card__links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.tac-community-card__link {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--tac-violet);
+  background: var(--tac-violet-soft);
+  border-radius: var(--tac-radius-pill);
+}
+
+/* ── 页脚 ── */
+.tac-footer {
+  position: relative;
+  z-index: 1;
+  padding: 40px 0;
+  margin-top: 48px;
+  background: var(--tac-surface);
+  border-top: 2px solid var(--tac-bg-soft);
+}
+
+.tac-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 16px;
+}
+
+.tac-footer__copy {
+  font-size: 0.85rem;
+  color: var(--tac-text-soft);
+}
+
+.tac-footer__links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.tac-footer__link {
+  font-size: 0.85rem;
+  color: var(--tac-text-soft);
+  padding: 4px 8px;
+  border-radius: var(--tac-radius-pill);
+}
+
+.tac-footer__link:hover {
+  background: var(--tac-bg-soft);
+  color: var(--tac-violet);
+}
+
+.tac-footer__spacer {
+  flex: 1;
+}
+
+.tac-footer__social {
+  display: flex;
+  gap: 12px;
+}
+
+.tac-footer__social a {
+  display: inline-flex;
+  padding: 6px;
+  border-radius: 12px;
+  background: var(--tac-bg-soft);
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+/* ── 响应式 ── */
+@media (max-width: 768px) {
+  .tac-nav__links {
+    gap: 4px;
+  }
+
+  .tac-nav__link {
+    padding: 6px 10px;
+    font-size: 0.85rem;
+  }
+
+  .tac-nav__cta {
+    padding: 8px 14px;
+    font-size: 0.85rem;
+  }
+
+  .tac-hero {
+    padding: 48px 0 40px;
+  }
+
+  .tac-price-card--sub {
+    transform: none;
+  }
+
+  .tac-footer__inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .tac-footer__spacer {
+    display: none;
+  }
+}
+
+@keyframes tac-ripple-pop {
+  to {
+    transform: scale(2.5);
+    opacity: 0;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .tac-squish,
+  .tac-jelly,
+  .tac-blobs__item {
+    animation: none;
+    transition: none;
+  }
+
+  .tac-squish:hover,
+  .tac-squish:active {
+    transform: none;
+  }
+}
