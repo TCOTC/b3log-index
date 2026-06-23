@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+  <include src="partials/head-zh.html" locals='{"title":""}'></include>
+  <body>
+    <include src="partials/script-redirect-zh.html"></include>
+    <div class="mic-page">
+      <div class="mic-page__bg"></div>
+      <div class="mic-page__content">
+        <include src="partials/header-zh.html" locals='{"activeDownload":"","activePricing":"","activeCommunity":""}'></include>
+
+        <section class="mic-hero mic-wrap">
+          <div class="mic-hero__panel">
+            <div>
+              <span class="mic-hero__badge">Micro-interactions</span>
+              <h2 class="mic-hero__title">每一次点击，都有回应</h2>
+              <p class="mic-hero__subtitle">微交互让工具变得有生命力</p>
+              <div class="mic-hero__tags">
+                <span class="mic-hero__tag">涟漪反馈</span>
+                <span class="mic-hero__tag">触感按钮</span>
+                <span class="mic-hero__tag">状态过渡</span>
+                <span class="mic-hero__tag">即时响应</span>
+              </div>
+              <p class="mic-hero__desc">
+                思源笔记在每个操作细节中注入微交互设计——按下、悬停、切换皆有恰到好处的动画回应。
+                让笔记工具不再冰冷，每一次触碰都能感受到流畅而有生命力的反馈。
+              </p>
+              <a class="mic-btn mic-btn--primary mic-ripple" href="download.html">免费下载使用</a>
+            </div>
+            <div class="mic-hero__visual mic-animate">
+              <div class="mic-card mic-card--lg mic-card--press">
+                <img src="@@STATIC@@/feature0.png" alt="思源笔记界面预览" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <div class="mic-wrap">
+          <div class="mic-slogan" id="slogan"></div>
+        </div>
+
+        <div class="mic-wrap mic-animate" style="padding-bottom: 48px">
+          <div class="mic-card mic-card--lg mic-card--press" style="padding: 16px; text-align: center">
+            <img src="@@STATIC@@/home-img.png" alt="思源笔记工作区" style="border-radius: 12px; margin: 0 auto" />
+          </div>
+        </div>
+
+        <nav class="mic-nav">
+          <div class="mic-nav__inner mic-wrap">
+            <div class="mic-nav__item" data-id="feature1">触感编辑</div>
+            <div class="mic-nav__item" data-id="feature2">即时反馈</div>
+            <div class="mic-nav__item" data-id="feature3">涟漪双链</div>
+            <div class="mic-nav__item" data-id="feature4">状态动效</div>
+            <div class="mic-nav__item" data-id="feature5">响应同步</div>
+            <div class="mic-flex--1"></div>
+            <a class="mic-btn mic-btn--primary mic-btn--sm mic-ripple" href="download.html">下载</a>
+          </div>
+        </nav>
+
+        <section class="mic-feature mic-wrap" id="feature1">
+          <div class="mic-feature__grid">
+            <div class="mic-feature__info">
+              <div class="mic-feature__label">Touch 01</div>
+              <h2 class="mic-feature__title">触感编辑</h2>
+              <p class="mic-feature__desc">
+                块级编辑器的每个操作都有细腻的触感反馈。
+                <span class="mic-feature__highlight">选中、拖拽、缩进——状态切换伴随流畅过渡，让编辑过程像触摸真实物体般自然。</span>
+              </p>
+            </div>
+            <div class="mic-feature__media mic-animate">
+              <div class="mic-card mic-card--press">
+                <img src="@@STATIC@@/feature1-1.png" alt="块编辑模式" />
+              </div>
+            </div>
+          </div>
+          <div class="mic-spacer"></div>
+          <div class="mic-feature__cards">
+            <div class="mic-card mic-feature__mini mic-card--press mic-animate--left mic-animate">
+              <h3>聚焦弹跳</h3>
+              <p>进入块聚焦时轻微缩放弹入，退出时柔和收回，视觉焦点切换清晰而不突兀。</p>
+            </div>
+            <div class="mic-card mic-feature__mini mic-card--press mic-animate">
+              <h3>拖拽跟手</h3>
+              <p>拖动块级内容时实时跟随指针，落位瞬间弹性吸附，操作手感丝滑连贯。</p>
+            </div>
+            <div class="mic-card mic-feature__mini mic-card--press mic-animate--right mic-animate">
+              <h3>输入脉动</h3>
+              <p>新建块时光标区域轻柔脉动提示，引导注意力自然落在待输入位置。</p>
+            </div>
+          </div>
+          <div class="mic-spacer"></div>
+          <div class="mic-feature__grid mic-feature__grid--reverse">
+            <div class="mic-feature__info mic-animate--left mic-animate">
+              <h2 class="mic-feature__title">百万字流畅</h2>
+              <p class="mic-feature__desc">
+                动态加载让大文档编辑依然响应灵敏。
+                <span class="mic-feature__highlight">滚动、展开、折叠皆有渐进式动画，体量再大也不牺牲交互品质。</span>
+              </p>
+            </div>
+            <div class="mic-feature__media">
+              <div class="mic-card mic-card--press">
+                <img src="@@STATIC@@/feature1-3.png" alt="聚焦模式" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="mic-feature mic-wrap" id="feature2">
+          <div class="mic-feature__grid">
+            <div class="mic-feature__info">
+              <div class="mic-feature__label">Touch 02</div>
+              <h2 class="mic-feature__title">即时反馈</h2>
+              <p class="mic-feature__desc">
+                大纲、闪卡、数据库——每个视图切换都有明确的状态回应。
+                <span class="mic-feature__highlight">操作结果零延迟可见，消除「我做了吗？」的不确定感。</span>
+              </p>
+            </div>
+            <div class="mic-feature__media mic-animate--right mic-animate">
+              <div class="mic-card mic-card--press">
+                <img src="@@STATIC@@/feature4-1.png" alt="大纲视图" />
+              </div>
+            </div>
+          </div>
+          <div class="mic-spacer"></div>
+          <div class="mic-feature__grid mic-feature__grid--reverse">
+            <div class="mic-feature__info mic-animate--left mic-animate">
+              <h2 class="mic-feature__title">闪卡翻转</h2>
+              <p class="mic-feature__desc">
+                复习闪卡时翻转动画配合触觉节奏。
+                <em>答对轻弹绿色，答错柔和红色提示——记忆反馈即时而温和。</em>
+              </p>
+            </div>
+            <div class="mic-feature__media">
+              <div class="mic-card mic-card--press">
+                <img src="@@STATIC@@/feature2-4.png" alt="闪卡复习" />
+              </div>
+            </div>
+          </div>
+          <div class="mic-spacer"></div>
+          <div class="mic-feature__grid">
+            <div class="mic-feature__info">
+              <h2 class="mic-feature__title">数据库动效</h2>
+              <p class="mic-feature__desc">
+                表格行悬停微抬、排序列头弹性指示、筛选面板滑入展开。
+                <span class="mic-feature__highlight">数据操作不再枯燥，每个变更都有可见的过渡动画。</span>
+              </p>
+            </div>
+            <div class="mic-feature__media mic-animate">
+              <div class="mic-card mic-card--press">
+                <img src="@@STATIC@@/feature2-5.png" alt="数据库" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="mic-feature mic-wrap" id="feature3">
+          <div style="text-align: center; margin-bottom: 48px">
+            <div class="mic-feature__label">Touch 03</div>
+            <h2 class="mic-feature__title">涟漪双链</h2>
+            <p class="mic-feature__desc" style="margin: 0 auto">
+              点击块引用时涟漪从触点扩散，链接建立瞬间可视化。
+              <span class="mic-feature__highlight">引用与反链的跳转伴随平滑滚动，知识关联触手可及。</span>
+            </p>
+          </div>
+          <div class="mic-feature__grid">
+            <div class="mic-feature__info" id="block1">
+              <h3 class="mic-feature__title" style="font-size: 1.3rem">块引动效</h3>
+              <p class="mic-feature__desc">引用块时源块高亮脉冲，目标位置柔和定位，关联建立过程清晰可感。</p>
+            </div>
+            <div class="mic-feature__media">
+              <div class="mic-card mic-card--press">
+                <img id="blockImg" src="@@STATIC@@/feature3-1.png" alt="双链块引" />
+              </div>
+            </div>
+          </div>
+          <div class="mic-spacer--sm"></div>
+          <div class="mic-feature__grid mic-feature__grid--reverse">
+            <div class="mic-feature__info" id="block2">
+              <h3 class="mic-feature__title" style="font-size: 1.3rem">关系图谱</h3>
+              <p class="mic-feature__desc">节点悬停弹性放大、连线高亮流动，图谱探索充满互动乐趣。</p>
+            </div>
+            <div class="mic-feature__info" id="block3" style="display: none"></div>
+          </div>
+        </section>
+
+        <section class="mic-feature mic-wrap" id="feature4">
+          <div class="mic-feature__grid">
+            <div class="mic-feature__info">
+              <div class="mic-feature__label">Touch 04</div>
+              <h2 class="mic-feature__title">状态动效</h2>
+              <p class="mic-feature__desc">
+                面板展开、标签切换、工具栏显隐——界面状态变化皆有连贯过渡。
+                <span class="mic-feature__highlight">减少认知跳跃，让注意力始终停留在内容上。</span>
+              </p>
+            </div>
+            <div class="mic-feature__media mic-animate">
+              <div class="mic-card mic-card--press">
+                <img src="@@STATIC@@/feature4-2.png" alt="列表大纲" />
+              </div>
+            </div>
+          </div>
+          <div class="mic-spacer"></div>
+          <div class="mic-feature__grid mic-feature__grid--reverse">
+            <div class="mic-feature__info mic-animate--left mic-animate">
+              <h2 class="mic-feature__title">AI 流式回应</h2>
+              <p class="mic-feature__desc">
+                AI 续写内容逐字流式呈现，配合光标脉动。
+                <em>等待不再焦虑，生成过程本身成为一种微交互体验。</em>
+              </p>
+            </div>
+            <div class="mic-feature__media">
+              <div class="mic-card mic-card--press">
+                <img src="@@STATIC@@/feature2-3.png" alt="AI 辅助" />
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="mic-feature mic-wrap" id="feature5">
+          <div style="text-align: center; margin-bottom: 48px">
+            <div class="mic-feature__label">Touch 05</div>
+            <h2 class="mic-feature__title">响应同步</h2>
+            <p class="mic-feature__desc" style="margin: 0 auto">
+              同步进度条流畅推进，完成时轻弹确认动画。
+              <span class="mic-feature__highlight">离线编辑、在线同步——每个网络状态切换都有清晰视觉回应。</span>
+            </p>
+          </div>
+          <div class="mic-feature__cards">
+            <div class="mic-card mic-feature__mini mic-card--press mic-animate">
+              <h3>同步脉动</h3>
+              <p>数据同步时状态图标轻柔旋转，完成后弹性归位，进度一目了然。</p>
+            </div>
+            <div class="mic-card mic-feature__mini mic-card--press mic-animate">
+              <h3>保存弹跳</h3>
+              <p>自动保存触发时角落指示器微弹，确认数据已安全落盘。</p>
+            </div>
+            <div class="mic-card mic-feature__mini mic-card--press mic-animate">
+              <h3>多端一致</h3>
+              <p>设备切换时内容平滑过渡，交互手感跨平台保持统一。</p>
+            </div>
+          </div>
+          <div class="mic-spacer"></div>
+          <div class="mic-wrap" style="text-align: center">
+            <a class="mic-btn mic-btn--primary mic-ripple" href="download.html">体验有生命力的笔记工具</a>
+          </div>
+        </section>
+
+        <include src="partials/footer-zh.html"></include>
+      </div>
+    </div>
+    <include src="partials/site-script.html"></include>
+  </body>
+</html>
