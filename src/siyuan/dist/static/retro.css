@@ -1,0 +1,797 @@
+/* SiYuan Retro-Futurism — 80 年代科幻美学 */
+
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap");
+
+.retro {
+  --retro-bg: #0a0a1a;
+  --retro-bg-alt: #12122a;
+  --retro-chrome-light: #e8ecf4;
+  --retro-chrome-mid: #a8b4c8;
+  --retro-chrome-dark: #5a6478;
+  --retro-neon-pink: #ff2d95;
+  --retro-neon-pink-glow: rgba(255, 45, 149, 0.6);
+  --retro-neon-blue: #00d4ff;
+  --retro-neon-blue-glow: rgba(0, 212, 255, 0.5);
+  --retro-neon-purple: #b44dff;
+  --retro-text: #e0e8ff;
+  --retro-text-muted: #8898b8;
+  --retro-border: rgba(0, 212, 255, 0.25);
+  --retro-max: 1200px;
+  --retro-gutter: 24px;
+  --retro-font-display: "Orbitron", "Noto Sans SC", sans-serif;
+  --retro-font-body: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", sans-serif;
+  color: var(--retro-text);
+  background: var(--retro-bg);
+  font-family: var(--retro-font-body);
+  line-height: 1.6;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+.retro *,
+.retro *::before,
+.retro *::after {
+  box-sizing: border-box;
+}
+
+.retro a {
+  color: var(--retro-neon-blue);
+  text-decoration: none;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+
+.retro a:hover {
+  color: var(--retro-neon-pink);
+  text-shadow: 0 0 8px var(--retro-neon-pink-glow);
+}
+
+/* 扫描线叠加 */
+.retro::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.08) 2px,
+    rgba(0, 0, 0, 0.08) 4px
+  );
+}
+
+/* 网格地平线 */
+.retro__horizon {
+  position: fixed;
+  bottom: 0;
+  left: -50%;
+  width: 200%;
+  height: 45vh;
+  pointer-events: none;
+  z-index: 0;
+  background:
+    linear-gradient(to bottom, transparent 0%, var(--retro-bg) 85%),
+    linear-gradient(90deg, var(--retro-neon-blue) 1px, transparent 1px),
+    linear-gradient(var(--retro-neon-pink) 1px, transparent 1px);
+  background-size: 100% 100%, 60px 60px, 60px 60px;
+  transform: perspective(400px) rotateX(65deg);
+  transform-origin: center bottom;
+  opacity: 0.35;
+}
+
+.retro__inner {
+  max-width: var(--retro-max);
+  margin: 0 auto;
+  padding-left: var(--retro-gutter);
+  padding-right: var(--retro-gutter);
+  position: relative;
+  z-index: 1;
+}
+
+/* 导航 */
+.retro-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: linear-gradient(180deg, rgba(10, 10, 26, 0.95) 0%, rgba(10, 10, 26, 0.8) 100%);
+  border-bottom: 1px solid var(--retro-border);
+  backdrop-filter: blur(12px);
+}
+
+.retro-nav__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 64px;
+  gap: 16px;
+}
+
+.retro-nav__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--retro-font-display);
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--retro-text);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.retro-nav__brand img {
+  width: 32px;
+  height: 32px;
+  filter: drop-shadow(0 0 6px var(--retro-neon-pink-glow));
+}
+
+.retro-nav__links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.retro-nav__link {
+  padding: 6px 12px;
+  font-size: 14px;
+  color: var(--retro-text-muted);
+  border: 1px solid transparent;
+  border-radius: 2px;
+  transition: all 0.2s;
+}
+
+.retro-nav__link:hover {
+  color: var(--retro-neon-blue);
+  border-color: var(--retro-border);
+  text-shadow: 0 0 10px var(--retro-neon-blue-glow);
+}
+
+.retro-nav__cta {
+  padding: 8px 18px;
+  font-family: var(--retro-font-display);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--retro-bg);
+  background: linear-gradient(180deg, var(--retro-chrome-light) 0%, var(--retro-chrome-mid) 50%, var(--retro-chrome-dark) 100%);
+  border: 1px solid var(--retro-neon-blue);
+  border-radius: 2px;
+  box-shadow:
+    0 0 12px var(--retro-neon-blue-glow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+  transition: all 0.2s;
+}
+
+.retro-nav__cta:hover {
+  color: var(--retro-bg);
+  box-shadow:
+    0 0 20px var(--retro-neon-pink-glow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  border-color: var(--retro-neon-pink);
+}
+
+/* Hero */
+.retro-hero {
+  padding: 80px 0 100px;
+  text-align: center;
+  position: relative;
+}
+
+.retro-hero__badge {
+  display: inline-block;
+  padding: 4px 16px;
+  margin-bottom: 24px;
+  font-family: var(--retro-font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--retro-neon-pink);
+  border: 1px solid var(--retro-neon-pink);
+  box-shadow: 0 0 12px var(--retro-neon-pink-glow);
+}
+
+.retro-hero__title {
+  margin: 0 0 20px;
+  font-family: var(--retro-font-display);
+  font-size: clamp(2rem, 6vw, 3.5rem);
+  font-weight: 900;
+  line-height: 1.2;
+  background: linear-gradient(135deg, var(--retro-chrome-light) 0%, var(--retro-neon-blue) 40%, var(--retro-neon-pink) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 0 30px var(--retro-neon-blue-glow));
+}
+
+.retro-hero__subtitle {
+  margin: 0 auto 36px;
+  max-width: 560px;
+  font-size: 18px;
+  color: var(--retro-text-muted);
+}
+
+.retro-hero__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.retro-hero__terminal {
+  margin-top: 60px;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  border: 1px solid var(--retro-border);
+  border-radius: 4px;
+  background: rgba(18, 18, 42, 0.8);
+  box-shadow: 0 0 24px rgba(0, 212, 255, 0.15);
+  overflow: hidden;
+}
+
+.retro-hero__terminal-bar {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 16px;
+  background: linear-gradient(90deg, rgba(0, 212, 255, 0.1) 0%, rgba(255, 45, 149, 0.1) 100%);
+  border-bottom: 1px solid var(--retro-border);
+  font-family: var(--retro-font-display);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--retro-neon-blue);
+}
+
+.retro-hero__terminal-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--retro-neon-pink);
+  box-shadow: 0 0 6px var(--retro-neon-pink-glow);
+}
+
+.retro-hero__terminal-body {
+  padding: 20px 24px;
+  font-family: "Courier New", monospace;
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--retro-neon-blue);
+}
+
+.retro-hero__terminal-body .retro-hero__cursor {
+  display: inline-block;
+  width: 8px;
+  height: 16px;
+  background: var(--retro-neon-pink);
+  animation: retro-blink 1s step-end infinite;
+  vertical-align: text-bottom;
+}
+
+@keyframes retro-blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* 按钮 */
+.retro-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 12px 28px;
+  font-family: var(--retro-font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  border-radius: 2px;
+  border: 1px solid;
+  cursor: pointer;
+  transition: all 0.25s;
+}
+
+.retro-btn--chrome {
+  color: var(--retro-bg);
+  background: linear-gradient(180deg, #f0f4fc 0%, #b8c4d8 45%, #6a7a94 100%);
+  border-color: var(--retro-neon-blue);
+  box-shadow:
+    0 0 16px var(--retro-neon-blue-glow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.retro-btn--chrome:hover {
+  box-shadow:
+    0 0 24px var(--retro-neon-pink-glow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+  border-color: var(--retro-neon-pink);
+  color: var(--retro-bg);
+}
+
+.retro-btn--ghost {
+  color: var(--retro-neon-blue);
+  background: transparent;
+  border-color: var(--retro-border);
+}
+
+.retro-btn--ghost:hover {
+  border-color: var(--retro-neon-pink);
+  color: var(--retro-neon-pink);
+  box-shadow: 0 0 16px var(--retro-neon-pink-glow);
+}
+
+/* 区块 */
+.retro-section {
+  padding: 80px 0;
+  position: relative;
+}
+
+.retro-section__label {
+  margin: 0 0 8px;
+  font-family: var(--retro-font-display);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--retro-neon-pink);
+}
+
+.retro-section__title {
+  margin: 0 0 48px;
+  font-family: var(--retro-font-display);
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  color: var(--retro-chrome-light);
+  text-shadow: 0 0 20px var(--retro-neon-blue-glow);
+}
+
+.retro-section__divider {
+  height: 1px;
+  margin: 0;
+  border: none;
+  background: linear-gradient(90deg, transparent, var(--retro-neon-blue), var(--retro-neon-pink), transparent);
+  opacity: 0.5;
+}
+
+/* 功能卡片 */
+.retro-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.retro-card {
+  padding: 28px;
+  background: linear-gradient(145deg, rgba(18, 18, 42, 0.9) 0%, rgba(10, 10, 26, 0.95) 100%);
+  border: 1px solid var(--retro-border);
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.retro-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--retro-neon-blue), var(--retro-neon-pink));
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.retro-card:hover {
+  border-color: var(--retro-neon-pink);
+  box-shadow: 0 0 24px rgba(255, 45, 149, 0.15);
+}
+
+.retro-card:hover::before {
+  opacity: 1;
+}
+
+.retro-card__icon {
+  display: inline-block;
+  margin-bottom: 16px;
+  font-family: var(--retro-font-display);
+  font-size: 24px;
+  color: var(--retro-neon-blue);
+  text-shadow: 0 0 12px var(--retro-neon-blue-glow);
+}
+
+.retro-card__title {
+  margin: 0 0 12px;
+  font-family: var(--retro-font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--retro-chrome-light);
+  letter-spacing: 0.05em;
+}
+
+.retro-card__desc {
+  margin: 0;
+  font-size: 14px;
+  color: var(--retro-text-muted);
+  line-height: 1.7;
+}
+
+/* 页面标题 */
+.retro-page {
+  padding: 60px 0 80px;
+  position: relative;
+  z-index: 1;
+}
+
+.retro-page__title {
+  margin: 0 0 12px;
+  font-family: var(--retro-font-display);
+  font-size: clamp(1.8rem, 5vw, 2.5rem);
+  font-weight: 700;
+  text-align: center;
+  background: linear-gradient(90deg, var(--retro-neon-blue), var(--retro-neon-pink));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.retro-page__subtitle {
+  margin: 0 auto 48px;
+  max-width: 520px;
+  text-align: center;
+  font-size: 15px;
+  color: var(--retro-text-muted);
+}
+
+/* 下载 */
+.retro-download__quick {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 32px;
+}
+
+.retro-download__quick a {
+  display: none;
+  padding: 14px 24px;
+  font-family: var(--retro-font-display);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.05em;
+  color: var(--retro-bg);
+  background: linear-gradient(180deg, var(--retro-chrome-light) 0%, var(--retro-chrome-mid) 100%);
+  border: 1px solid var(--retro-neon-blue);
+  border-radius: 2px;
+  box-shadow: 0 0 12px var(--retro-neon-blue-glow);
+}
+
+.retro-download__quick a span {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--retro-chrome-dark);
+  letter-spacing: 0;
+}
+
+.retro-download__version {
+  text-align: center;
+  font-size: 13px;
+  color: var(--retro-text-muted);
+  margin-bottom: 48px;
+}
+
+.retro-download__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.retro-download__item {
+  padding: 24px;
+  text-align: center;
+  background: rgba(18, 18, 42, 0.6);
+  border: 1px solid var(--retro-border);
+  border-radius: 4px;
+  transition: border-color 0.2s;
+}
+
+.retro-download__item:hover {
+  border-color: var(--retro-neon-blue);
+}
+
+.retro-download__item img {
+  width: 48px;
+  height: 48px;
+  margin-bottom: 12px;
+  filter: drop-shadow(0 0 8px var(--retro-neon-blue-glow));
+}
+
+.retro-download__item h3 {
+  margin: 0 0 12px;
+  font-family: var(--retro-font-display);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--retro-chrome-light);
+}
+
+.retro-download__item span,
+.retro-download__item div {
+  display: block;
+  margin-bottom: 6px;
+  font-size: 13px;
+  color: var(--retro-text-muted);
+}
+
+.retro-download__item em {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 12px;
+  color: var(--retro-neon-pink);
+  font-style: normal;
+}
+
+/* 定价 */
+.retro-pricing {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin-bottom: 60px;
+}
+
+.retro-pricing__card {
+  padding: 32px 24px;
+  text-align: center;
+  background: linear-gradient(160deg, rgba(18, 18, 42, 0.95) 0%, rgba(10, 10, 26, 1) 100%);
+  border: 1px solid var(--retro-border);
+  border-radius: 4px;
+  position: relative;
+}
+
+.retro-pricing__card--featured {
+  border-color: var(--retro-neon-pink);
+  box-shadow: 0 0 32px rgba(255, 45, 149, 0.2);
+}
+
+.retro-pricing__card h3 {
+  margin: 0 0 16px;
+  font-family: var(--retro-font-display);
+  font-size: 16px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: var(--retro-neon-blue);
+}
+
+.retro-pricing__price {
+  margin-bottom: 16px;
+  font-family: var(--retro-font-display);
+  font-size: 36px;
+  font-weight: 700;
+  color: var(--retro-chrome-light);
+}
+
+.retro-pricing__price small {
+  font-size: 16px;
+  color: var(--retro-text-muted);
+  text-decoration: line-through;
+  margin-right: 8px;
+}
+
+.retro-pricing__price span {
+  display: block;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--retro-text-muted);
+  margin-top: 4px;
+}
+
+.retro-pricing__note {
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: var(--retro-text-muted);
+}
+
+.retro-pricing__features {
+  margin: 20px 0 0;
+  padding: 0;
+  list-style: none;
+  text-align: left;
+  font-size: 13px;
+  color: var(--retro-text-muted);
+}
+
+.retro-pricing__features li {
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(0, 212, 255, 0.1);
+}
+
+.retro-pricing__features li::before {
+  content: "▸ ";
+  color: var(--retro-neon-pink);
+}
+
+/* 社区 */
+.retro-community__grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.retro-community__card {
+  padding: 32px;
+  text-align: center;
+  background: rgba(18, 18, 42, 0.7);
+  border: 1px solid var(--retro-border);
+  border-radius: 4px;
+  transition: all 0.3s;
+}
+
+.retro-community__card:hover {
+  border-color: var(--retro-neon-pink);
+  box-shadow: 0 0 20px rgba(255, 45, 149, 0.15);
+}
+
+.retro-community__card img {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 16px;
+  border-radius: 8px;
+}
+
+.retro-community__card h3 {
+  margin: 0 0 16px;
+  font-family: var(--retro-font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--retro-chrome-light);
+}
+
+.retro-community__links {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* FAQ */
+.retro-faq {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+.retro-faq__title {
+  margin: 0 0 32px;
+  font-family: var(--retro-font-display);
+  font-size: 20px;
+  font-weight: 600;
+  text-align: center;
+  color: var(--retro-neon-blue);
+}
+
+.retro-faq__item {
+  margin-bottom: 28px;
+  padding: 20px 24px;
+  background: rgba(18, 18, 42, 0.5);
+  border-left: 3px solid var(--retro-neon-pink);
+  border-radius: 0 4px 4px 0;
+}
+
+.retro-faq__item h3 {
+  margin: 0 0 12px;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--retro-chrome-light);
+}
+
+.retro-faq__item p,
+.retro-faq__item li {
+  margin: 0 0 8px;
+  font-size: 14px;
+  color: var(--retro-text-muted);
+}
+
+.retro-faq__item ul {
+  margin: 8px 0 0;
+  padding-left: 20px;
+}
+
+.retro-faq__item code {
+  padding: 2px 6px;
+  font-size: 12px;
+  color: var(--retro-neon-blue);
+  background: rgba(0, 212, 255, 0.1);
+  border-radius: 2px;
+}
+
+/* 页脚 */
+.retro-footer {
+  margin-top: 80px;
+  padding: 32px 0;
+  border-top: 1px solid var(--retro-border);
+  position: relative;
+  z-index: 1;
+}
+
+.retro-footer__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px 20px;
+  font-size: 13px;
+  color: var(--retro-text-muted);
+}
+
+.retro-footer__inner a {
+  color: var(--retro-text-muted);
+}
+
+.retro-footer__inner a:hover {
+  color: var(--retro-neon-blue);
+}
+
+.retro-footer__spacer {
+  flex: 1;
+}
+
+.retro-footer__icons {
+  display: flex;
+  gap: 12px;
+}
+
+.retro-footer__icons a {
+  opacity: 0.7;
+  transition: opacity 0.2s;
+}
+
+.retro-footer__icons a:hover {
+  opacity: 1;
+}
+
+.retro-footer__icons img {
+  width: 24px;
+  height: 24px;
+}
+
+/* CTA 条 */
+.retro-cta {
+  padding: 60px 0;
+  text-align: center;
+  background: linear-gradient(180deg, transparent 0%, rgba(0, 212, 255, 0.05) 50%, transparent 100%);
+}
+
+.retro-cta__title {
+  margin: 0 0 12px;
+  font-family: var(--retro-font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--retro-chrome-light);
+}
+
+.retro-cta__desc {
+  margin: 0 0 28px;
+  color: var(--retro-text-muted);
+}
+
+@media (max-width: 768px) {
+  .retro-nav__links {
+    gap: 4px;
+  }
+
+  .retro-nav__link {
+    padding: 4px 8px;
+    font-size: 13px;
+  }
+
+  .retro-hero {
+    padding: 48px 0 64px;
+  }
+
+  .retro-section {
+    padding: 48px 0;
+  }
+}
