@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+  <include src="partials/head-zh.html" locals='{"title":"下载 - "}'></include>
+  <body>
+    <include src="partials/particles.html"></include>
+
+    <div class="ain-page">
+      <include src="partials/header-zh.html" locals='{"activeDownload":"ain-header__link--active","activePricing":"","activeCommunity":""}'></include>
+
+      <main class="ain-main">
+        <div class="ain-page-header">
+          <h2 class="ain-page-header__title">下载</h2>
+          <p class="ain-page-header__desc">全平台可用，离线也能与 AI 协作思考</p>
+        </div>
+
+        <div class="ain-wrapper ain-download-hero">
+          <div class="ain-download-hero__btns" id="download">
+            <a class="ain-btn ain-btn--primary" target="_blank" rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-win.exe" data-os="Windows">Windows x86_64 安装包</a>
+            <a class="ain-btn ain-btn--ghost" target="_blank" href="https://apps.microsoft.com/detail/9p7hpmxp73k4" data-os="Windows">微软商店</a>
+            <a class="ain-btn ain-btn--ghost" style="display: none" target="_blank" rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac.dmg" data-os="macOS">英特尔芯片</a>
+            <a class="ain-btn ain-btn--ghost" style="display: none" target="_blank" rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac-arm64.dmg" data-os="macOS">苹果芯片</a>
+            <a class="ain-btn ain-btn--ghost" style="display: none" target="_blank" rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@.apk" data-os="Android">安卓安装包</a>
+            <a class="ain-btn ain-btn--ghost" style="display: none" target="_blank" rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.AppImage" data-os="Linux">Linux AppImage</a>
+          </div>
+          <p class="ain-download-hero__version">
+            @@SIYUAN_VERSION_V@@ · 也可通过
+            <a href="https://pan.baidu.com/s/1ivC6QGYBZSC1E_-ZeS2Omg?pwd=open" target="_blank" rel="nofollow">百度网盘</a>
+            下载
+          </p>
+        </div>
+
+        <div class="ain-wrapper ain-download-grid">
+          <div class="ain-download-card">
+            <img src="@@STATIC@@/logo-windows.png" alt="Windows" />
+            <h3>Windows</h3>
+            <div class="ain-download-card__links">
+              <span>
+                安装包
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-win.exe" target="_blank">x86_64</a>
+                ,
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-win-arm64.exe" target="_blank">arm64</a>
+              </span>
+              <span>
+                微软商店
+                <a rel="nofollow" href="https://apps.microsoft.com/detail/9p7hpmxp73k4" target="_blank">x86_64</a>
+                ,
+                <a rel="nofollow" href="https://apps.microsoft.com/detail/9p7hpmxp73k4" target="_blank">arm64</a>
+              </span>
+              <a href="https://github.com/siyuan-note/siyuan" target="_blank">源代码</a>
+            </div>
+          </div>
+
+          <div class="ain-download-card">
+            <img src="@@STATIC@@/logo-macOS.png" alt="macOS" />
+            <h3>macOS</h3>
+            <div class="ain-download-card__links">
+              <span>
+                苹果芯片
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac-arm64.dmg" target="_blank">arm64</a>
+              </span>
+              <span>
+                英特尔芯片
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac.dmg" target="_blank">x86_64</a>
+              </span>
+              <a href="https://github.com/siyuan-note/siyuan" target="_blank">源代码</a>
+            </div>
+          </div>
+
+          <div class="ain-download-card">
+            <img src="@@STATIC@@/logo-linux.png" alt="Linux" />
+            <h3>Linux</h3>
+            <div class="ain-download-card__links">
+              <span>
+                AppImage
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.AppImage" target="_blank">x86_64</a>
+                ,
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux-arm64.AppImage" target="_blank">arm64</a>
+              </span>
+              <span>
+                deb
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.deb" target="_blank">x86_64</a>
+                ,
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux-arm64.deb" target="_blank">arm64</a>
+              </span>
+              <span>
+                tar.gz
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.tar.gz" target="_blank">x86_64</a>
+                ,
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux-arm64.tar.gz" target="_blank">arm64</a>
+              </span>
+              <a href="https://github.com/siyuan-note/siyuan" target="_blank">源代码</a>
+            </div>
+          </div>
+
+          <div class="ain-download-card">
+            <img src="@@STATIC@@/logo-android.png" alt="Android" />
+            <h3>Android</h3>
+            <div class="ain-download-card__links">
+              <a href="https://appgallery.huawei.com/app/C105558879" target="_blank">华为应用市场</a>
+              <a href="https://app.mi.com/details?id=org.b3log.siyuan" target="_blank">小米应用商店</a>
+              <a href="https://play.google.com/store/apps/details?id=org.b3log.siyuan" target="_blank">Google Play</a>
+              <span>
+                <a href="https://www.coolapk.com/apk/292664" target="_blank">酷安</a>
+                ,
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@.apk" target="_blank">APK</a>
+              </span>
+              <a href="https://github.com/siyuan-note/siyuan-android" target="_blank">源代码</a>
+            </div>
+          </div>
+
+          <div class="ain-download-card">
+            <img src="@@STATIC@@/logo-ios.png" alt="iOS" />
+            <h3>iPhone / iPad</h3>
+            <div class="ain-download-card__links">
+              <a href="https://apps.apple.com/cn/app/siyuan/id1583226508" target="_blank">App Store</a>
+              <a href="https://testflight.apple.com/join/BBLHMJ4g" target="_blank">TestFlight</a>
+              <a href="https://github.com/siyuan-note/siyuan-ios" target="_blank">源代码</a>
+            </div>
+          </div>
+
+          <div class="ain-download-card">
+            <img src="@@STATIC@@/logo-harmonyos.png" alt="鸿蒙" />
+            <h3>鸿蒙 NEXT</h3>
+            <div class="ain-download-card__links">
+              <span>已上架应用市场（手机 / 平板 / PC）</span>
+              <a href="https://github.com/siyuan-note/siyuan-harmony" target="_blank">源代码</a>
+            </div>
+          </div>
+
+          <div class="ain-download-card">
+            <img src="@@STATIC@@/logo-chromium.png" alt="浏览器扩展" />
+            <h3>浏览器扩展</h3>
+            <div class="ain-download-card__links">
+              <a href="https://chrome.google.com/webstore/detail/siyuan/hkcgjbeblifaincobbcfiffbpgoafepk" target="_blank">Chrome</a>
+              <a href="https://microsoftedge.microsoft.com/addons/detail/siyuan/lclhdlhleinlppggbbgimbekofanbkcf" target="_blank">Edge</a>
+              <a href="https://github.com/siyuan-note/siyuan-chrome" target="_blank">源代码</a>
+            </div>
+          </div>
+
+          <div class="ain-download-card">
+            <img src="@@STATIC@@/logo-docker.png" alt="服务器" />
+            <h3>服务器</h3>
+            <div class="ain-download-card__links">
+              <span>非程序员请勿尝试</span>
+              <a href="https://hub.docker.com/r/b3log/siyuan" target="_blank">Docker 镜像</a>
+              <a href="https://github.com/siyuan-note/siyuan" target="_blank">源代码</a>
+              <a href="https://github.com/siyuan-note/siyuan/releases" target="_blank">历史版本下载</a>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <include src="partials/footer-zh.html"></include>
+    </div>
+
+    <include src="partials/site-script.html"></include>
+  </body>
+</html>

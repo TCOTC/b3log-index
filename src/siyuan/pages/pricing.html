@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+  <include src="partials/head-zh.html" locals='{"title":"定价 - "}'></include>
+  <body>
+    <include src="partials/particles.html"></include>
+
+    <div class="ain-page">
+      <include src="partials/header-zh.html" locals='{"activeDownload":"","activePricing":"ain-header__link--active","activeCommunity":""}'></include>
+
+      <main class="ain-main">
+        <div class="ain-page-header">
+          <h2 class="ain-page-header__title">定价</h2>
+          <p class="ain-page-header__desc">核心 AI 能力免费开放，高级同步按需升级</p>
+        </div>
+
+        <div class="ain-wrapper ain-pricing-grid">
+          <div class="ain-price-card">
+            <h3>完全免费</h3>
+            <div class="ain-price-card__amount">
+              ￥0
+              <span>终身</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--ain-text-muted)">
+              ❤️
+              <a href="https://ld246.com/sponsor" target="_blank">靠爱发电</a>
+            </p>
+            <a class="ain-btn ain-btn--ghost" href="download.html">下载</a>
+            <div class="ain-price-card__features">
+              <div>基础功能</div>
+              <div>块级编辑与双向链接</div>
+              <div>闪卡与数据库</div>
+              <div>AI 辅助能力</div>
+            </div>
+          </div>
+
+          <div class="ain-price-card">
+            <h3>功能特性</h3>
+            <div class="ain-price-card__amount">
+              <small><del>￥96</del></small>
+              ￥80
+              <span>终身</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--ain-text-muted)">一次付费，终身使用</p>
+            <a class="ain-btn ain-btn--primary" href="https://ld246.com/one-time-pay/siyuan" target="_blank">去升级</a>
+            <div class="ain-price-card__features">
+              <div>接入第三方 S3 数据同步和备份（需自行购买或搭建 S3 服务）</div>
+              <div>
+                接入第三方 WebDAV 数据同步和备份（需自行购买或搭建 WebDAV 服务，
+                <a href="https://help.jianguoyun.com/?p=2064" target="_blank">不支持坚果云</a>
+                ）
+              </div>
+            </div>
+          </div>
+
+          <div class="ain-price-card ain-price-card--featured">
+            <h3>年付订阅</h3>
+            <div class="ain-price-card__amount">
+              <small><del>￥192</del></small>
+              ￥148
+              <span>每年</span>
+            </div>
+            <p style="font-size: 0.85rem; color: var(--ain-text-muted)">
+              🔥
+              <a href="https://ld246.com/subscribe/siyuan/batch" target="_blank">两人团首年 6.4 折</a>
+            </p>
+            <a class="ain-btn ain-btn--primary" href="https://ld246.com/subscribe/siyuan" target="_blank">去订阅</a>
+            <div class="ain-price-card__features">
+              <div>资源文件图床</div>
+              <div>定时微信提醒</div>
+              <div>收集箱</div>
+              <div>官方云端存储大小 8G</div>
+              <div>官方数据同步和备份</div>
+              <div>接入第三方 S3 数据同步和备份</div>
+              <div>
+                接入第三方 WebDAV 数据同步和备份（
+                <a href="https://help.jianguoyun.com/?p=2064" target="_blank">不支持坚果云</a>
+                ）
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <section class="ain-features" style="padding-top: 0">
+          <div class="ain-wrapper">
+            <h2 class="ain-section-title">功能对比</h2>
+            <p class="ain-section-desc">大部分功能免费，包括商业环境下的使用</p>
+            <div class="ain-feature-grid">
+              <article class="ain-feature-card">
+                <div class="ain-feature-card__icon">
+                  <img src="@@STATIC@@/icon-check.svg" alt="" width="20" height="20" />
+                </div>
+                <h3 class="ain-feature-card__title">基础功能</h3>
+                <p class="ain-feature-card__desc">块编辑、大纲、双链、闪卡、数据库、AI — 三款方案均包含。</p>
+              </article>
+              <article class="ain-feature-card">
+                <div class="ain-feature-card__icon">
+                  <img src="@@STATIC@@/icon-x.svg" alt="" width="20" height="20" />
+                </div>
+                <h3 class="ain-feature-card__title">资源文件图床</h3>
+                <p class="ain-feature-card__desc">仅年付订阅可用。用法详情请参考用户指南 - 资源文件图床。</p>
+              </article>
+              <article class="ain-feature-card">
+                <div class="ain-feature-card__icon">
+                  <img src="@@STATIC@@/icon-info.svg" alt="" width="20" height="20" />
+                </div>
+                <h3 class="ain-feature-card__title">云端同步</h3>
+                <p class="ain-feature-card__desc">官方云端同步仅年付订阅提供；功能特性方案支持第三方 S3 / WebDAV 自建同步。</p>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <include src="partials/footer-zh.html"></include>
+    </div>
+
+    <include src="partials/site-script.html"></include>
+  </body>
+</html>
