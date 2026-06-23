@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="zh-cmn-Hans">
+  <include src="partials/head-zh.html" locals='{"title":"下载 - "}'></include>
+  <body class="flat-page">
+    <include src="partials/header-zh.html"></include>
+
+    <main class="flat-main">
+      <div class="flat-page-head">
+        <div class="flat-wrap">
+          <h1 class="flat-page-head__title">下载</h1>
+          <p class="flat-page-head__desc">选择你的平台，一键获取思源笔记</p>
+        </div>
+      </div>
+
+      <div class="flat-wrap">
+        <div class="flat-download-quick" id="flat-download-quick">
+          <a
+            class="flat-download-quick__btn"
+            style="display: none"
+            target="_blank"
+            rel="nofollow"
+            href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac.dmg"
+            data-os="macOS">
+            英特尔芯片
+            <span>升级需要再次下载</span>
+          </a>
+          <a
+            class="flat-download-quick__btn"
+            style="display: none"
+            target="_blank"
+            rel="nofollow"
+            href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac-arm64.dmg"
+            data-os="macOS">
+            苹果芯片
+            <span>升级需要再次下载</span>
+          </a>
+          <a
+            class="flat-download-quick__btn"
+            target="_blank"
+            rel="nofollow"
+            href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-win.exe"
+            data-os="Windows">
+            x86_64 安装包
+            <span>升级需要再次下载</span>
+          </a>
+          <a class="flat-download-quick__btn" target="_blank" href="https://apps.microsoft.com/detail/9p7hpmxp73k4" data-os="Windows">
+            微软商店
+            <span>支持一键升级</span>
+          </a>
+          <a
+            class="flat-download-quick__btn"
+            style="display: none"
+            target="_blank"
+            rel="nofollow"
+            href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@.apk"
+            data-os="Android">
+            安卓安装包
+            <span>升级需要再次下载</span>
+          </a>
+          <a
+            class="flat-download-quick__btn"
+            style="display: none"
+            target="_blank"
+            rel="nofollow"
+            href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.AppImage"
+            data-os="Linux">
+            Linux AppImage
+            <span>升级需要再次下载</span>
+          </a>
+        </div>
+        <p class="flat-download-quick__version">
+          @@SIYUAN_VERSION_V@@ · 也可通过
+          <a href="https://pan.baidu.com/s/1ivC6QGYBZSC1E_-ZeS2Omg?pwd=open" target="_blank" rel="nofollow">百度网盘</a>
+          下载
+        </p>
+
+        <div class="flat-download-grid">
+          <div class="flat-download-card">
+            <img class="flat-download-card__icon" src="@@STATIC@@/logo-windows.png" alt="" />
+            <h3 class="flat-download-card__title">Windows</h3>
+            <div class="flat-download-card__links">
+              <span>
+                安装包
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-win.exe" target="_blank">x86_64</a>
+                ,
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-win-arm64.exe" target="_blank">arm64</a>
+              </span>
+              <span>
+                微软商店
+                <a rel="nofollow" href="https://apps.microsoft.com/detail/9p7hpmxp73k4" target="_blank">x86_64</a>
+                ,
+                <a rel="nofollow" href="https://apps.microsoft.com/detail/9p7hpmxp73k4" target="_blank">arm64</a>
+              </span>
+              <a href="https://github.com/siyuan-note/siyuan" target="_blank">源代码</a>
+            </div>
+          </div>
+          <div class="flat-download-card">
+            <img class="flat-download-card__icon" src="@@STATIC@@/logo-macOS.png" alt="" />
+            <h3 class="flat-download-card__title">macOS</h3>
+            <div class="flat-download-card__links">
+              <span>
+                苹果芯片
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac-arm64.dmg" target="_blank">arm64</a>
+              </span>
+              <span>
+                英特尔芯片
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-mac.dmg" target="_blank">x86_64</a>
+              </span>
+              <a href="https://github.com/siyuan-note/siyuan" target="_blank">源代码</a>
+            </div>
+          </div>
+          <div class="flat-download-card">
+            <img class="flat-download-card__icon" src="@@STATIC@@/logo-linux.png" alt="" />
+            <h3 class="flat-download-card__title">Linux</h3>
+            <div class="flat-download-card__links">
+              <span>
+                AppImage
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.AppImage" target="_blank">x86_64</a>
+                ,
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux-arm64.AppImage" target="_blank">arm64</a>
+              </span>
+              <span>
+                deb
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.deb" target="_blank">x86_64</a>
+                ,
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux-arm64.deb" target="_blank">arm64</a>
+              </span>
+              <span>
+                tar.gz
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux.tar.gz" target="_blank">x86_64</a>
+                ,
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@-linux-arm64.tar.gz" target="_blank">arm64</a>
+              </span>
+              <a href="https://github.com/siyuan-note/siyuan" target="_blank">源代码</a>
+            </div>
+          </div>
+          <div class="flat-download-card">
+            <img class="flat-download-card__icon" src="@@STATIC@@/logo-android.png" alt="" />
+            <h3 class="flat-download-card__title">Android</h3>
+            <div class="flat-download-card__links">
+              <a href="https://appgallery.huawei.com/app/C106170845" target="_blank" rel="nofollow">华为应用市场</a>
+              <a href="https://app.mi.com/details?id=org.b3log.siyuan" target="_blank" rel="nofollow">小米应用商店</a>
+              <a href="https://play.google.com/store/apps/details?id=org.b3log.siyuan" target="_blank" rel="nofollow">Google Play</a>
+              <span>
+                <a href="https://www.coolapk.com/apk/org.b3log.siyuan" target="_blank" rel="nofollow">酷安</a>
+                ,
+                <a rel="nofollow" href="@@RELEASE_CDN@@/siyuan-@@SIYUAN_VERSION@@.apk" target="_blank">APK</a>
+              </span>
+              <a href="https://github.com/siyuan-note/siyuan" target="_blank">源代码</a>
+            </div>
+          </div>
+          <div class="flat-download-card">
+            <img class="flat-download-card__icon" src="@@STATIC@@/logo-ios.png" alt="" />
+            <h3 class="flat-download-card__title">iPhone / iPad</h3>
+            <div class="flat-download-card__links">
+              <a href="https://apps.apple.com/cn/app/id1497465230" target="_blank" rel="nofollow">App Store</a>
+              <a href="https://testflight.apple.com/join/5R8WSVJA" target="_blank" rel="nofollow">TestFlight</a>
+              <a href="https://github.com/siyuan-note/siyuan" target="_blank">源代码</a>
+            </div>
+          </div>
+          <div class="flat-download-card">
+            <img class="flat-download-card__icon" src="@@STATIC@@/logo-harmonyos.png" alt="" />
+            <h3 class="flat-download-card__title">鸿蒙 NEXT</h3>
+            <div class="flat-download-card__links">
+              <span>已上架应用市场（手机 / 平板 / PC）</span>
+              <a href="https://github.com/siyuan-note/siyuan" target="_blank">源代码</a>
+            </div>
+          </div>
+          <div class="flat-download-card">
+            <img class="flat-download-card__icon" src="@@STATIC@@/logo-chromium.png" alt="" />
+            <h3 class="flat-download-card__title">浏览器扩展</h3>
+            <div class="flat-download-card__links">
+              <a href="https://chromewebstore.google.com/detail/siyuan/jfongmhbfpbajflabgaeddeclkalgcdl" target="_blank" rel="nofollow">Chrome</a>
+              <a href="https://microsoftedge.microsoft.com/addons/detail/siyuan/gilnpjealnbbigdcbppfpdmdiecccbcp" target="_blank" rel="nofollow">Edge</a>
+              <a href="https://github.com/siyuan-note/siyuan" target="_blank">源代码</a>
+            </div>
+          </div>
+          <div class="flat-download-card">
+            <img class="flat-download-card__icon" src="@@STATIC@@/logo-docker.png" alt="" />
+            <h3 class="flat-download-card__title">服务器</h3>
+            <div class="flat-download-card__links">
+              <span>非程序员请勿尝试</span>
+              <a href="https://hub.docker.com/r/b3log/siyuan" target="_blank" rel="nofollow">Docker 镜像</a>
+              <a href="https://github.com/siyuan-note/siyuan" target="_blank">源代码</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <include src="partials/footer-zh.html"></include>
+    <script src="@@STATIC@@/flat.js"></script>
+  </body>
+</html>
