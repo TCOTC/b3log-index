@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>思源笔记 - 隐私优先的个人知识管理系统，支持 Markdown 排版、块级引用和双向链接</title>
+    <include src="partials/head-zh.html"></include>
+  </head>
+  <body class="p3d-body">
+    <div class="p3d-page">
+      <include src="partials/header-zh.html"></include>
+
+      <main class="p3d-main">
+        <section class="p3d-hero">
+          <div class="p3d-container">
+            <div class="p3d-hero__grid">
+              <div class="p3d-hero__copy">
+                <p class="p3d-hero__badge">知识工作台 · @@SIYUAN_VERSION_V@@</p>
+                <h1 class="p3d-hero__title">亲眼所见，胜过千言万语</h1>
+                <p class="p3d-hero__subtitle">360° 预览你的知识工作台。在旋转展台上审视每一处细节，再决定是否将它摆上你的桌面。</p>
+                <div class="p3d-hero__meta">
+                  <span class="p3d-hero__version">当前版本 @@SIYUAN_VERSION_V@@</span>
+                  <a class="p3d-btn" href="download.html">免费试用</a>
+                  <a class="p3d-btn p3d-btn--outline" href="pricing.html">查看定价</a>
+                </div>
+                <div class="p3d-swatches" aria-label="界面主题预览">
+                  <button class="p3d-swatch p3d-swatch--light p3d-swatch--active" type="button" data-theme="light" aria-label="浅色主题"></button>
+                  <button class="p3d-swatch p3d-swatch--dark" type="button" data-theme="dark" aria-label="深色主题"></button>
+                  <button class="p3d-swatch p3d-swatch--warm" type="button" data-theme="warm" aria-label="暖色主题"></button>
+                </div>
+              </div>
+
+              <div class="p3d-stage-wrap">
+                <div class="p3d-stage" aria-label="360° 产品预览，可拖拽旋转">
+                  <div class="p3d-turntable">
+                    <div class="p3d-product">
+                      <div class="p3d-product__face p3d-product__face--front">
+                        <div class="p3d-product__screen">
+                          <div class="p3d-product__toolbar">
+                            <span class="p3d-product__dot"></span>
+                            <span class="p3d-product__dot"></span>
+                            <span class="p3d-product__dot p3d-product__dot--accent"></span>
+                          </div>
+                          <div class="p3d-product__content">
+                            <span class="p3d-product__line"></span>
+                            <span class="p3d-product__line p3d-product__line--short"></span>
+                            <span class="p3d-product__line p3d-product__line--accent"></span>
+                            <span class="p3d-product__line"></span>
+                            <span class="p3d-product__line p3d-product__line--short"></span>
+                          </div>
+                        </div>
+                        <div class="p3d-product__hinge"></div>
+                      </div>
+                      <div class="p3d-product__face p3d-product__face--back">
+                        <img class="p3d-product__logo-mark" src="@@STATIC@@/logo.svg" alt="" width="48" height="48" />
+                      </div>
+                      <div class="p3d-product__face p3d-product__face--top"></div>
+                      <div class="p3d-product__face p3d-product__face--bottom"></div>
+                      <div class="p3d-product__face p3d-product__face--left"></div>
+                      <div class="p3d-product__face p3d-product__face--right"></div>
+                    </div>
+                  </div>
+                  <div class="p3d-stage__floor"></div>
+                  <p class="p3d-stage__hint">拖拽旋转 · 360° 预览</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="p3d-section">
+          <div class="p3d-container">
+            <p class="p3d-section__label">产品规格</p>
+            <h2 class="p3d-section__title">每一处细节，都值得近观</h2>
+            <p class="p3d-section__desc">
+              如同挑选一件经久耐用的家具，知识工具也需要经得起审视。以下六项核心能力，构成思源笔记的完整产品画像。
+            </p>
+
+            <div class="p3d-specs">
+              <article class="p3d-spec">
+                <p class="p3d-spec__num">规格 01</p>
+                <h3 class="p3d-spec__title">块级精密切面</h3>
+                <p class="p3d-spec__text">
+                  每一段文字、每一张图片都是独立可移动的块。像拆解产品零件一样重组内容，而不损伤整体结构。
+                </p>
+              </article>
+              <article class="p3d-spec">
+                <p class="p3d-spec__num">规格 02</p>
+                <h3 class="p3d-spec__title">双向链接铰链</h3>
+                <p class="p3d-spec__text">
+                  正向引用与反向提及同步展示。知识节点之间的连接清晰可见，如同家具榫卯的咬合关系。
+                </p>
+              </article>
+              <article class="p3d-spec">
+                <p class="p3d-spec__num">规格 03</p>
+                <h3 class="p3d-spec__title">大纲层级骨架</h3>
+                <p class="p3d-spec__text">
+                  折叠与展开配合缩进结构，将散落的要点整理成稳固的层级框架，适合方案拆解与论点推演。
+                </p>
+              </article>
+              <article class="p3d-spec">
+                <p class="p3d-spec__num">规格 04</p>
+                <h3 class="p3d-spec__title">排版工艺标准</h3>
+                <p class="p3d-spec__text">
+                  Markdown 与富文本元素协同运作。标题层级、行内标记、代码块遵循一致的排版语法，输出稳定可预期。
+                </p>
+              </article>
+              <article class="p3d-spec">
+                <p class="p3d-spec__num">规格 05</p>
+                <h3 class="p3d-spec__title">数据库陈列柜</h3>
+                <p class="p3d-spec__text">
+                  以表格视图管理结构化记录。字段类型、关联与汇总规则明确，将非线性笔记转化为可查询的数据集。
+                </p>
+              </article>
+              <article class="p3d-spec">
+                <p class="p3d-spec__num">规格 06</p>
+                <h3 class="p3d-spec__title">本地隐私封装</h3>
+                <p class="p3d-spec__text">
+                  数据保存在本地工作空间，离线可用。端到端加密保护隐私，如同将珍贵藏品收进专属展示柜。
+                </p>
+              </article>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <include src="partials/footer-zh.html"></include>
+    </div>
+    <include src="partials/site-script.html"></include>
+  </body>
+</html>
